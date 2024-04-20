@@ -20,16 +20,17 @@ function preRender(params , params_raw , subname){
    tracePath(static_params, ["usermeta" , "embedOptions" , "renderer"]);
    static_params.usermeta.embedOptions.renderer = "svg"
    static_params.usermeta.embedOptions.actions = false;
-   static_params.width=600;
+   static_params.width=400;
 
    return embed(el , static_params , {"renderer": "svg"}  )
-   .then( ()=>el.outerHTML )
+   .then( ()=>{el.style.width="initial" ; return el.outerHTML } )
 }
 
-function render( params , params_raw , subname  ){
+async function render( params , params_raw , subname  ){
+  const graph = await preRender(params, params_raw, subname);
   return `<div data-ihelper="vega-embed" >
      <div class="vega_embed_view" style="width:100%">
-      ${ "Interactive viz" }
+      ${ graph }
      </div>
     <script type="application/json">${params_raw}</script>
   </div>`
