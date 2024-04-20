@@ -16,6 +16,7 @@ module.exports = function (env, argv) {
     mode: argv.mode,
     entry: {
       "vega-embed": './src/vega-embed.js',
+      "cover": './src/cover.js',
     },
     devtool: argv.mode != "production" ? 'inline-source-map' : false, 
     devServer: argv.mode != "production" ? {contentBase: 'docs'} : {contentBase: 'test'},
