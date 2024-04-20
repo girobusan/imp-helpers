@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const pkg = require('./package.json');
+const TerserPlugin = require('terser-webpack-plugin');
 
-const env = process.env.NODE_ENV;
+// const env = process.env.NODE_ENV;
 
 module.exports = function (env, argv) {
 
@@ -12,6 +13,13 @@ module.exports = function (env, argv) {
     watch: argv.mode != 'production',
     target: 'web',
     optimization: {
+      minimizer: [new TerserPlugin({
+      extractComments: false,
+      terserOptions: {
+        format: {
+          comments: false,
+        },
+    }})]
     },
     mode: argv.mode,
     entry: {
