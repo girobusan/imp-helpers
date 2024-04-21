@@ -36,7 +36,7 @@ console.log("render cover!" , params);
 
 function preview( params, params_raw , subname ){
   if(params.noPreview){ 
-      return globalThis.impHelpers.defaultPreview("cover, preview render disabled" , `${params.title}<hr/>${params.subtitle}`)
+      return globalThis.impHelpers.defaultPreview("cover, preview render disabled" , `${params.title || "no title"}<br>------<br>${params.subtitle || "no subtitle"}`)
       }
   // return globalThis.impHelpers.defaultPreview( "cober" , "This helper engages in view mode only" )
   return render(params, params_raw, subname);
