@@ -1,10 +1,12 @@
 
 function render( params , params_raw , subname ){
-console.log("render cover" , params);
+console.log("render cover!" , params);
    return ` <!--push content down-->
    <div style="height:50vh; padding: 0 ; margin:0"></div>
    <div 
    class="coverHelper"
+   data-ihelper="cover"
+   data-cleanup="${params.removeH1 || false}"
    style="position:absolute;
    top: 0;
    left:0;
@@ -33,11 +35,24 @@ console.log("render cover" , params);
 }
 
 function preview( params, params_raw , subname ){
+  if(params.noPreview){ 
+      return globalThis.impHelpers.defaultPreview("cover, preview render disabled" , `${params.title}<hr/>${params.subtitle}`)
+      }
+  // return globalThis.impHelpers.defaultPreview( "cober" , "This helper engages in view mode only" )
   return render(params, params_raw, subname);
+}
+
+function animate(el){
+  if(el.dataset.cleanup=='true'){
+     const headers = document.querySelectorAll("h1");
+     let h1 = Array.from(headers).filter(e=>!e.classList.contains("coverHelperTitle"))[0];
+     h1 && h1.remove();
+
+  }
 }
 
 globalThis.impHelpers && globalThis.impHelpers.register(
    "cover",
-   { render, preview },
+   { render, preview , animate },
    "yaml"
 )
