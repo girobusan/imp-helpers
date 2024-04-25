@@ -1,6 +1,7 @@
 import embed from 'vega-embed';
 
 const schemaString = "https://vega.github.io/schema/vega-lite/v4.json" ;
+var API ;
 
 function tracePath(obj , keys){
   let cursor = obj;
@@ -28,11 +29,13 @@ function preRender(params , params_raw , subname){
 
 async function render( params , params_raw , subname  ){
   const graph = await preRender(params, params_raw, subname);
+  // console.log(API);
   return `<div data-ihelper="vega-embed" >
      <div class="vega_embed_view" style="width:100%">
       ${ graph }
      </div>
-    <script type="application/json">${params_raw}</script>
+    <script type="application/json">${window.impHelpers.packParams( params_raw , true )}
+    </script>
   </div>`
 }
 
@@ -41,12 +44,13 @@ function preview( params , params_raw , subname ){
 }
 
 function animate(el){
+  console.log("animating vega at" , el)
   var params ;
   var embedOpts = {};
   const element = el.querySelector(".vega_embed_view");
   if(!element){ console.error("malformed html"); return }
   try{
-    params = JSON.parse( el.querySelector("script").textContent );
+    params = JSON.parse( window.impHelpers.unpackParams( el.querySelector("script").textContent ) );
   }catch(e){
      el.innerHTML = "Can not parse params!"
      console.error("Can not parse params" , e)
@@ -57,9 +61,15 @@ function animate(el){
   embed( element , params , embedOpts)
 }
 
+function init(){
+  API = globalThis.impHelpers;
+}
+
+
+
 globalThis.impHelpers && globalThis.impHelpers.register( 
    "vega-embed" , 
-   { animate , render , preview},
+   { animate , render , preview , init},
    "json"
    )
 
