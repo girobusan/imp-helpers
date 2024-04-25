@@ -25,6 +25,7 @@ module.exports = function (env, argv) {
     entry: {
       "vega-embed": './src/vega-embed.js',
       "cover": './src/cover.js',
+      "dsv-render": './src/dsv-render.js',
     },
     devtool: argv.mode != "production" ? 'inline-source-map' : false, 
     devServer: argv.mode != "production" ? {contentBase: 'docs'} : {contentBase: 'test'},
