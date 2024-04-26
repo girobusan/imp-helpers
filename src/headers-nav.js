@@ -17,7 +17,8 @@ function doWork(params){
       data.push({
          title: h.textContent,
          id: id,
-         level: +h.tagName.replace(/[^0-9]/g , "")
+         level: +h.tagName.replace(/[^0-9]/g , ""),
+         element: h
       })
    } );
    //
@@ -30,6 +31,12 @@ function doWork(params){
      const lnk = document.createElement("a");
      lnk.href="#" + d.id
      lnk.innerHTML = d.title
+     if(d.element.scrollIntoView){
+       lnk.addEventListener("click", 
+       (evt)=>{ evt.preventDefault(); evt.stopPropagation() ; 
+        d.element.scrollIntoView({ behavior: "smooth" , block: "start" , inline: "start" })
+       })
+     }
      litem.style.marginLeft = ( d.level ) + "em"
      litem.classList.add( "menuLevel" + d.level )
      litem.appendChild(lnk)
