@@ -16,7 +16,7 @@ This repository contains some "official" or _example_ helpers in development, li
 .  
 .  
 
-Helpers API available now in git version of IMP!, and will be included in upcoming release. Scripts in this repo is early stage of development.
+Helpers API available now in git version of IMP!, and will be included in upcoming release. Scripts in this repo are at the early stages of development.
 
 
 
