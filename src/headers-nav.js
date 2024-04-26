@@ -6,7 +6,7 @@ function doWork(params){
    // console.log(params) 
    const hdrs = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
    const before = document.querySelector(params.insertBefore || "body *:first-child");
-   const insertTo = !params.insertTo ? document.body :  document.querySelector(params.insertTo)
+   const insertTo = !params.insertTo ? before.parentNode :  document.querySelector(params.insertTo)
    
    if(hdrs.length==0){ return };
    const data = [];
@@ -20,6 +20,8 @@ function doWork(params){
          level: +h.tagName.replace(/[^0-9]/g , "")
       })
    } );
+   //
+   if(params.skipH1){ data = data.filter( d=>d.level!=1 ) }
    //
    const menu = document.createElement("nav");
    const linklist = document.createElement("ul");
