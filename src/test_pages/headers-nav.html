@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headers navigation</title>
+  <meta name="description" content="Small tool">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="Headers navigation">
+  <meta name="og:description" content="Small tool">
+  <meta name="og:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="">
+  <link rel="icon" type="image/png" href="">
+  <script>
+   window.settings = {
+  "title": "Headers navigation",
+  "description": "Small tool",
+  "image": "",
+  "icon": "",
+  "filename": "headers-nav.html",
+  "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; and &lt;a href='https://matejlatin.github.io/Gutenberg/'&gt;Gutenberg CSS&lt;/a&gt;&lt;/small&gt;",
+  "css": ".linkToTop{\ntext-decoration: none;\ncolor: royalblue !important;\n}",
+  "headHTML": "",
+  "editor": "",
+  "viewCSS": "",
+  "author": "",
+  "keywords": "",
+  "enableHelpers": "true",
+  "pathToHelpersModule": ""
+}
+   window.savedWithImpVersion = "0.4.2"
+  </script>
+  <script>
+   function IMPEdit(){
+   console.info("Loading editor...")
+   const editor = document.createElement("script");
+   editor.id="editorScript";
+   editor.src="imp.js";
+   document.head.appendChild(editor);
+   }
+   window.addEventListener("DOMContentLoaded" , function(){
+  
+   if(window.location.search.indexOf("mode=view")!=-1)
+   {
+   return;
+   }
+   if(window.location.search.indexOf("mode=edit")!=-1)
+   {
+   IMPEdit();
+   return;
+   }
+   if(window.location.search.indexOf("mode=download")!=-1){
+   IMPEdit();
+   return;
+   }
+   if(window.location.protocol==="file:"){
+   IMPEdit();
+   }
+  
+})
+  </script>
+  <script src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS">.linkToTop{
+text-decoration: none;
+color: royalblue !important;
+}</style>
+  <!--custom html here-->
+</head>
+<body>
+<main class='container' id='pageMain'><h1>Headers navigation</h1>
+<p><span data-ihelper='headers-nav' data-params="%0AskipH1:%20true%0AlinkBack:%20%22%3Csup%3E&uarr;%3C/sup%3E%22%0A"></span></p>
+<hr>
+<p><strong>Markdown when you write it. HTML when they read it.</strong></p>
+<p>Like a markdown-based CMS for single file, fully client-side. When you need to drop one page somewhere on the web, and do not want (can not) use full-blown CMS or SSG, but still want to use GUI for content editing.</p>
+<p>→ 📖 <a href="https://girobusan.github.io/imp/">Docs</a></p>
+<h2>How it works</h2>
+<p>When you load IMP! Locally, it opens up an editor, where you can enter or import your text, setup SEO tags and custom CSS. When the very same page is served over http, user gets a light, <strong>static</strong> HTML. Page does not require Java Script to be viewed, it's just plain HTML. <a href="https://girobusan.github.io/imp/">Demo and docs</a>.</p>
+<h2>Possible uses</h2>
+<ul>
+<li>Digital experiments</li>
+<li>Small-scale sites</li>
+<li>Anywhere, where you need &quot;just html file&quot;.</li>
+</ul>
+<h2>System requirements</h2>
+<h5>For authoring</h5>
+<p>Firefox or Chrome preferred (tested). If you've updated your browser within last 4 years, it should be fine.</p>
+<h5>For viewing</h5>
+<p>Any browser.</p>
+<h2>Features</h2>
+<ul>
+<li>Fully local thing — no server required, no setup. It's YOUR page!</li>
+<li>Pages can be fully static, even text-based browser friendly (You'll need modern browser for editing)</li>
+<li>You can add any HTML or JS to your page</li>
+<li>All you need is browser, that means it fully multiplatform</li>
+<li>Simple Markdown editor with pixel-perfect preview</li>
+<li>Code highlighting</li>
+<li><a href="https://girobusan.github.io/imp/themes/"> Customizable </a></li>
+<li>Lo-fi 😃</li>
+</ul>
+<h2>How to start</h2>
+<h3>Two clicks setup, with CDN</h3>
+<ol>
+<li>Click <a href="https://girobusan.github.io/imp/impcdn.html#edit"> this link </a></li>
+<li>Scroll down, click &quot;Duplicate page&quot; button</li>
+<li>Enter any filename, ending with <code>.html</code>, save.</li>
+</ol>
+<p>This setup does not require downloading of any other files. Editor and main CSS will be loaded from CDN. You may load newly downloaded file in your browser, edit content and settings, save it (see below) and than upload to your server.</p>
+<h3>Local setup (everything local, no CDN)</h3>
+<ol>
+<li>Download and unpack. There are 3 files: <code>index.html</code>, <code>style.css</code> and <code>imp.js</code></li>
+<li>Open the <code>index.html</code> in your browser (Firefox or Chrome is recommended)</li>
+<li>Edit it, import or enter your text, preview it. Click the big &quot;Export HTML&quot; (&quot;Save&quot; in newer version) button and save file to the same directory. If you didn't change file name, overwrite old file.</li>
+</ol>
+<p>You may skip <code>imp.js</code> while uploading files to server, as it's not required for <em>viewing</em> file.</p>
+<h2>Other</h2>
+<h3>Customization</h3>
+<p>There is a field for custom CSS in each IMP! file for small adjustments. But you can replace the whole <code>style.css</code> with your own. There is nothing fancy about it.</p>
+<h3>More files</h3>
+<p>You can have as many imps as you want. If they would live in one directory, they will share single <code>imp.js</code> file.</p>
+<h3>Known problems</h3>
+<ul>
+<li>If you use NoScript extension, you'd need to disable it for IMP! page (<em>not</em> just set to TRUSTED mode, but disable all restrictions completely)</li>
+</ul>
+<h2>License</h2>
+<ul>
+<li>Mostly MIT, except:</li>
+<li>CC BY-CA - default theme based on Cutenberg  (which is licensed under CC BY-CA)</li>
+</ul>
+<h3>Wouldn't be possible without awesome projects like:</h3>
+<h4><a href="https://preactjs.com/">Preact</a></h4>
+<h4><a href="https://matejlatin.github.io/Gutenberg">Gutenberg CSS</a></h4>
+<h4><a href="https://bulma.io/">Bulma CSS framework</a></h4>
+<h4><a href="https://www.jsdelivr.com/">Jsdelivr</a></h4>
+<h4><a href="https://fonts.google.com/icons">Google Material Icons</a></h4>
+<h2>Epiloque</h2>
+<p>Lorem ipsum...</p>
+</main>
+<footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> and <a href='https://matejlatin.github.io/Gutenberg/'>Gutenberg CSS</a></small></footer>
+<script id="pageData" type="text/markdown"># Headers navigation
+
+
+```h:headers-nav
+skipH1: true
+linkBack: "&lt;sup&gt;&amp;uarr;&lt;/sup&gt;"
+```
+
+---
+
+&lt;strong&gt;Markdown when you write it. HTML when they read it.&lt;/strong&gt;
+
+Like a markdown-based CMS for single file, fully client-side. When you need to drop one page somewhere on the web, and do not want (can not) use full-blown CMS or SSG, but still want to use GUI for content editing.
+
+→ :book: [Docs](https://girobusan.github.io/imp/)
+
+## How it works
+
+When you load IMP! Locally, it opens up an editor, where you can enter or import your text, setup SEO tags and custom CSS. When the very same page is served over http, user gets a light, **static** HTML. Page does not require Java Script to be viewed, it's just plain HTML. [Demo and docs](https://girobusan.github.io/imp/). 
+
+
+## Possible uses
+
+- Digital experiments 
+- Small-scale sites
+- Anywhere, where you need "just html file". 
+
+## System requirements
+
+##### For authoring
+Firefox or Chrome preferred (tested). If you've updated your browser within last 4 years, it should be fine.
+##### For viewing
+Any browser.
+
+## Features
+
+- Fully local thing &amp;mdash; no server required, no setup. It's YOUR page!
+- Pages can be fully static, even text-based browser friendly (You'll need modern browser for editing)
+- You can add any HTML or JS to your page
+- All you need is browser, that means it fully multiplatform
+- Simple Markdown editor with pixel-perfect preview
+- Code highlighting
+- [ Customizable ](https://girobusan.github.io/imp/themes/)
+- Lo-fi :)
+
+## How to start
+
+### Two clicks setup, with CDN
+
+1. Click [ this link ]( https://girobusan.github.io/imp/impcdn.html#edit )
+2. Scroll down, click "Duplicate page" button
+3. Enter any filename, ending with `.html`, save.
+
+This setup does not require downloading of any other files. Editor and main CSS will be loaded from CDN. You may load newly downloaded file in your browser, edit content and settings, save it (see below) and than upload to your server. 
+
+
+### Local setup (everything local, no CDN)
+
+1. Download and unpack. There are 3 files: `index.html`, `style.css` and `imp.js`
+2. Open the `index.html` in your browser (Firefox or Chrome is recommended)
+3. Edit it, import or enter your text, preview it. Click the big "Export HTML" ("Save" in newer version) button and save file to the same directory. If you didn't change file name, overwrite old file.
+
+You may skip `imp.js` while uploading files to server, as it's not required for *viewing* file.
+
+## Other
+
+
+### Customization
+
+There is a field for custom CSS in each IMP! file for small adjustments. But you can replace the whole `style.css` with your own. There is nothing fancy about it.
+
+### More files
+
+You can have as many imps as you want. If they would live in one directory, they will share single `imp.js` file. 
+
+### Known problems
+
+- If you use NoScript extension, you'd need to disable it for IMP! page (*not* just set to TRUSTED mode, but disable all restrictions completely)
+
+## License
+
+- Mostly MIT, except:
+- CC BY-CA - default theme based on Cutenberg  (which is licensed under CC BY-CA)
+
+
+### Wouldn't be possible without awesome projects like:
+
+#### [Preact](https://preactjs.com/)
+#### [Gutenberg CSS](https://matejlatin.github.io/Gutenberg)
+#### [Bulma CSS framework](https://bulma.io/)
+#### [Jsdelivr](https://www.jsdelivr.com/)
+#### [Google Material Icons](https://fonts.google.com/icons)
+
+## Epiloque
+
+Lorem ipsum...</script>
+</body>
+</html>

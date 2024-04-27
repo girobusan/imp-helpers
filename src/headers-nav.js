@@ -2,30 +2,86 @@ const MYNAME = "headers-nav";
 var API;
 var params;
 
-function doWork(params){
-   // console.log(params) 
+function wrapTo( node , tagname ){
+  let r = document.createElement(tagname);
+  r.appendChild(node);
+  return r;
+}
+
+function grandParent(node, gen , tag){
+   let p = node;
+   for( let g=0 ; g<gen ; g++ ){
+     if(!p.parentNode){
+       const prnt = document.createElement(tag);
+       prnt.appendChild(p);
+       p = prnt;
+     }else{
+       p = p.parentNode;
+     }
+   }
+   return p;
+}
+
+function grandChild(node , gen , tag ){
+   let p = node;
+   for(let g=0 ; g<gen ; g++){
+      const child = document.createElement( tag );
+      p.appendChild(child);
+      p = child;
+   }
+   return p;
+}
+
+//- IF no params:
+//    render in supplied element
+//- IF params appendTo OR insertBefore
+//    find element and append/insert before there...
+//    IF not found, render in supplied element
+
+function doWork(params , el){
+   var containerEl = el || document.body;
+   var refEl = null;
+
+   if(params.appendTo){
+      containerEl = document.querySelector(params.appendTo) || el; 
+   }
+   if(params.insertBefore){
+      refEl = document.querySelector( params.insertBefore );
+   }
+   if( refEl && refEl.parentNode!=containerEl ){
+      containerEl = refEl.parentNode ;
+   }
+   if(containerEl!=el){ el.remove() }
+   
+
    const hdrs = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
-   const before = document.querySelector(params.insertBefore || "body *:first-child");
-   const insertTo = !params.insertTo ? before.parentNode :  document.querySelector(params.insertTo)
    
    if(hdrs.length==0){ return };
-   const data = [];
+   var data = [];
    hdrs.forEach( h=>{
-      let id;
-      if(h.id){ id=h.id }
-      else{ id=encodeURI(h.innerHTML) ; h.id=id }
-      data.push({
-         title: h.textContent,
-         id: id,
-         level: +h.tagName.replace(/[^0-9]/g , ""),
-         element: h
-      })
+     let id = h.id || encodeURI(h.innerHTML)
+     h.id=id 
+
+
+     data.push({
+       title: h.textContent,
+       id: id,
+       level: +h.tagName.replace(/[^0-9]/g , ""),
+       element: h
+     })
    } );
    //
    if(params.skipH1){ data = data.filter( d=>d.level!=1 ) }
    //
    const menu = document.createElement("nav");
+   menu.classList.add("headerNavigation")
+
    const linklist = document.createElement("ul");
+   linklist.classList.add("headersNavigationList")
+   var currentList = linklist;
+   var currentLevel = data[0].level;
+   
+   
    data.forEach( d=>{
      const litem = document.createElement("li");
      const lnk = document.createElement("a");
@@ -37,24 +93,62 @@ function doWork(params){
         d.element.scrollIntoView({ behavior: "smooth" , block: "start" , inline: "start" })
        })
      }
-     litem.style.marginLeft = ( d.level ) + "em"
+     if(params.linkBack){
+       const lb = document.createElement("a");
+       lb.classList.add("linkToTop")
+       lb.href="#";
+       if(menu.scrollIntoView){
+         lb.addEventListener("click", 
+           (evt)=>{ evt.preventDefault(); evt.stopPropagation() ; 
+             menu.scrollIntoView({ behavior: "smooth" , block: "start" , inline: "start" })
+         })
+       }
+       lb.innerHTML= params.linkBack;
+       d.element.appendChild(lb)
+     }
+
      litem.classList.add( "menuLevel" + d.level )
      litem.appendChild(lnk)
-     linklist.appendChild(litem)
+
+     if(d.level<currentLevel){
+       currentList = grandParent( currentList , currentLevel - d.level , "ul");
+       currentLevel = d.level;
+     }
+     if( d.level>currentLevel ){
+       currentList = grandChild( currentList , d.level - currentLevel , "ul"   );
+       currentLevel = d.level;
+     }
+     currentList.appendChild( litem )
+
    } )
+   //wrap all nested ul's to li
+   //do not, standarts allow list to be the direct child of list
+   // const nestedLists = linklist.querySelectorAll("ul ul");
+   // nestedLists.forEach( l=>{ 
+   //     const lit = document.createElement("li");
+   //     lit.style.listStyleType="none";
+   //     const parent = l.parentNode;
+   //     parent.insertBefore(lit, l);
+   //     lit.appendChild(l)
+   // } )
+
    menu.appendChild(linklist);
-   insertTo.insertBefore( menu , before )
+   if(refEl){
+     containerEl.insertBefore( menu , refEl )
+   }else{ 
+     containerEl.appendChild(menu) 
+   }
 }
 
 function render(params , params_raw){
-   return `<span data-ihelper='headers-nav' hidden data-params="${API.packParams(params_raw)}"></span>`
+   return `<span data-ihelper='headers-nav' data-params="${API.packParams(params_raw)}"></span>`
 }
 
 function animate(el){
-  el.remove();
-  if(params){  return }
+  // el.remove();
+  if(params){ el.remove() ;  return }
   params = API.parseYAML( API.unpackParams(el.dataset.params) );
-  doWork(params)
+  doWork(params , el)
 }
 
 function init(api , viewMode){
