@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMP!</title>
+  <meta name="description" content="Small tool">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="IMP!">
+  <meta name="og:description" content="Small tool">
+  <meta name="og:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="">
+  <link rel="icon" type="image/png" href="">
+  <script>
+   window.settings = {
+  "title": "IMP!",
+  "description": "Small tool",
+  "image": "",
+  "icon": "",
+  "filename": "index.html",
+  "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
+  "css": "\n  #pageFooter{background-color: black}",
+  "headHTML": "",
+  "editor": "",
+  "viewCSS": "",
+  "author": "",
+  "keywords": "",
+  "enableHelpers": "true",
+  "pathToHelpersModule": ""
+}
+   window.savedWithImpVersion = "0.4.3"
+  </script>
+  <script>
+   function IMPEdit(){
+   console.info("Loading editor...")
+   const editor = document.createElement("script");
+   editor.id="editorScript";
+   editor.src="imp.js";
+   document.head.appendChild(editor);
+   }
+   window.addEventListener("DOMContentLoaded" , function(){
+  
+   if(window.location.search.indexOf("mode=view")!=-1)
+   {
+   return;
+   }
+   if(window.location.search.indexOf("mode=edit")!=-1)
+   {
+   IMPEdit();
+   return;
+   }
+   if(window.location.search.indexOf("mode=download")!=-1){
+   IMPEdit();
+   return;
+   }
+   if(window.location.protocol==="file:"){
+   IMPEdit();
+   }
+  
+})
+  </script>
+  <script src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS">
+  #pageFooter{background-color: black}</style>
+  <!--custom html here-->
+</head>
+<body>
+<main class='container' id='pageMain'><h1>IMP! Helpers</h1>
+ <!--push content down-->
+   <div style="height:50vh; 
+   padding:0 ; 
+   margin:0 ; 
+   min-height: 300px;
+   margin-bottom:0px"></div>
+   <div 
+   class="coverHelper"
+   data-ihelper="cover"
+   data-cleanup="true"
+   style="position:absolute;
+   box-sizing: border-box;
+   padding: 1rem;
+   top: 0;
+   left:0;
+   right:0;
+   min-height: 300px;
+   height:50vh;
+   background-color: black;
+   background-image: url(title_bg.jpg);
+   color: white;
+   background-size: cover;
+   background-attachment: fixed;
+   background-position: 50% 50%;
+   display: flex; 
+   flex-direction: column;
+   justify-content:center;
+   text-align: center;
+   align-content: center;
+   margin: 0;
+   ">
+     <h1 class="coverHelperTitle" style="color: white;
+     margin: 0;
+     position: sticky;
+     ">
+     IMP! Helpers</h1>
+     <div class='coverHelperSubtitle' style='font-size:1.2em'>Accessible interactive content for your files</div>
+   </div>
+<h2>What is it all about</h2>
+<p>Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.</p>
+<p>This site contains collection of &quot;official&quot;, or <em>example</em> helpers, which you can use freely in your projects.</p>
+<table>
+<thead>
+<tr>
+<th>Helper name</th>
+<th>What it does</th>
+<th>Is interactive (requires JS to view)</th>
+<th>Demo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>vega-embed</strong></td>
+<td>Allows embedding of interactive Vega-lite visualizations in your page</td>
+<td>yes</td>
+<td>in process</td>
+</tr>
+<tr>
+<td><strong>cover</strong></td>
+<td>Adds nice customizable cover block to your page</td>
+<td>no</td>
+<td>right on this page</td>
+</tr>
+<tr>
+<td><strong>headers-nav</strong></td>
+<td>Adds in-page navigation by headers</td>
+<td>yes</td>
+<td>in process</td>
+</tr>
+<tr>
+<td><strong>dsv-render</strong></td>
+<td>Allows displaying of DSV (CSV, TSV) data in markdown</td>
+<td>no</td>
+<td>in process</td>
+</tr>
+<tr>
+<td><strong>placeholders</strong></td>
+<td>Demo of system placeholders, for documentation</td>
+<td>no</td>
+<td>not required</td>
+</tr>
+</tbody>
+</table>
+</main>
+<footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+<script id="pageData" type="text/markdown"># IMP! Helpers
+
+```helper:cover
+title: IMP! Helpers
+subtitle: Accessible interactive content for your files
+bgImage: title_bg.jpg
+removeH1: true
+noPreview: true
+marginBottom: 0px
+```
+
+## What is it all about
+
+Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.
+
+This site contains collection of "official", or _example_ helpers, which you can use freely in your projects.
+
+| Helper name | What it does | Is interactive (requires JS to view) | Demo |
+|----|----|---|---|
+| **vega-embed** | Allows embedding of interactive Vega-lite visualizations in your page | yes |  in process |
+| **cover** | Adds nice customizable cover block to your page | no | right on this page |
+| **headers-nav** | Adds in-page navigation by headers | yes |  in process |
+| **dsv-render**  | Allows displaying of DSV (CSV, TSV) data in markdown | no | in process |
+| **placeholders** | Demo of system placeholders, for documentation | no | not required | </script>
+</body>
+</html>

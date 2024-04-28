@@ -27,6 +27,7 @@ module.exports = function (env, argv) {
       "cover": './src/cover.js',
       "dsv-render": './src/dsv-render.js',
       "headers-nav": './src/headers-nav.js',
+      "placeholders": './src/placeholders.js',
     },
     devtool: argv.mode != "production" ? 'inline-source-map' : false, 
     devServer: argv.mode != "production" ? {contentBase: 'docs'} : {contentBase: 'test'},

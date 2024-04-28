@@ -25,7 +25,8 @@ function render( params , params_raw , subname ){
    color: ${params.color || 'white'};
    background-size: cover;
    background-attachment: fixed;
-   display: flex;
+   background-position: 50% 50%;
+   display: flex; 
    flex-direction: column;
    justify-content:center;
    text-align: center;
