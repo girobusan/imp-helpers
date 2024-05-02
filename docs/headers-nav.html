@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMP! Helpers — dsv-render</title>
+  <meta name="description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="IMP! Helpers — dsv-render">
+  <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="og:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="">
+  <link rel="icon" type="image/png" href="">
+  <script>
+   window.settings = {
+  "title": "IMP! Helpers — dsv-render",
+  "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
+  "image": "",
+  "icon": "",
+  "filename": "headers-nav.html",
+  "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
+  "css": "\n  #pageFooter{background-color: black}\n.linkToTop{ text-decoration: none ; font-weight: bold}",
+  "headHTML": "",
+  "editor": "",
+  "viewCSS": "",
+  "author": "",
+  "keywords": "",
+  "enableHelpers": "true",
+  "pathToHelpersModule": ""
+}
+   window.savedWithImpVersion = "0.4.3"
+  </script>
+  <script>
+   function IMPEdit(){
+   console.info("Loading editor...")
+   const editor = document.createElement("script");
+   editor.id="editorScript";
+   editor.src="imp.js";
+   document.head.appendChild(editor);
+   }
+   window.addEventListener("DOMContentLoaded" , function(){
+  
+   if(window.location.search.indexOf("mode=view")!=-1)
+   {
+   return;
+   }
+   if(window.location.search.indexOf("mode=edit")!=-1)
+   {
+   IMPEdit();
+   return;
+   }
+   if(window.location.search.indexOf("mode=download")!=-1){
+   IMPEdit();
+   return;
+   }
+   if(window.location.protocol==="file:"){
+   IMPEdit();
+   }
+  
+})
+  </script>
+  <script src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS">
+  #pageFooter{background-color: black}
+.linkToTop{ text-decoration: none ; font-weight: bold}</style>
+  <!--custom html here-->
+</head>
+<body>
+<main class='container' id='pageMain'><p>↑ <a href="index.html">Helpers</a></p>
+<h1>⚙️ headers-nav</h1>
+<h2>In-page navigation by headers</h2>
+<p>Renders headers navigation menu. Requires JavaScript to view, does not show in preview. Example:</p>
+<p><span data-ihelper='headers-nav' data-params="%0AskipH1:%20true%0AlinkBack:%20%3Csup%3E&uarr;%3C/sup%3E%0A"></span>
+This example uses almost no additional styling.</p>
+<h3>Code for this example:</h3>
+<pre><code> ```h:headers-nav
+  skipH1: true
+  linkBack: &lt;sup&gt;&amp;uarr;&lt;/sup&gt;
+ ```
+</code></pre>
+<p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
+<h2>Parameters</h2>
+<p>Parameters are YAML-formatted.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>What does it mean</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>skipH1</td>
+<td>Skips 1st level headers</td>
+<td>false</td>
+</tr>
+<tr>
+<td>appendTo</td>
+<td>CSS selector of block, to which you want your menu to be appended to</td>
+<td>undefined*</td>
+</tr>
+<tr>
+<td>insertBefore</td>
+<td>CSS selector of node, before which you want your menu to be appended</td>
+<td>undefined</td>
+</tr>
+<tr>
+<td>linkBack</td>
+<td>HTML for link back to menu, which will be appended to each header (if this parameter is present)</td>
+<td>undefined</td>
+</tr>
+</tbody>
+</table>
+<p>* By default menu is rendered where you've inserted the helper code.</p>
+<h2>The rest of the page is here just for example!</h2>
+<p>When you load IMP! Locally, it opens up an editor, where you can enter or import your text, setup SEO tags and custom CSS. When the very same page is served over http, user gets a light, <strong>static</strong> HTML. Page does not require Java Script to be viewed, it's just plain HTML. <a href="https://girobusan.github.io/imp/">Demo and docs</a>.</p>
+<h2>Possible uses</h2>
+<ul>
+<li>Digital experiments</li>
+<li>Small-scale sites</li>
+<li>Anywhere, where you need &quot;just html file&quot;.</li>
+</ul>
+<h2>System requirements</h2>
+<h3>For authoring</h3>
+<p>Firefox or Chrome preferred (tested). If you've updated your browser within last 4 years, it should be fine.</p>
+<h3>For viewing</h3>
+<p>Any browser.</p>
+<h2>Features</h2>
+<ul>
+<li>Fully local thing &amp;mdash; no server required, no setup. It's YOUR page!</li>
+<li>Pages can be fully static, even text-based browser friendly (You'll need modern browser for editing)</li>
+<li>You can add any HTML or JS to your page</li>
+<li>All you need is browser, that means it fully multiplatform</li>
+<li>Simple Markdown editor with pixel-perfect preview</li>
+<li>Code highlighting</li>
+<li><a href="https://girobusan.github.io/imp/themes/"> Customizable </a></li>
+<li>Lo-fi 😃</li>
+</ul>
+<h2>How to start</h2>
+<h3>Two clicks setup, with CDN</h3>
+<ol>
+<li>Click <a href="https://girobusan.github.io/imp/impcdn.html#edit"> this link </a></li>
+<li>Scroll down, click &quot;Duplicate page&quot; button</li>
+<li>Enter any filename, ending with <code>.html</code>, save.</li>
+</ol>
+<p>This setup does not require downloading of any other files. Editor and main CSS will be loaded from CDN. You may load newly downloaded file in your browser, edit content and settings, save it (see below) and than upload to your server.</p>
+<h3>Local setup (everything local, no CDN)</h3>
+<ol>
+<li>Download and unpack. There are 3 files: <code>index.html</code>, <code>style.css</code> and <code>imp.js</code></li>
+<li>Open the <code>index.html</code> in your browser (Firefox or Chrome is recommended)</li>
+<li>Edit it, import or enter your text, preview it. Click the big &quot;Export HTML&quot; (&quot;Save&quot; in newer version) button and save file to the same directory. If you didn't change file name, overwrite old file.</li>
+</ol>
+<p>You may skip <code>imp.js</code> while uploading files to server, as it's not required for <em>viewing</em> file.</p>
+<h2>Other</h2>
+<h3>Customization</h3>
+<p>There is a field for custom CSS in each IMP! file for small adjustments. But you can replace the whole <code>style.css</code> with your own. There is nothing fancy about it.</p>
+<h3>More files</h3>
+<p>You can have as many imps as you want. If they would live in one directory, they will share single <code>imp.js</code> file.</p>
+</main>
+<footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+<script id="pageData" type="text/markdown">&amp;uarr; [Helpers](index.html)
+# :gear: headers-nav
+
+## In-page navigation by headers
+
+Renders headers navigation menu. Requires JavaScript to view, does not show in preview. Example:
+
+```h:headers-nav
+skipH1: true
+linkBack: &lt;sup&gt;&amp;uarr;&lt;/sup&gt;
+```
+This example uses almost no additional styling.
+
+### Code for this example:
+
+~~~
+ ```h:headers-nav
+  skipH1: true
+  linkBack: &lt;sup&gt;&amp;uarr;&lt;/sup&gt;
+ ```
+~~~
+
+&amp;rarr; See [this page in edit mode](?mode=edit).
+
+## Parameters
+
+Parameters are YAML-formatted.
+
+| Parameter | What does it mean | Default |
+|---|---|---|
+| skipH1 | Skips 1st level headers | false |
+| appendTo | CSS selector of block, to which you want your menu to be appended to | undefined* |
+| insertBefore | CSS selector of node, before which you want your menu to be appended | undefined |
+| linkBack | HTML for link back to menu, which will be appended to each header (if this parameter is present) | undefined |
+
+
+\* By default menu is rendered where you've inserted the helper code.
+
+## The rest of the page is here just for example!
+
+When you load IMP! Locally, it opens up an editor, where you can enter or import your text, setup SEO tags and custom CSS. When the very same page is served over http, user gets a light, **static** HTML. Page does not require Java Script to be viewed, it's just plain HTML. [Demo and docs](https://girobusan.github.io/imp/). 
+
+
+## Possible uses
+
+- Digital experiments 
+- Small-scale sites
+- Anywhere, where you need "just html file". 
+
+## System requirements
+
+### For authoring
+Firefox or Chrome preferred (tested). If you've updated your browser within last 4 years, it should be fine.
+### For viewing
+Any browser.
+
+## Features
+
+- Fully local thing &amp;amp;mdash; no server required, no setup. It's YOUR page!
+- Pages can be fully static, even text-based browser friendly (You'll need modern browser for editing)
+- You can add any HTML or JS to your page
+- All you need is browser, that means it fully multiplatform
+- Simple Markdown editor with pixel-perfect preview
+- Code highlighting
+- [ Customizable ](https://girobusan.github.io/imp/themes/)
+- Lo-fi :)
+
+## How to start
+
+### Two clicks setup, with CDN
+
+1. Click [ this link ]( https://girobusan.github.io/imp/impcdn.html#edit )
+2. Scroll down, click "Duplicate page" button
+3. Enter any filename, ending with `.html`, save.
+
+This setup does not require downloading of any other files. Editor and main CSS will be loaded from CDN. You may load newly downloaded file in your browser, edit content and settings, save it (see below) and than upload to your server. 
+
+
+### Local setup (everything local, no CDN)
+
+1. Download and unpack. There are 3 files: `index.html`, `style.css` and `imp.js`
+2. Open the `index.html` in your browser (Firefox or Chrome is recommended)
+3. Edit it, import or enter your text, preview it. Click the big "Export HTML" ("Save" in newer version) button and save file to the same directory. If you didn't change file name, overwrite old file.
+
+You may skip `imp.js` while uploading files to server, as it's not required for *viewing* file.
+
+## Other
+
+
+### Customization
+
+There is a field for custom CSS in each IMP! file for small adjustments. But you can replace the whole `style.css` with your own. There is nothing fancy about it.
+
+### More files
+
+You can have as many imps as you want. If they would live in one directory, they will share single `imp.js` file.</script>
+</body>
+</html>
