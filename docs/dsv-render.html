@@ -30,7 +30,7 @@
   "enableHelpers": "true",
   "pathToHelpersModule": ""
 }
-   window.savedWithImpVersion = "0.4.2"
+   window.savedWithImpVersion = "0.4.3"
   </script>
   <script>
    function IMPEdit(){
@@ -68,10 +68,12 @@
   <!--custom html here-->
 </head>
 <body>
-<main class='container' id='pageMain'><h1>dsv-render</h1>
-<h2>Helper, which renders DSV format</h2>
-<p>This helper renders only static html. Just put your DSV code inside fences. See <a href="?mode=edit">this example in edit mode</a>. It has a subtype <code>no-header</code>, for skiping header formatting.</p>
-<h2>Example (regular)</h2>
+<main class='container' id='pageMain'><p>← <a href="index.html">Helpers</a></p>
+<h1>⚙️ dsv-render</h1>
+<h2>DSV format renderer</h2>
+<p>This helper renders only static html. Just put your DSV code inside fences. See <a href="?mode=edit">this example in edit mode</a>. It has a subtype <code>no-header</code> for skiping header formatting.</p>
+<h2>Example, without subtype</h2>
+<h3>Code</h3>
 <pre><code> ```h:dsv-render
  Survived,Sex,Age,Class,value
  Perished,Male,Adult,Crew,670
@@ -79,6 +81,7 @@
  Perished,Male,Adult,Second Class,154
  ```
 </code></pre>
+<h3>Result</h3>
 <table>
 <thead>
 <tr><th> Survived </th><th> Sex </th><th> Age </th><th> Class </th><th> value </th></tr>
@@ -95,21 +98,9 @@
 <tr><td> Perished </td><td> Female </td><td> Adult </td><td> First Class </td><td> 4 </td></tr>
 <tr><td> Perished </td><td> Female </td><td> Child </td><td> Third Class </td><td> 17 </td></tr>
 <tr><td> Survived </td><td> Male </td><td> Adult </td><td> Crew </td><td> 192 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Adult </td><td> Third Class </td><td> 75 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Adult </td><td> Second Class </td><td> 14 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Adult </td><td> First Class </td><td> 57 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Child </td><td> Third Class </td><td> 13 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Child </td><td> Second Class </td><td> 11 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Child </td><td> First Class </td><td> 5 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Adult </td><td> Crew </td><td> 20 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Adult </td><td> Third Class </td><td> 76 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Adult </td><td> Second Class </td><td> 80 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Adult </td><td> First Class </td><td> 140 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Child </td><td> Third Class </td><td> 14 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Child </td><td> Second Class </td><td> 13 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Child </td><td> First Class </td><td> 1 </td></tr>
 </tbody></table>
-<h2>Example without header</h2>
+<h2>Example, subtype 'no-header'</h2>
+<h3>Code</h3>
 <pre><code> ```h:dsv-render/no-header
  Survived,Sex,Age,Class,value
  Perished,Male,Adult,Crew,670
@@ -117,6 +108,7 @@
  Perished,Male,Adult,Second Class,154
  ```
 </code></pre>
+<h3>Result</h3>
 <table>
 <tbody><tr><td> Survived </td><td> Sex </td><td> Age </td><td> Class </td><td> value </td></tr>
 <tr><td> Perished </td><td> Male </td><td> Adult </td><td> Crew </td><td> 670 </td></tr>
@@ -130,28 +122,17 @@
 <tr><td> Perished </td><td> Female </td><td> Adult </td><td> First Class </td><td> 4 </td></tr>
 <tr><td> Perished </td><td> Female </td><td> Child </td><td> Third Class </td><td> 17 </td></tr>
 <tr><td> Survived </td><td> Male </td><td> Adult </td><td> Crew </td><td> 192 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Adult </td><td> Third Class </td><td> 75 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Adult </td><td> Second Class </td><td> 14 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Adult </td><td> First Class </td><td> 57 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Child </td><td> Third Class </td><td> 13 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Child </td><td> Second Class </td><td> 11 </td></tr>
-<tr><td> Survived </td><td> Male </td><td> Child </td><td> First Class </td><td> 5 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Adult </td><td> Crew </td><td> 20 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Adult </td><td> Third Class </td><td> 76 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Adult </td><td> Second Class </td><td> 80 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Adult </td><td> First Class </td><td> 140 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Child </td><td> Third Class </td><td> 14 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Child </td><td> Second Class </td><td> 13 </td></tr>
-<tr><td> Survived </td><td> Female </td><td> Child </td><td> First Class </td><td> 1 </td></tr>
 </tbody></table></main>
 <footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
-<script id="pageData" type="text/markdown"># dsv-render
+<script id="pageData" type="text/markdown">&amp;larr; [Helpers](index.html)
+# :gear: dsv-render
 
-## Helper, which renders DSV format
+## DSV format renderer
 
-This helper renders only static html. Just put your DSV code inside fences. See [this example in edit mode](?mode=edit). It has a subtype `no-header`, for skiping header formatting.
+This helper renders only static html. Just put your DSV code inside fences. See [this example in edit mode](?mode=edit). It has a subtype `no-header` for skiping header formatting.
 
-## Example (regular)
+## Example, without subtype
+### Code
 
 ~~~
  ```h:dsv-render
@@ -162,6 +143,7 @@ This helper renders only static html. Just put your DSV code inside fences. See 
  ```
 ~~~
 
+### Result
 ```h:dsv-render
 Survived,Sex,Age,Class,value
 Perished,Male,Adult,Crew,670
@@ -175,23 +157,11 @@ Perished,Female,Adult,Second Class,13
 Perished,Female,Adult,First Class,4
 Perished,Female,Child,Third Class,17
 Survived,Male,Adult,Crew,192
-Survived,Male,Adult,Third Class,75
-Survived,Male,Adult,Second Class,14
-Survived,Male,Adult,First Class,57
-Survived,Male,Child,Third Class,13
-Survived,Male,Child,Second Class,11
-Survived,Male,Child,First Class,5
-Survived,Female,Adult,Crew,20
-Survived,Female,Adult,Third Class,76
-Survived,Female,Adult,Second Class,80
-Survived,Female,Adult,First Class,140
-Survived,Female,Child,Third Class,14
-Survived,Female,Child,Second Class,13
-Survived,Female,Child,First Class,1
+
 ```
 
-## Example without header 
-
+## Example, subtype 'no-header'
+### Code
 ~~~
  ```h:dsv-render/no-header
  Survived,Sex,Age,Class,value
@@ -200,6 +170,8 @@ Survived,Female,Child,First Class,1
  Perished,Male,Adult,Second Class,154
  ```
 ~~~ 
+
+### Result
 
 ```h:dsv-render/no-header
 Survived,Sex,Age,Class,value
@@ -214,19 +186,7 @@ Perished,Female,Adult,Second Class,13
 Perished,Female,Adult,First Class,4
 Perished,Female,Child,Third Class,17
 Survived,Male,Adult,Crew,192
-Survived,Male,Adult,Third Class,75
-Survived,Male,Adult,Second Class,14
-Survived,Male,Adult,First Class,57
-Survived,Male,Child,Third Class,13
-Survived,Male,Child,Second Class,11
-Survived,Male,Child,First Class,5
-Survived,Female,Adult,Crew,20
-Survived,Female,Adult,Third Class,76
-Survived,Female,Adult,Second Class,80
-Survived,Female,Adult,First Class,140
-Survived,Female,Child,Third Class,14
-Survived,Female,Child,Second Class,13
-Survived,Female,Child,First Class,1
+
 ```</script>
 </body>
 </html>

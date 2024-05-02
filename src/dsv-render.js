@@ -9,7 +9,6 @@ function row2html(r , tag){
 }
 
 function doRender(str , noHeader){
-  console.log("redner", noHeader)
    const parsed = Papa.parse(str.trim() , 
    // {escapeChar:"\\"}
    );
@@ -31,7 +30,6 @@ function render(params , params_raw , subname){
 }
 
 function preview(params , params_raw , subname){
-  console.log("Subname" , subname)
   return render(params , params_raw , subname);
 }
 
