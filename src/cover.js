@@ -23,10 +23,10 @@ function render( params , params_raw , subname ){
    background-color:${params.bgColor || 'black'};
    background-image:url(${params.bgImage||''});
    color:${params.color || 'white'};
-   background-size:${ params.tiled ? 'auto' : 'cover' };
+   background-size:${ params.tile ? 'auto' : 'cover' };
    background-attachment: fixed;
    background-position: 50% 50%;
-   background-repeat: ${ params.tiled ? 'repeat' : 'no-repeat' };
+   background-repeat: ${ params.tile ? 'repeat' : 'no-repeat' };
    display: flex; 
    flex-direction: column;
    justify-content:center;
