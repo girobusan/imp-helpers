@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMP! Helpers — cover</title>
+  <meta name="description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="IMP! Helpers — cover">
+  <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="og:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="">
+  <link rel="icon" type="image/png" href="">
+  <script>
+   window.settings = {
+  "title": "IMP! Helpers — cover",
+  "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
+  "image": "",
+  "icon": "",
+  "filename": "cover.html",
+  "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
+  "css": "\n  #pageFooter{background-color: black}",
+  "headHTML": "",
+  "editor": "",
+  "viewCSS": "",
+  "author": "",
+  "keywords": "",
+  "enableHelpers": "true",
+  "pathToHelpersModule": ""
+}
+   window.savedWithImpVersion = "0.4.3"
+  </script>
+  <script>
+   function IMPEdit(){
+   console.info("Loading editor...")
+   const editor = document.createElement("script");
+   editor.id="editorScript";
+   editor.src="imp.js";
+   document.head.appendChild(editor);
+   }
+   window.addEventListener("DOMContentLoaded" , function(){
+  
+   if(window.location.search.indexOf("mode=view")!=-1)
+   {
+   return;
+   }
+   if(window.location.search.indexOf("mode=edit")!=-1)
+   {
+   IMPEdit();
+   return;
+   }
+   if(window.location.search.indexOf("mode=download")!=-1){
+   IMPEdit();
+   return;
+   }
+   if(window.location.protocol==="file:"){
+   IMPEdit();
+   }
+  
+})
+  </script>
+  <script src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS">
+  #pageFooter{background-color: black}</style>
+  <!--custom html here-->
+</head>
+<body>
+<main class='container' id='pageMain'> <!--push content down-->
+   <div style="height:50vh; 
+   padding:0 ; 
+   margin:0 ; 
+   min-height: 300px;
+   margin-bottom:1rem"></div>
+   <div 
+   class="coverHelper"
+   data-ihelper="cover"
+   data-cleanup="false"
+   style="position:absolute;
+   box-sizing: border-box;
+   padding: 1rem;
+   top: 0;
+   left:0;
+   right:0;
+   min-height: 300px;
+   height:50vh;
+   background-color: black;
+   background-image: url();
+   color: white;
+   background-size: cover;
+   background-attachment: fixed;
+   background-position: 50% 50%;
+   display: flex; 
+   flex-direction: column;
+   justify-content:center;
+   text-align: center;
+   align-content: center;
+   margin: 0;
+   ">
+     <h1 class="coverHelperTitle" style="color: white;
+     margin: 0;
+     position: sticky;
+     ">
+     Cover Helper</h1>
+     <div class='coverHelperSubtitle' style='font-size:1.2em'>Add longread style cover</div>
+   </div>
+<h2>Longread-style cover</h2>
+<p>This helper renders static html and can make some ajustments in interactive mode.</p>
+<p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
+<h3>Code</h3>
+<pre><code class="language-yaml"> <span class="hljs-string">```h:cover</span>
+ <span class="hljs-attr">title:</span> <span class="hljs-string">Cover</span> <span class="hljs-string">Helper</span>
+ <span class="hljs-attr">subtitle:</span> <span class="hljs-string">Add</span> <span class="hljs-string">longread</span> <span class="hljs-string">style</span> <span class="hljs-string">cover</span>
+ <span class="hljs-attr">noPreview:</span> <span class="hljs-literal">true</span>
+<span class="hljs-string">```</span>
+</code></pre>
+<h2>Parameters</h2>
+<p>Parameters are YAML-formatted.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>Title to display</td>
+<td>&quot;Title&quot;</td>
+</tr>
+<tr>
+<td>Subtitle</td>
+<td>Subtitle to display</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td>height</td>
+<td>css value — default height of the cover</td>
+<td>&quot;50vh&quot;</td>
+</tr>
+<tr>
+<td>minHeight</td>
+<td>css value — minimum height</td>
+<td>&quot;300px&quot;</td>
+</tr>
+<tr>
+<td>marginBottom</td>
+<td>css value — margin below the cover</td>
+<td>&quot;1rem&quot;</td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>css value — background color</td>
+<td>&quot;black&quot;</td>
+</tr>
+<tr>
+<td>color</td>
+<td>color of the text</td>
+<td>&quot;white&quot;</td>
+</tr>
+<tr>
+<td>bgImage</td>
+<td>url, background image for cover</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td>tiled</td>
+<td>tile background (by default, picture will fill the cover)</td>
+<td>false</td>
+</tr>
+<tr>
+<td>removeH1</td>
+<td>Remove first H1 on the page</td>
+<td>false</td>
+</tr>
+<tr>
+<td>noPreview</td>
+<td>Do not display cover in preview mode</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+</main>
+<footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+<script id="pageData" type="text/markdown">```h:cover
+title: Cover Helper
+subtitle: Add longread style cover
+noPreview: true
+```
+
+## Longread-style cover
+
+This helper renders static html and can make some ajustments in interactive mode. 
+
+&amp;rarr; See [this page in edit mode](?mode=edit).
+
+### Code
+
+~~~yaml
+ ```h:cover
+ title: Cover Helper
+ subtitle: Add longread style cover
+ noPreview: true
+```
+~~~
+
+## Parameters
+
+Parameters are YAML-formatted.
+
+| Parameter | Meaning | Default value |
+|---|---|---|
+| title | Title to display | "Title" |
+| Subtitle  | Subtitle to display | "" |
+| height | css value — default height of the cover | "50vh" |
+| minHeight | css value — minimum height | "300px" |
+| marginBottom | css value — margin below the cover | "1rem" |
+| bgColor | css value — background color | "black" |
+| color | color of the text | "white" |
+| bgImage | url, background image for cover | ""  |
+| tiled | tile background (by default, picture will fill the cover) | false |
+| removeH1 | Remove first H1 on the page | false|
+| noPreview | Do not display cover in preview mode | false | </script>
+</body>
+</html>

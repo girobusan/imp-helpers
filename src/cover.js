@@ -3,10 +3,10 @@ var API;
 function render( params , params_raw , subname ){
     
    return ` <!--push content down-->
-   <div style="height:${ params.heigt || '50vh' }; 
+   <div style="height:${ params.height || '50vh' }; 
    padding:0 ; 
    margin:0 ; 
-   min-height: 300px;
+   min-height: ${ params.minHeight || '300px' };
    margin-bottom:${params.marginBottom || '1rem'}"></div>
    <div 
    class="coverHelper"
@@ -18,14 +18,15 @@ function render( params , params_raw , subname ){
    top: 0;
    left:0;
    right:0;
-   min-height: 300px;
+   min-height:${ params.minHeight || '300px' };
    height:${ params.height || '50vh'};
-   background-color: ${params.bgColor || "black"};
-   background-image: url(${params.bgImage||""});
-   color: ${params.color || 'white'};
-   background-size: cover;
+   background-color:${params.bgColor || 'black'};
+   background-image:url(${params.bgImage||''});
+   color:${params.color || 'white'};
+   background-size:${ params.tiled ? 'auto' : 'cover' };
    background-attachment: fixed;
    background-position: 50% 50%;
+   background-repeat: ${ params.tiled ? 'repeat' : 'no-repeat' };
    display: flex; 
    flex-direction: column;
    justify-content:center;
