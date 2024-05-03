@@ -84,14 +84,15 @@
    top: 0;
    left:0;
    right:0;
-   min-height: 300px;
+   min-height:300px;
    height:50vh;
-   background-color: black;
-   background-image: url();
-   color: white;
-   background-size: cover;
+   background-color:black;
+   background-image:url(tile.png);
+   color:black;
+   background-size:auto;
    background-attachment: fixed;
    background-position: 50% 50%;
+   background-repeat: repeat;
    display: flex; 
    flex-direction: column;
    justify-content:center;
@@ -99,7 +100,7 @@
    align-content: center;
    margin: 0;
    ">
-     <h1 class="coverHelperTitle" style="color: white;
+     <h1 class="coverHelperTitle" style="color: black;
      margin: 0;
      position: sticky;
      ">
@@ -111,9 +112,12 @@
 <p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
 <h3>Code</h3>
 <pre><code class="language-yaml"> <span class="hljs-string">```h:cover</span>
- <span class="hljs-attr">title:</span> <span class="hljs-string">Cover</span> <span class="hljs-string">Helper</span>
- <span class="hljs-attr">subtitle:</span> <span class="hljs-string">Add</span> <span class="hljs-string">longread</span> <span class="hljs-string">style</span> <span class="hljs-string">cover</span>
- <span class="hljs-attr">noPreview:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">Cover</span> <span class="hljs-string">Helper</span>
+<span class="hljs-attr">subtitle:</span> <span class="hljs-string">Add</span> <span class="hljs-string">longread</span> <span class="hljs-string">style</span> <span class="hljs-string">cover</span>
+<span class="hljs-attr">noPreview:</span> <span class="hljs-literal">false</span>
+<span class="hljs-attr">tile:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">bgImage:</span> <span class="hljs-string">tile.png</span>
+<span class="hljs-attr">color:</span> <span class="hljs-string">black</span>
 <span class="hljs-string">```</span>
 </code></pre>
 <h2>Parameters</h2>
@@ -189,8 +193,10 @@
 <script id="pageData" type="text/markdown">```h:cover
 title: Cover Helper
 subtitle: Add longread style cover
-noPreview: true
+noPreview: false
 tile: true
+bgImage: tile.png
+color: black
 ```
 
 ## Longread-style cover
@@ -203,9 +209,12 @@ This helper renders static html and can make some ajustments in interactive mode
 
 ~~~yaml
  ```h:cover
- title: Cover Helper
- subtitle: Add longread style cover
- noPreview: true
+title: Cover Helper
+subtitle: Add longread style cover
+noPreview: false
+tile: true
+bgImage: tile.png
+color: black
 ```
 ~~~
 

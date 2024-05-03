@@ -85,14 +85,15 @@
    top: 0;
    left:0;
    right:0;
-   min-height: 300px;
+   min-height:300px;
    height:50vh;
-   background-color: black;
-   background-image: url(title_bg.jpg);
-   color: white;
-   background-size: cover;
+   background-color:black;
+   background-image:url(title_bg.jpg);
+   color:white;
+   background-size:cover;
    background-attachment: fixed;
    background-position: 50% 50%;
+   background-repeat: no-repeat;
    display: flex; 
    flex-direction: column;
    justify-content:center;
@@ -115,8 +116,8 @@
 <tr>
 <th>Helper name</th>
 <th>What it does</th>
-<th>Is interactive (requires JS to view)</th>
-<th>Demo</th>
+<th>Requires JS to view?</th>
+<th>Demo &amp; doc</th>
 </tr>
 </thead>
 <tbody>
@@ -130,7 +131,7 @@
 <td><strong>cover</strong></td>
 <td>Adds nice customizable cover block to your page</td>
 <td>no</td>
-<td>right on this page</td>
+<td><a href="cover.html">here</a></td>
 </tr>
 <tr>
 <td><strong>headers-nav</strong></td>
@@ -161,7 +162,7 @@ title: IMP! Helpers
 subtitle: Accessible interactive content for your files
 bgImage: title_bg.jpg
 removeH1: true
-noPreview: true
+noPreview: false
 marginBottom: 0px
 ```
 
@@ -171,10 +172,10 @@ Helpers are the scripts, which use new [IMP!](https://girobusan.github.io/imp/in
 
 This site contains collection of "official", or _example_ helpers, which you can use freely in your projects.
 
-| Helper name | What it does | Is interactive (requires JS to view) | Demo |
+| Helper name | What it does | Requires JS to&amp;nbsp;view? | Demo &amp; doc |
 |----|----|---|---|
 | **vega-embed** | Allows embedding of interactive Vega-lite visualizations in your page | yes |  in process |
-| **cover** | Adds nice customizable cover block to your page | no | right on this page |
+| **cover** | Adds nice customizable cover block to your page | no | [here](cover.html) |
 | **headers-nav** | Adds in-page navigation by headers | yes |  [here](headers-nav.html) |
 | **dsv-render**  | Allows displaying of DSV (CSV, TSV) data in markdown | no | [here](dsv-render.html) |
 | **placeholders** | Demo of system placeholders, for documentation | no | not required |</script>
