@@ -13,7 +13,7 @@ function render( params , params_raw , subname ){
        return API.errorNotice(title , text)
     
     case'render':
-       return API.defaultRender("placeholders" , {} , "" , "")
+       return API.defaultRender( params.title || "title", {} , "" , "")
     default:
       return API.defaultPreview( title , text)
   }
