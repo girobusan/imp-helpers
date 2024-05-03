@@ -7,11 +7,12 @@ function render( params , params_raw , subname ){
    padding:0 ; 
    margin:0 ; 
    min-height: ${ params.minHeight || '300px' };
-   margin-bottom:${params.marginBottom || '1rem'}"></div>
+   margin-bottom:${ params.marginBottom || '1rem'}"></div>
    <div 
    class="coverHelper"
    data-ihelper="cover"
-   data-cleanup="${params.removeH1 || false}"
+   data-cleanup="${ params.removeH1 || false }"
+   data-useh1=${ params.useH1 || false }
    style="position:absolute;
    box-sizing: border-box;
    padding: 1rem;
@@ -51,10 +52,16 @@ function preview( params, params_raw , subname ){
 }
 
 function animate(el){
-  if(el.dataset.cleanup=='true'){
-     const headers = document.querySelectorAll("h1");
-     let h1 = Array.from(headers).filter(e=>!e.classList.contains("coverHelperTitle"))[0];
-     h1 && h1.remove();
+  
+  const headers = document.querySelectorAll("h1");
+  let h1 = Array.from(headers).filter(e=>!e.classList.contains("coverHelperTitle"))[0];
+  if(h1 && el.dataset.useh1){
+    const myh1 = el.querySelector("h1")
+    myh1.innerHTML = h1.innerHTML;
+
+  }
+  if(h1 && el.dataset.cleanup=='true'){
+    h1.remove();
   }
 }
 

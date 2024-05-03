@@ -77,7 +77,8 @@
    <div 
    class="coverHelper"
    data-ihelper="cover"
-   data-cleanup="false"
+   data-cleanup="true"
+   data-useh1=true
    style="position:absolute;
    box-sizing: border-box;
    padding: 1rem;
@@ -104,20 +105,23 @@
      margin: 0;
      position: sticky;
      ">
-     Cover Helper</h1>
-     <div class='coverHelperSubtitle' style='font-size:1.2em'>Add longread style cover</div>
+     Cover</h1>
+     <div class='coverHelperSubtitle' style='font-size:1.2em'>Add Longread Style Cover With Subtitle</div>
    </div>
+<h1>⚙️ cover</h1>
 <h2>Longread-style cover</h2>
 <p>This helper renders static html and can make some ajustments in interactive mode.</p>
 <p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
-<h3>Code</h3>
+<h3>Example</h3>
 <pre><code class="language-yaml"> <span class="hljs-string">```h:cover</span>
-<span class="hljs-attr">title:</span> <span class="hljs-string">Cover</span> <span class="hljs-string">Helper</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">&quot;Cover&quot;</span>
 <span class="hljs-attr">subtitle:</span> <span class="hljs-string">Add</span> <span class="hljs-string">longread</span> <span class="hljs-string">style</span> <span class="hljs-string">cover</span>
 <span class="hljs-attr">noPreview:</span> <span class="hljs-literal">false</span>
 <span class="hljs-attr">tile:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">bgImage:</span> <span class="hljs-string">tile.png</span>
 <span class="hljs-attr">color:</span> <span class="hljs-string">black</span>
+<span class="hljs-attr">useH1:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">removeH1:</span> <span class="hljs-literal">true</span>
 <span class="hljs-string">```</span>
 </code></pre>
 <h2>Parameters</h2>
@@ -127,63 +131,81 @@
 <tr>
 <th>Parameter</th>
 <th>Meaning</th>
-<th>Default value</th>
+<th>Type</th>
+<th>Default</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>title</td>
 <td>Title to display</td>
+<td>string</td>
 <td>&quot;Title&quot;</td>
 </tr>
 <tr>
 <td>Subtitle</td>
 <td>Subtitle to display</td>
+<td>string</td>
 <td>&quot;&quot;</td>
 </tr>
 <tr>
 <td>height</td>
-<td>css value — default height of the cover</td>
+<td>Default height of the cover</td>
+<td>string, CSS value</td>
 <td>&quot;50vh&quot;</td>
 </tr>
 <tr>
 <td>minHeight</td>
-<td>css value — minimum height</td>
+<td>Minimum height</td>
+<td>string, CSS value</td>
 <td>&quot;300px&quot;</td>
 </tr>
 <tr>
 <td>marginBottom</td>
-<td>css value — margin below the cover</td>
+<td>Margin below the cover</td>
+<td>string, CSS value</td>
 <td>&quot;1rem&quot;</td>
 </tr>
 <tr>
 <td>bgColor</td>
-<td>css value — background color</td>
+<td>Background color</td>
+<td>string, CSS value</td>
 <td>&quot;black&quot;</td>
 </tr>
 <tr>
 <td>color</td>
-<td>color of the text</td>
+<td>Tect color</td>
+<td>string, CSS value</td>
 <td>&quot;white&quot;</td>
 </tr>
 <tr>
 <td>bgImage</td>
-<td>url, background image for cover</td>
+<td>Background image for cover</td>
+<td>url string</td>
 <td>&quot;&quot;</td>
 </tr>
 <tr>
 <td>tile</td>
-<td>tile background (by default, picture will fill the cover)</td>
+<td>Tile background? (by default, picture will fill the cover)</td>
+<td>boolean</td>
+<td>false</td>
+</tr>
+<tr>
+<td>useH1</td>
+<td>Will try to find top level header on page and use its text in cover. Won't work without JavaScript (keep &quot;title&quot; param meaningful )</td>
+<td>boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>removeH1</td>
-<td>Remove first H1 on the page</td>
+<td>Remove first H1 on the page, won't work without JS</td>
+<td>boolean</td>
 <td>false</td>
 </tr>
 <tr>
 <td>noPreview</td>
 <td>Do not display cover in preview mode</td>
+<td>boolean</td>
 <td>false</td>
 </tr>
 </tbody>
@@ -191,13 +213,17 @@
 </main>
 <footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
 <script id="pageData" type="text/markdown">```h:cover
-title: Cover Helper
-subtitle: Add longread style cover
+title: "Cover"
+subtitle: Add Longread Style Cover With Subtitle
 noPreview: false
 tile: true
 bgImage: tile.png
 color: black
+useH1: true
+removeH1: true
 ```
+
+# :gear: cover
 
 ## Longread-style cover
 
@@ -205,16 +231,18 @@ This helper renders static html and can make some ajustments in interactive mode
 
 &amp;rarr; See [this page in edit mode](?mode=edit).
 
-### Code
+### Example
 
 ~~~yaml
  ```h:cover
-title: Cover Helper
+title: "Cover"
 subtitle: Add longread style cover
 noPreview: false
 tile: true
 bgImage: tile.png
 color: black
+useH1: true
+removeH1: true
 ```
 ~~~
 
@@ -222,18 +250,19 @@ color: black
 
 Parameters are YAML-formatted.
 
-| Parameter | Meaning | Default value |
-|---|---|---|
-| title | Title to display | "Title" |
-| Subtitle  | Subtitle to display | "" |
-| height | css value — default height of the cover | "50vh" |
-| minHeight | css value — minimum height | "300px" |
-| marginBottom | css value — margin below the cover | "1rem" |
-| bgColor | css value — background color | "black" |
-| color | color of the text | "white" |
-| bgImage | url, background image for cover | ""  |
-| tile | tile background (by default, picture will fill the cover) | false |
-| removeH1 | Remove first H1 on the page | false|
-| noPreview | Do not display cover in preview mode | false |</script>
+| Parameter | Meaning | Type | Default |
+|---|---|---|--|
+| title | Title to display | string | "Title" |
+| Subtitle  | Subtitle to display | string | "" |
+| height | Default height of the cover | string, CSS value | "50vh" |
+| minHeight | Minimum height |string, CSS value | "300px" |
+| marginBottom | Margin below the cover |string, CSS value | "1rem" |
+| bgColor | Background color |string, CSS value | "black" |
+| color | Tect color |string, CSS value | "white" |
+| bgImage | Background image for cover| url string | ""  |
+| tile | Tile background? (by default, picture will fill the cover) | boolean | false |
+| useH1 | Will try to find top level header on page and use its text in cover. Won't work without JavaScript (keep "title" param meaningful ) | boolean | false |
+| removeH1 | Remove first H1 on the page, won't work without JS | boolean | false|
+| noPreview | Do not display cover in preview mode | boolean | false |</script>
 </body>
 </html>

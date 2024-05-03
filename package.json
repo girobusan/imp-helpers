@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npx webpack --mode development",
+    "postbuild" : "cp helpers/*.* docs/helpers/",
     "build": "npx webpack --mode production"
   },
   "author": "",
