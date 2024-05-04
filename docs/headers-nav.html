@@ -88,7 +88,8 @@
 <thead>
 <tr>
 <th>Parameter</th>
-<th>What does it mean</th>
+<th>Meaning</th>
+<th>Type</th>
 <th>Default</th>
 </tr>
 </thead>
@@ -96,27 +97,43 @@
 <tr>
 <td>skipH1</td>
 <td>Skips 1st level headers</td>
+<td>Boolean</td>
 <td>false</td>
+</tr>
+<tr>
+<td>minLevel</td>
+<td>Do not list headers with level less than param value</td>
+<td>Number</td>
+<td>0</td>
+</tr>
+<tr>
+<td>maxLevel</td>
+<td>Do not list headers with level higher than param value</td>
+<td>Number</td>
+<td>∞</td>
 </tr>
 <tr>
 <td>appendTo</td>
 <td>CSS selector of block, to which you want your menu to be appended to</td>
+<td>String</td>
 <td>undefined*</td>
 </tr>
 <tr>
 <td>insertBefore</td>
 <td>CSS selector of node, before which you want your menu to be appended</td>
+<td>String</td>
 <td>undefined</td>
 </tr>
 <tr>
 <td>linkBack</td>
 <td>HTML for link back to menu, which will be appended to each header (if this parameter is present)</td>
+<td>String</td>
 <td>undefined</td>
 </tr>
 </tbody>
 </table>
 <p>* By default menu is rendered where you've inserted the helper code.</p>
-<h2>The rest of the page is here just for example!</h2>
+<h2><strong>The rest of the page is here just for example!</strong></h2>
 <p>When you load IMP! Locally, it opens up an editor, where you can enter or import your text, setup SEO tags and custom CSS. When the very same page is served over http, user gets a light, <strong>static</strong> HTML. Page does not require Java Script to be viewed, it's just plain HTML. <a href="https://girobusan.github.io/imp/">Demo and docs</a>.</p>
 <h2>Possible uses</h2>
 <ul>
@@ -190,17 +207,19 @@ linkBack: &lt;sup&gt;&amp;uarr;&lt;/sup&gt;
 
 Parameters are YAML-formatted.
 
-| Parameter | What does it mean | Default |
-|---|---|---|
-| skipH1 | Skips 1st level headers | false |
-| appendTo | CSS selector of block, to which you want your menu to be appended to | undefined* |
-| insertBefore | CSS selector of node, before which you want your menu to be appended | undefined |
-| linkBack | HTML for link back to menu, which will be appended to each header (if this parameter is present) | undefined |
+| Parameter | Meaning | Type | Default |
+|---|---|---|---|
+| skipH1 | Skips 1st level headers | Boolean | false |
+| minLevel | Do not list headers with level less than param value | Number | 0 |
+| maxLevel | Do not list headers with level higher than param value | Number | ∞ |
+| appendTo | CSS selector of block, to which you want your menu to be appended to | String | undefined* |
+| insertBefore | CSS selector of node, before which you want your menu to be appended | String | undefined |
+| linkBack | HTML for link back to menu, which will be appended to each header (if this parameter is present) | String | undefined |
 
 
 \* By default menu is rendered where you've inserted the helper code.
 
-## The rest of the page is here just for example!
+## **The rest of the page is here just for example!**
 
 When you load IMP! Locally, it opens up an editor, where you can enter or import your text, setup SEO tags and custom CSS. When the very same page is served over http, user gets a light, **static** HTML. Page does not require Java Script to be viewed, it's just plain HTML. [Demo and docs](https://girobusan.github.io/imp/). 
 

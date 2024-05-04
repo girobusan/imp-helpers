@@ -58,8 +58,8 @@ function doWork(params , el){
    
    if(hdrs.length==0){ return };
    var data = [];
-   hdrs.forEach( h=>{
-     let id = h.id || encodeURI(h.innerHTML)
+   hdrs.forEach( ( h,i )=>{
+     let id = h.id || encodeURI(h.innerHTML)+i
      h.id=id 
 
 
@@ -72,6 +72,8 @@ function doWork(params , el){
    } );
    //
    if(params.skipH1){ data = data.filter( d=>d.level!=1 ) }
+   if(params.minLevel){ data = data.filter( d=>d.level>=params.minLevel ) }
+   if(params.maxLevel){ data = data.filter( d=>d.level<=params.maxLevel ) }
    //
    const menu = document.createElement("nav");
    menu.classList.add("headerNavigation")
