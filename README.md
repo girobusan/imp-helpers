@@ -1,22 +1,17 @@
 IMP! :smiling_imp: interactive helpers  
 ========================
 
-Helpers are the scripts, which use [ IMP! ](https://github.com/girobusan/imp) Helpers API for adding 
+Helpers are the scripts, which use [IMP!](https://github.com/girobusan/imp) Helpers API for adding 
 various types of content, not supported by regular markdown. 
 Helpers may add static and/or interactive content in asynchronous way
-and wildly enrich viewer experience.
+and greatly enrich viewer experience.
 
-This repository contains some "official" or _example_ helpers in development, like:
+[![screen](docs/screen.png)](https://girobusan.github.io/imp-helpers/)
 
-- `vega-embed` — embeds Vega-lite interactive data visualizations
-- `cover` — adds nice big cover block to the page
-- `dsv-render` — for rendering DSV (CSV, TSV...) formatted data in markdown source. 
+This repository contains some "official" or _example_ helpers.
+[See them all here](https://girobusan.github.io/imp-helpers/).
 
-.  
-.  
-.  
 
-Helpers API available now in git version of IMP!, and will be included in upcoming release. Scripts in this repo are at the early stages of development.
 
 
 
