@@ -107,10 +107,10 @@
      position: sticky;
      ">
      IMP! Helpers</h1>
-     <div class='coverHelperSubtitle' style='font-size:1.2em'>Accessible interactive content for your files</div>
+     <div class='coverHelperSubtitle' style='font-size:1.2em'>Accessible Interactive Content For Your IMP! Pages</div>
    </div>
 <h2>What is it all about</h2>
-<p>Helpers are the scripts, which use new <a href="https://girobusan.github.io/imp/index.html">IMP!</a> Helpers API for adding various types of content, not supported by regular markdown, to IMP! pages. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.</p>
+<p>Helpers are the scripts, which use new <a href="https://girobusan.github.io/imp/index.html">IMP!</a> <a href="https://girobusan.github.io/imp/helpers.html">Helpers API</a>  for adding various types of content, not supported by regular markdown, to IMP! pages. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.</p>
 <p>This site contains collection of &quot;official&quot;, or <em>example</em> helpers, which you can use freely in your projects.</p>
 <table>
 <thead>
@@ -131,7 +131,7 @@
 <tr>
 <td><strong>cover</strong></td>
 <td>Adds nice customizable cover block to your page</td>
-<td>no</td>
+<td>no, but JS may be used</td>
 <td><a href="cover.html">here</a></td>
 </tr>
 <tr>
@@ -154,13 +154,19 @@
 </tr>
 </tbody>
 </table>
+<h2>Helpers API docs:</h2>
+<ul>
+<li><a href="https://girobusan.github.io/imp/helpers.html">Overview</a></li>
+<li><a href="https://girobusan.github.io/imp/helpers_dev.html">Make Your Own Helper</a></li>
+<li><a href="https://girobusan.github.io/imp/helpers_api.html">Helpers API methods</a></li>
+</ul>
 </main>
 <footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
 <script id="pageData" type="text/markdown"># IMP! Helpers
 
 ```helper:cover
 title: IMP! Helpers
-subtitle: Accessible interactive content for your files
+subtitle: Accessible Interactive Content For Your IMP! Pages
 bgImage: title_bg.jpg
 removeH1: true
 noPreview: false
@@ -169,16 +175,21 @@ marginBottom: 0px
 
 ## What is it all about
 
-Helpers are the scripts, which use new [IMP!](https://girobusan.github.io/imp/index.html) Helpers API for adding various types of content, not supported by regular markdown, to IMP! pages. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.
+Helpers are the scripts, which use new [IMP!](https://girobusan.github.io/imp/index.html) [Helpers API](https://girobusan.github.io/imp/helpers.html)  for adding various types of content, not supported by regular markdown, to IMP! pages. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.
 
 This site contains collection of "official", or _example_ helpers, which you can use freely in your projects.
 
 | Helper name | What it does | Requires JS to&amp;nbsp;view? | Demo &amp; doc |
 |----|----|---|---|
 | **vega-embed** | Allows embedding of interactive Vega-lite visualizations in your page | yes |  [here](vega-embed.html) |
-| **cover** | Adds nice customizable cover block to your page | no | [here](cover.html) |
+| **cover** | Adds nice customizable cover block to your page | no, but JS may be used | [here](cover.html) |
 | **headers-nav** | Adds in-page navigation by headers | yes |  [here](headers-nav.html) |
 | **dsv-render**  | Allows displaying of DSV (CSV, TSV) data in markdown | no | [here](dsv-render.html) |
-| **placeholders** | Demo of system placeholders, for documentation | no | not required |</script>
+| **placeholders** | Demo of system placeholders, for documentation | no | not required |
+
+## Helpers API docs:
+- [Overview](https://girobusan.github.io/imp/helpers.html)
+- [Make Your Own Helper](https://girobusan.github.io/imp/helpers_dev.html)
+- [Helpers API methods](https://girobusan.github.io/imp/helpers_api.html)</script>
 </body>
 </html>
