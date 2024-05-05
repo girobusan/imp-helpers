@@ -9,15 +9,15 @@
   <meta name="keywords" content="">
   <meta name="og:title" content="IMP! Helpers">
   <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
-  <meta name="og:image" content="">
+  <meta name="og:image" content="https://raw.githubusercontent.com/girobusan/imp-helpers/master/docs/screen.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/girobusan/imp-helpers/master/docs/screen.png">
   <link rel="icon" type="image/png" href="">
   <script>
    window.settings = {
   "title": "IMP! Helpers",
   "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
-  "image": "",
+  "image": "https://raw.githubusercontent.com/girobusan/imp-helpers/master/docs/screen.png",
   "icon": "",
   "filename": "index.html",
   "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
@@ -68,7 +68,7 @@
   <!--custom html here-->
 </head>
 <body>
-<main class='container' id='pageMain'><h1>IMP! Helpers</h1>
+<main class='container' id='pageMain'><h1>⚙️ IMP! Helpers</h1>
  <!--push content down-->
    <div style="height:50vh; 
    padding:0 ; 
@@ -79,7 +79,7 @@
    class="coverHelper"
    data-ihelper="cover"
    data-cleanup="true"
-   data-useh1=false
+   data-useh1=true
    style="position:absolute;
    box-sizing: border-box;
    padding: 1rem;
@@ -162,14 +162,15 @@
 </ul>
 </main>
 <footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
-<script id="pageData" type="text/markdown"># IMP! Helpers
+<script id="pageData" type="text/markdown"># :gear: IMP! Helpers
 
 ```helper:cover
 title: IMP! Helpers
 subtitle: Accessible Interactive Content For Your IMP! Pages
 bgImage: title_bg.jpg
 removeH1: true
-noPreview: false
+useH1: true
+noPreview: true
 marginBottom: 0px
 ```
 
