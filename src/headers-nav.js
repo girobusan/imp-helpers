@@ -93,7 +93,7 @@ function doWork(params , el){
        lnk.addEventListener("click", 
        (evt)=>{ evt.preventDefault(); evt.stopPropagation() ; 
         d.element.scrollIntoView({ behavior: "smooth" , block: "start" , inline: "start" });
-        history.pushState( "#" +d.id  , null , lnk.href )
+        history.pushState( "#" + d.id  , null , lnk.href );
        })
      }
      if(params.linkBack){
