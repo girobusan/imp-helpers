@@ -1,11 +1,32 @@
 const MYNAME = "headers-nav";
 var API;
 var params;
+const hNoId = /<h\d(?!\sid=["'])>([^<>]+)</igm ; //g1 = header text
 
 function wrapTo( node , tagname ){
   let r = document.createElement(tagname);
   r.appendChild(node);
   return r;
+}
+
+function makeID(str){
+  return str.replace(/\s/g , "_")
+  .replace( /^[^a-zA-Z]/ , "ID_" )
+  .replace( /[^a-zA-Z0-9-_:.]/gi , (m)=>m.charCodeAt(0) )
+}
+
+function addIds(html){
+  let ids = {};
+  return html.replace( hNoId , (m , g1)=>{
+      let newid = makeID(g1) //encodeURI(g1.replace( /\s/g , "_" ));
+      if(ids[newid]){
+        ids[newid]+=1;
+        newid = newid + "_" + ids[newid];
+      }else{
+        ids[newid] = 1;
+      }
+      return m.replace(">" , ` id="${newid}">`)
+  } ) 
 }
 
 function grandParent(node, gen , tag){
@@ -59,7 +80,7 @@ function doWork(params , el){
    if(hdrs.length==0){ return };
    var data = [];
    hdrs.forEach( ( h,i )=>{
-     let id = h.id || encodeURI(h.innerHTML)+i
+     let id = h.id || makeID(h.innerHTML)+i
      h.id=id 
 
 
@@ -157,6 +178,6 @@ function animate(el){
 function init(api , viewMode){
 API = api;
 }
-window.impHelpers.register( MYNAME , { render , init , animate } , "yaml")
+window.impHelpers.register( MYNAME , { render , init , animate } , "yaml" , addIds)
 
 
