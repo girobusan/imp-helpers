@@ -1,5 +1,7 @@
 import Papa from 'papaparse';
 const API = globalThis.impHelpers;
+const nameRx = /^@name:\s*(.+)\s*$/gm;
+const showRx= /^@show:\s*(.+)\s*$/gm;
 
 function row2html(r , tag){
   if(!tag){ tag = "td" }
@@ -25,8 +27,18 @@ function doRender(str , noHeader){
 }
 
 function render(params , params_raw , subname){
+  const save = params.match(nameRx);
+  let strData = params;
+  if(save){ 
+    strData = strData.replace(nameRx , "") ;
+    window.impData[save[1]] = { 
+      type: "string",
+      data: strData
+    }
+  }
+
   const noHead = subname && subname.toLowerCase().trim()==='no-header';
-  return doRender(params , noHead);
+  return doRender(strData , noHead);
 }
 
 function preview(params , params_raw , subname){
