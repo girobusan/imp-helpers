@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMP! Helpers — dsv-render</title>
+  <meta name="description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="IMP! Helpers — dsv-render">
+  <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="og:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="">
+  <link rel="icon" type="image/png" href="">
+  <script>
+   window.settings = {
+  "title": "IMP! Helpers — dsv-render",
+  "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
+  "image": "",
+  "icon": "",
+  "filename": "dsv-render-embed.html",
+  "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
+  "css": "\n  #pageFooter{background-color: black}",
+  "headHTML": "",
+  "editor": "",
+  "viewCSS": "",
+  "author": "",
+  "keywords": "",
+  "enableHelpers": "true",
+  "disableInteractivity": "",
+  "pathToHelpersModule": ""
+}
+   window.savedWithImpVersion = "0.5.0"
+  </script>
+  <script>
+   function IMPEdit(){
+   console.info("Loading editor...")
+   const editor = document.createElement("script");
+   editor.id="editorScript";
+   editor.src="imp.js";
+   document.head.appendChild(editor);
+   }
+   window.addEventListener("DOMContentLoaded" , function(){
+  
+   if(window.location.search.indexOf("mode=view")!=-1)
+   {
+   return;
+   }
+   if(window.location.search.indexOf("mode=edit")!=-1)
+   {
+   IMPEdit();
+   return;
+   }
+   if(window.location.search.indexOf("mode=download")!=-1){
+   IMPEdit();
+   return;
+   }
+   if(window.location.protocol==="file:"){
+   IMPEdit();
+   }
+  
+})
+  </script>
+  <script defer src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS">
+  #pageFooter{background-color: black}</style>
+  <!--custom html here-->
+</head>
+<body>
+<main class='container' id='pageMain'><p>↑ <a href="index.html">Helpers</a></p>
+<h1>⚙️ dsv-render</h1>
+<h2>DSV format renderer — data embedding</h2>
+<p>This example demonstrates usage of dsv-renderer ability to embed data and than use it from other helper</p>
+<p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
+<h3>Here we have csv, embedded via dsv-renderer</h3>
+<table>
+<thead>
+<tr><th> a </th><th> b </th></tr>
+</thead>
+<tbody>
+<tr><td> A </td><td> 28 </td></tr>
+<tr><td> B </td><td> 55 </td></tr>
+<tr><td> C </td><td> 43 </td></tr>
+</tbody></table>
+<h3>This vega viz uses that csv data via special url</h3>
+<p></p>
+<div data-ihelper="vega-embed" class="interactiveContent">
+     <div class="vega_embed_view" style="width:100%">
+      <div class="vega-embed" role="graphics-document" aria-roledescription="visualization" aria-label="A simple bar chart with embedded data." style="cursor: default; width: initial;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="marks" width="445" height="242" viewBox="0 0 445 242" style="background-color: white;"><g fill="none" stroke-miterlimit="10" transform="translate(40,5)"><g class="mark-group role-frame root" role="graphics-object" aria-roledescription="group mark container"><g transform="translate(0,0)"><path class="background" aria-hidden="true" d="M0.5,0.5h400v200h-400Z" fill="transparent" stroke="#ddd"></path><g><g class="mark-group role-axis" aria-hidden="true"><g transform="translate(0.5,0.5)"><path class="background" aria-hidden="true" d="M0,0h0v0h0Z" pointer-events="none"></path><g><g class="mark-rule role-axis-grid" pointer-events="none"><line transform="translate(0,200)" x2="400" y2="0" stroke="#ddd" stroke-width="1" opacity="1"></line><line transform="translate(0,164)" x2="400" y2="0" stroke="#ddd" stroke-width="1" opacity="1"></line><line transform="translate(0,127)" x2="400" y2="0" stroke="#ddd" stroke-width="1" opacity="1"></line><line transform="translate(0,91)" x2="400" y2="0" stroke="#ddd" stroke-width="1" opacity="1"></line><line transform="translate(0,55)" x2="400" y2="0" stroke="#ddd" stroke-width="1" opacity="1"></line><line transform="translate(0,18)" x2="400" y2="0" stroke="#ddd" stroke-width="1" opacity="1"></line></g></g><path class="foreground" aria-hidden="true" d="" pointer-events="none" display="none"></path></g></g><g class="mark-group role-axis" role="graphics-symbol" aria-roledescription="axis" aria-label="X-axis titled 'a' for a discrete scale with 3 values: A, B, C"><g transform="translate(0.5,200.5)"><path class="background" aria-hidden="true" d="M0,0h0v0h0Z" pointer-events="none"></path><g><g class="mark-rule role-axis-tick" pointer-events="none"><line transform="translate(66,0)" x2="0" y2="5" stroke="#888" stroke-width="1" opacity="1"></line><line transform="translate(200,0)" x2="0" y2="5" stroke="#888" stroke-width="1" opacity="1"></line><line transform="translate(333,0)" x2="0" y2="5" stroke="#888" stroke-width="1" opacity="1"></line></g><g class="mark-text role-axis-label" pointer-events="none"><text text-anchor="middle" transform="translate(66.16666666666666,15)" font-family="sans-serif" font-size="10px" fill="#000" opacity="1">A</text><text text-anchor="middle" transform="translate(199.5,15)" font-family="sans-serif" font-size="10px" fill="#000" opacity="1">B</text><text text-anchor="middle" transform="translate(332.83333333333337,15)" font-family="sans-serif" font-size="10px" fill="#000" opacity="1">C</text></g><g class="mark-rule role-axis-domain" pointer-events="none"><line transform="translate(0,0)" x2="400" y2="0" stroke="#888" stroke-width="1" opacity="1"></line></g><g class="mark-text role-axis-title" pointer-events="none"><text text-anchor="middle" transform="translate(200,30)" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#000" opacity="1">a</text></g></g><path class="foreground" aria-hidden="true" d="" pointer-events="none" display="none"></path></g></g><g class="mark-group role-axis" role="graphics-symbol" aria-roledescription="axis" aria-label="Y-axis titled 'b' for a linear scale with values from 0 to 55"><g transform="translate(0.5,0.5)"><path class="background" aria-hidden="true" d="M0,0h0v0h0Z" pointer-events="none"></path><g><g class="mark-rule role-axis-tick" pointer-events="none"><line transform="translate(0,200)" x2="-5" y2="0" stroke="#888" stroke-width="1" opacity="1"></line><line transform="translate(0,164)" x2="-5" y2="0" stroke="#888" stroke-width="1" opacity="1"></line><line transform="translate(0,127)" x2="-5" y2="0" stroke="#888" stroke-width="1" opacity="1"></line><line transform="translate(0,91)" x2="-5" y2="0" stroke="#888" stroke-width="1" opacity="1"></line><line transform="translate(0,55)" x2="-5" y2="0" stroke="#888" stroke-width="1" opacity="1"></line><line transform="translate(0,18)" x2="-5" y2="0" stroke="#888" stroke-width="1" opacity="1"></line></g><g class="mark-text role-axis-label" pointer-events="none"><text text-anchor="end" transform="translate(-7,203)" font-family="sans-serif" font-size="10px" fill="#000" opacity="1">0</text><text text-anchor="end" transform="translate(-7,166.63636363636363)" font-family="sans-serif" font-size="10px" fill="#000" opacity="1">10</text><text text-anchor="end" transform="translate(-7,130.27272727272725)" font-family="sans-serif" font-size="10px" fill="#000" opacity="1">20</text><text text-anchor="end" transform="translate(-7,93.90909090909092)" font-family="sans-serif" font-size="10px" fill="#000" opacity="1">30</text><text text-anchor="end" transform="translate(-7,57.54545454545454)" font-family="sans-serif" font-size="10px" fill="#000" opacity="1">40</text><text text-anchor="end" transform="translate(-7,21.181818181818187)" font-family="sans-serif" font-size="10px" fill="#000" opacity="1">50</text></g><g class="mark-rule role-axis-domain" pointer-events="none"><line transform="translate(0,200)" x2="0" y2="-200" stroke="#888" stroke-width="1" opacity="1"></line></g><g class="mark-text role-axis-title" pointer-events="none"><text text-anchor="middle" transform="translate(-23.733333587646484,100) rotate(-90) translate(0,-2)" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#000" opacity="1">b</text></g></g><path class="foreground" aria-hidden="true" d="" pointer-events="none" display="none"></path></g></g><g class="mark-rect role-mark marks" role="graphics-object" aria-roledescription="rect mark container"><path aria-label="a: A; b: 28" role="graphics-symbol" aria-roledescription="bar" d="M6.666666666666657,98.18181818181819h120.00000000000001v101.81818181818181h-120.00000000000001Z" fill="#4c78a8"></path><path aria-label="a: B; b: 55" role="graphics-symbol" aria-roledescription="bar" d="M140,0h120.00000000000001v200h-120.00000000000001Z" fill="#4c78a8"></path><path aria-label="a: C; b: 43" role="graphics-symbol" aria-roledescription="bar" d="M273.33333333333337,43.636363636363626h120.00000000000001v156.36363636363637h-120.00000000000001Z" fill="#4c78a8"></path></g></g><path class="foreground" aria-hidden="true" d="" display="none"></path></g></g></g></svg><form class="vega-bindings"></form></div>
+     </div>
+    <script type="application/json">%0A%7B%0A%20%20%22$schema%22:%20%22https://vega.github.io/schema
+/vega-lite/v5.json%22,%0A%20%20%22description%22:%20%22A%20simpl
+e%20bar%20chart%20with%20embedded%20data.%22,%0A%20%20%22data%22
+:%20%7B%20%22url%22%20:%20%22@data.csv%22%20%7D,%0A%20%20%22widt
+h%22%20:%20%22container%22,%0A%20%20%22mark%22:%20%22bar%22,%0A%
+20%20%22encoding%22:%20%7B%0A%20%20%20%20%22x%22:%20%7B%22field%
+22:%20%22a%22,%20%22type%22:%20%22nominal%22,%20%22axis%22:%20%7
+B%22labelAngle%22:%200%7D%7D,%0A%20%20%20%20%22y%22:%20%7B%22fie
+ld%22:%20%22b%22,%20%22type%22:%20%22quantitative%22%7D%0A%20%20
+%7D%0A%7D%0A</script>
+  </div>
+</main>
+<footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+<script>window.impData={"data.csv":{"type":"string","data":"a,b\nA,28\nB,55\nC,43"}}</script>
+<script id="pageData" type="text/markdown">&amp;uarr; [Helpers](index.html)
+# :gear: dsv-render
+
+## DSV format renderer — data embedding
+
+This example demonstrates usage of dsv-renderer ability to embed data and than use it from other helper
+
+&amp;rarr; See [this page in edit mode](?mode=edit).
+
+### Here we have csv, embedded via dsv-renderer
+
+```h:dsv-render
+@name:data.csv
+a,b
+A,28
+B,55
+C,43
+```
+
+### This vega viz uses that csv data via special url
+&lt;p&gt;&lt;/p&gt;
+
+```helper:vega-embed
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": { "url" : "@data.csv" },
+  "width" : "container",
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}},
+    "y": {"field": "b", "type": "quantitative"}
+  }
+}
+```
+
+</script>
+</body>
+</html>

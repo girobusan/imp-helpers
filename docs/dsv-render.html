@@ -28,9 +28,10 @@
   "author": "",
   "keywords": "",
   "enableHelpers": "true",
+  "disableInteractivity": "",
   "pathToHelpersModule": ""
 }
-   window.savedWithImpVersion = "0.4.3"
+   window.savedWithImpVersion = "0.5.0"
   </script>
   <script>
    function IMPEdit(){
@@ -61,7 +62,7 @@
   
 })
   </script>
-  <script src='helpers.js' id='helpersScript'></script>
+  <script defer src='helpers.js' id='helpersScript'></script>
   <link id = "viewCSS" rel="stylesheet" href="style.css">
   <style id="customCSS">
   #pageFooter{background-color: black}</style>
@@ -69,12 +70,13 @@
 </head>
 <body>
 <main class='container' id='pageMain'><p>↑ <a href="index.html">Helpers</a></p>
-<h1>⚙️ dsv-render</h1>
-<h2>DSV format renderer</h2>
-<p>This helper renders only static html, just put your DSV code inside fences.  It has a subtype <code>no-header</code> for skiping header formatting.</p>
+<h1 id="ID_65039_dsv-render">⚙️ dsv-render</h1>
+<p><span data-ihelper='headers-nav' data-params="%0AskipH1:%20true%0A"></span></p>
+<h2 id="DSV_format_renderer">DSV format renderer</h2>
+<p>This helper renders only static html, just put your DSV code inside fences.  It has a subtype <code>no-header</code> for skiping header formatting. It also can embed csv data using IMP! data embedding API.</p>
 <p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
-<h2>Example, without subtype</h2>
-<h3>Code</h3>
+<h2 id="Example44_without_subtype">Example, without subtype</h2>
+<h3 id="Code">Code</h3>
 <pre><code> ```h:dsv-render
  Survived,Sex,Age,Class,value
  Perished,Male,Adult,Crew,670
@@ -82,7 +84,7 @@
  Perished,Male,Adult,Second Class,154
  ```
 </code></pre>
-<h3>Result</h3>
+<h3 id="Result">Result</h3>
 <table>
 <thead>
 <tr><th> Survived </th><th> Sex </th><th> Age </th><th> Class </th><th> value </th></tr>
@@ -100,8 +102,8 @@
 <tr><td> Perished </td><td> Female </td><td> Child </td><td> Third Class </td><td> 17 </td></tr>
 <tr><td> Survived </td><td> Male </td><td> Adult </td><td> Crew </td><td> 192 </td></tr>
 </tbody></table>
-<h2>Example, subtype 'no-header'</h2>
-<h3>Code</h3>
+<h2 id="Example44_subtype_39no-header39">Example, subtype 'no-header'</h2>
+<h3 id="Code_2">Code</h3>
 <pre><code> ```h:dsv-render/no-header
  Survived,Sex,Age,Class,value
  Perished,Male,Adult,Crew,670
@@ -109,7 +111,7 @@
  Perished,Male,Adult,Second Class,154
  ```
 </code></pre>
-<h3>Result</h3>
+<h3 id="Result_2">Result</h3>
 <table>
 <tbody><tr><td> Survived </td><td> Sex </td><td> Age </td><td> Class </td><td> value </td></tr>
 <tr><td> Perished </td><td> Male </td><td> Adult </td><td> Crew </td><td> 670 </td></tr>
@@ -123,14 +125,40 @@
 <tr><td> Perished </td><td> Female </td><td> Adult </td><td> First Class </td><td> 4 </td></tr>
 <tr><td> Perished </td><td> Female </td><td> Child </td><td> Third Class </td><td> 17 </td></tr>
 <tr><td> Survived </td><td> Male </td><td> Adult </td><td> Crew </td><td> 192 </td></tr>
-</tbody></table></main>
+</tbody></table>
+<h2 id="Data_embedding_directives">Data embedding directives</h2>
+<p>This helper supports &quot;directives&quot; which allow you to embed csv data into the page (see <a href="https://girobusan.github.io/imp/data-embedding.html">IMP! data embedding</a>) and suppress table rendering. The directives are:</p>
+<h3 id="@name">@name: — save data under the given name</h3>
+<p>This directive may be added like this:</p>
+<pre><code> ```h:dsv-render
+ @name:any-name-you-want.csv
+ your , csv , data
+ goes , like ,this
+</code></pre>
+<p>If the given name ends with &quot;.json&quot;, parsed version of data will be embedded, otherwise data will be embedded as string. The structure of the parsed data depends on subtype: if you use <code>no-header</code> subtype, it's an array of arrays, otherwise — array of objects with keys, corresponfing to header row content.</p>
+<h3 id="@hide">@hide — skip table rendering</h3>
+<p>This directive hides the table from render, if you need this data only for usage in other helpers or your own scripts.</p>
+<pre><code> ```h:dsv-render
+ @name:any-name-you-want.csv
+ @hide
+ your , csv , data
+ goes , like ,this
+</code></pre>
+<h2 id="Data_embedding_example">Data embedding example</h2>
+<p>See <a href="dsv-render-embed.html">here</a>.</p>
+</main>
 <footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+<script>window.impData={}</script>
 <script id="pageData" type="text/markdown">&amp;uarr; [Helpers](index.html)
 # :gear: dsv-render
 
+```h:headers-nav
+skipH1: true
+```
+
 ## DSV format renderer
 
-This helper renders only static html, just put your DSV code inside fences.  It has a subtype `no-header` for skiping header formatting. 
+This helper renders only static html, just put your DSV code inside fences.  It has a subtype `no-header` for skiping header formatting. It also can embed csv data using IMP! data embedding API.
 
 &amp;rarr; See [this page in edit mode](?mode=edit).
 
@@ -190,6 +218,35 @@ Perished,Female,Adult,First Class,4
 Perished,Female,Child,Third Class,17
 Survived,Male,Adult,Crew,192
 
-```</script>
+```
+
+## Data embedding directives
+This helper supports "directives" which allow you to embed csv data into the page (see [IMP! data embedding](https://girobusan.github.io/imp/data-embedding.html)) and suppress table rendering. The directives are:
+
+### @name: — save data under the given name{id=@name}
+This directive may be added like this:
+
+~~~
+ ```h:dsv-render
+ @name:any-name-you-want.csv
+ your , csv , data
+ goes , like ,this
+~~~
+
+If the given name ends with ".json", parsed version of data will be embedded, otherwise data will be embedded as string. The structure of the parsed data depends on subtype: if you use `no-header` subtype, it's an array of arrays, otherwise — array of objects with keys, corresponfing to header row content. 
+
+
+### @hide — skip table rendering{id=@hide} 
+This directive hides the table from render, if you need this data only for usage in other helpers or your own scripts.
+~~~
+ ```h:dsv-render
+ @name:any-name-you-want.csv
+ @hide
+ your , csv , data
+ goes , like ,this
+~~~
+
+## Data embedding example
+See [here](dsv-render-embed.html).</script>
 </body>
 </html>

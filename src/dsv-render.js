@@ -1,7 +1,8 @@
 import Papa from 'papaparse';
 const API = globalThis.impHelpers;
 const nameRx = /^@name:\s*(.+)\s*$/gm;
-const showRx= /^@show:\s*(.+)\s*$/gm;
+const hideRx= /^@hide\s*$/gm;
+const jsonRx = /\.json$/i;
 
 function row2html(r , tag){
   if(!tag){ tag = "td" }
@@ -27,18 +28,30 @@ function doRender(str , noHeader){
 }
 
 function render(params , params_raw , subname){
-  const save = params.match(nameRx);
+  const save = nameRx.exec(params) ; //params.match(nameRx);
+  const hide = hideRx.exec(params) ; 
   let strData = params;
+  if(hide){
+     strData= strData.replace(hideRx , "");
+  }
   if(save){ 
+    let parse = save[1].toLowerCase().endsWith(".json")
+
     strData = strData.replace(nameRx , "") ;
+    let saveData = strData.trim();
+    saveData =  parse ?  
+    Papa.parse( strData.trim() , 
+    { header: !( subname && subname.toLowerCase()=='no-header' )}).data : 
+    saveData;
+    
+
     window.impData[save[1]] = { 
-      type: "string",
-      data: strData
+      type: parse ? "object" : "string",
+      data: saveData
     }
   }
-
   const noHead = subname && subname.toLowerCase().trim()==='no-header';
-  return doRender(strData , noHead);
+  return hide ? "" : doRender(strData , noHead);
 }
 
 function preview(params , params_raw , subname){
