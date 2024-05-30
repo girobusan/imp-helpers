@@ -18,6 +18,7 @@ function render( params ){
   if(!params.name){
      return API.errorNotice("Error" , "No <strong>name</strong> specified")
   }
+  let myTitle = params.title || params.filename || params.name
    return `<div data-ihelper='${NAME}' 
    class="blockContent dataSaver"
    data-dataname="${params.name}"
@@ -35,7 +36,7 @@ function render( params ){
    <div style="position: absolute; left: 16px;top: 12px">
    ${ICON}
    </div>
-   ${params.title ? `<h5 style="margin:0;padding:0;margin-bottom: 0.25em;color:inherit">${params.title}</h5>` : ""}
+   ${ `<h5 style="margin:0;padding:0;margin-bottom: 0.25em;color:inherit">${myTitle}</h5>` }
    ${params.description!=undefined ? `<p style="margin:0;padding:0;font-size:0.8em;line-height:110%">${params.description}</p>` : ""}
    </div>` 
 }
