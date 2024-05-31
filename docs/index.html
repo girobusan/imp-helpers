@@ -28,9 +28,10 @@
   "author": "",
   "keywords": "",
   "enableHelpers": "true",
+  "disableInteractivity": "",
   "pathToHelpersModule": ""
 }
-   window.savedWithImpVersion = "0.4.3"
+   window.savedWithImpVersion = "0.5.0"
   </script>
   <script>
    function IMPEdit(){
@@ -61,7 +62,7 @@
   
 })
   </script>
-  <script src='helpers.js' id='helpersScript'></script>
+  <script defer src='helpers.js' id='helpersScript'></script>
   <link id = "viewCSS" rel="stylesheet" href="style.css">
   <style id="customCSS">
   #pageFooter{background-color: black}</style>
@@ -147,6 +148,12 @@
 <td><a href="dsv-render.html">here</a></td>
 </tr>
 <tr>
+<td><strong>data-saver</strong></td>
+<td>Widget for downloading embedded data</td>
+<td>yes</td>
+<td><a href="data-saver.html">here </a></td>
+</tr>
+<tr>
 <td><strong>placeholders</strong></td>
 <td>Demo of system placeholders, for documentation</td>
 <td>no</td>
@@ -162,6 +169,7 @@
 </ul>
 </main>
 <footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+<script>window.impData={}</script>
 <script id="pageData" type="text/markdown"># :gear: IMP! Helpers
 
 ```helper:cover
@@ -186,6 +194,7 @@ This site contains collection of "official", or _example_ helpers, which you can
 | **cover** | Adds nice customizable cover block to your page | no, but JS may be used | [here](cover.html) |
 | **headers-nav** | Adds in-page navigation by headers | yes |  [here](headers-nav.html) |
 | **dsv-render**  | Allows displaying of DSV (CSV, TSV) data in markdown | no | [here](dsv-render.html) |
+| **data-saver** | Widget for downloading embedded data | yes | [here ](data-saver.html)|
 | **placeholders** | Demo of system placeholders, for documentation | no | not required |
 
 ## Helpers API docs:

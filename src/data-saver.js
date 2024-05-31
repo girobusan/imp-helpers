@@ -28,7 +28,7 @@ function render( params ){
    padding:16px;
    padding-left: 56px;
    background-color: ${ params.bgColor ? params.bgColor : "#444" };
-   color: ${ params.fgColor || "#000" };
+   color: ${ params.fgColor || "#ffffff" };
    border-radius:6px;
    cursor: pointer
    "

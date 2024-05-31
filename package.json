@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npx webpack --mode development",
-    "postbuild": "cp helpers/*.* docs/helpers/",
+    "postbuild": "shx cp helpers/*.* docs/helpers/",
     "build": "npx webpack --mode production"
   },
   "author": "",
@@ -16,8 +16,11 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@babel/core": "^7.24.6",
     "mathjax": "^3.2.2",
     "papaparse": "^5.4.1",
-    "vega-embed": "^6.25.0"
+    "vega": "^5.29.0",
+    "vega-embed": "^6.25.0",
+    "vega-lite": "^5.18.1"
   }
 }

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMP! Helpers — data-saver</title>
+  <meta name="description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="IMP! Helpers — data-saver">
+  <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="og:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="">
+  <link rel="icon" type="image/png" href="">
+  <script>
+   window.settings = {
+  "title": "IMP! Helpers — data-saver",
+  "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
+  "image": "",
+  "icon": "",
+  "filename": "data-saver.html",
+  "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
+  "css": "\n  #pageFooter{background-color: black}",
+  "headHTML": "",
+  "editor": "",
+  "viewCSS": "",
+  "author": "",
+  "keywords": "",
+  "enableHelpers": "true",
+  "disableInteractivity": "",
+  "pathToHelpersModule": ""
+}
+   window.savedWithImpVersion = "0.5.0"
+  </script>
+  <script>
+   function IMPEdit(){
+   console.info("Loading editor...")
+   const editor = document.createElement("script");
+   editor.id="editorScript";
+   editor.src="imp.js";
+   document.head.appendChild(editor);
+   }
+   window.addEventListener("DOMContentLoaded" , function(){
+  
+   if(window.location.search.indexOf("mode=view")!=-1)
+   {
+   return;
+   }
+   if(window.location.search.indexOf("mode=edit")!=-1)
+   {
+   IMPEdit();
+   return;
+   }
+   if(window.location.search.indexOf("mode=download")!=-1){
+   IMPEdit();
+   return;
+   }
+   if(window.location.protocol==="file:"){
+   IMPEdit();
+   }
+  
+})
+  </script>
+  <script defer src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS">
+  #pageFooter{background-color: black}</style>
+  <!--custom html here-->
+</head>
+<body>
+<main class='container' id='pageMain'><p>↑ <a href="index.html">Helpers</a></p>
+<h1>⚙️ data-saver</h1>
+<h2>Widget for downloading data</h2>
+<p>Allows reader to download embedded data.</p>
+<p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
+<h2>Example</h2>
+<h3>Code</h3>
+<pre><code class="language-yaml"> <span class="hljs-string">```h:data-saver</span>
+ <span class="hljs-attr">title:</span> <span class="hljs-string">Some</span> <span class="hljs-string">example</span> <span class="hljs-string">data</span> <span class="hljs-string">to</span> <span class="hljs-string">download</span>
+ <span class="hljs-attr">description:</span> <span class="hljs-string">This</span> <span class="hljs-string">data</span> <span class="hljs-string">is</span> <span class="hljs-string">here</span> <span class="hljs-string">just</span> <span class="hljs-string">for</span> <span class="hljs-string">example.</span>
+ <span class="hljs-attr">name:</span> <span class="hljs-string">data.csv</span>
+ <span class="hljs-string">```</span>
+</code></pre>
+<h3>Result</h3>
+<div data-ihelper='data-saver' 
+   class="blockContent dataSaver"
+   data-dataname="data.csv"
+   data-filename=data.csv
+   style="
+   position: relative;
+   padding:16px;
+   padding-left: 56px;
+   background-color: #444;
+   color: #ffffff;
+   border-radius:6px;
+   cursor: pointer
+   "
+   >
+   <div style="position: absolute; left: 16px;top: 12px">
+   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+   </div>
+   <h5 style="margin:0;padding:0;margin-bottom: 0.25em;color:inherit">Some example data to download</h5>
+   <p style="margin:0;padding:0;font-size:0.8em;line-height:110%">This data is here just for example.</p>
+   </div>
+<h2>Parameters</h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>meaning</th>
+<th>type</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>name of the data chunk to download</td>
+<td>string</td>
+<td>no, required!</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Title of the widget</td>
+<td>string</td>
+<td>name param</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Description field for the widget</td>
+<td>string</td>
+<td>—</td>
+</tr>
+<tr>
+<td>file</td>
+<td>Filename of the file</td>
+<td>string</td>
+<td>name param</td>
+</tr>
+<tr>
+<td>bgColor</td>
+<td>Background colour of the widget</td>
+<td>string</td>
+<td>&quot;#444&quot;</td>
+</tr>
+<tr>
+<td>fgColor</td>
+<td>Foreground color</td>
+<td>string</td>
+<td>&quot;#fff&quot;</td>
+</tr>
+</tbody>
+</table>
+</main>
+<footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+<script>window.impData={"data.csv":{"type":"string","data":"a,b\nA,28\nB,55\nC,43"}}</script>
+<script id="pageData" type="text/markdown">&amp;uarr; [Helpers](index.html)
+# :gear: data-saver
+
+## Widget for downloading data
+Allows reader to download embedded data.
+
+&amp;rarr; See [this page in edit mode](?mode=edit).
+
+## Example
+
+### Code
+
+~~~yaml
+ ```h:data-saver
+ title: Some example data to download
+ description: This data is here just for example.
+ name: data.csv
+ ```
+~~~
+### Result
+```h:data-saver
+title: Some example data to download
+description: This data is here just for example.
+name: data.csv
+```
+
+## Parameters 
+|name | meaning | type | default |
+|--|--|--|--|
+| name | name of the data chunk to download | string | no, required! |
+| title | Title of the widget | string | name param |
+| description | Description field for the widget | string | — |
+| file | Filename of the file | string | name param | 
+| bgColor | Background colour of the widget | string | "#444" |
+| fgColor | Foreground color | string | "#fff" | </script>
+</body>
+</html>
