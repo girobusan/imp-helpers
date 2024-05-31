@@ -13,6 +13,21 @@ var API;
 const NAME = "data-saver";
 import ICON  from "./icons/download_24dp_FILL0_wght400_GRAD0_opsz24.svg?raw"
 
+function dataURL(txt){
+  
+     return 'data:text/plain;charset=utf-8,' + encodeURIComponent(txt);
+}
+
+function data2txt(name){
+  return window.impData[name].type=='string' ? 
+  window.impData[name].data : 
+  JSON.stringify(window.impData[name].data , null , 2)
+}
+
+function data2url(name){
+  return dataURL( data2txt(name) );
+}
+
 
 function render( params ){
   if(!params.name){
@@ -23,21 +38,27 @@ function render( params ){
    class="blockContent dataSaver"
    data-dataname="${params.name}"
    data-filename=${ params.file ? params.file: params.name }
+   data-isstatic=${ params.static || 'false' }
    style="
    position: relative;
-   padding:16px;
-   padding-left: 56px;
+   padding:0;
    background-color: ${ params.bgColor ? params.bgColor : "#444" };
    color: ${ params.fgColor || "#ffffff" };
    border-radius:6px;
    cursor: pointer
-   "
-   >
+   " >
+   <a style="
+   display: block;
+   padding:16px;
+   text-decoration: none;
+   color: inherit;
+   padding-left: 56px;" ${ params.static? `href="${data2url(params.name)}"` : "" } ${ params.static? `download="${ params.file|| params.name }"` : "" } >
    <div style="position: absolute; left: 16px;top: 12px">
    ${ICON}
    </div>
    ${ `<h5 style="margin:0;padding:0;margin-bottom: 0.25em;color:inherit">${myTitle}</h5>` }
    ${params.description!=undefined ? `<p style="margin:0;padding:0;font-size:0.8em;line-height:110%">${params.description}</p>` : ""}
+   </a>
    </div>` 
 }
 
@@ -46,13 +67,14 @@ function preview( params ){
 }
 
 function animate( el ){
-  console.log("Animmate" , el)
+console.log(el.dataset.isstatic);
+  if(el.dataset.isstatic==='true'){ console.log("this is static version"); return }
    const dataname = el.dataset.dataname;
    var databody = window.impData[dataname].data ;
    const filename = el.dataset.filename ;
    window.impData[dataname].type!='string' && ( databody = JSON.stringify(databody , null , 2) );
-   el.addEventListener("mouseover" , ()=>el.style.opacity=0.7)
-   el.addEventListener("mouseout" , ()=>el.style.opacity=1)
+   // el.addEventListener("mouseover" , ()=>el.style.opacity=0.7)
+   // el.addEventListener("mouseout" , ()=>el.style.opacity=1)
 
    el.addEventListener("click" , ()=>{
      var element = document.createElement('a');
@@ -79,5 +101,6 @@ function init(api){
    {
      init, preview , render , animate
    },
-   "yaml"
+   "yaml",
+   (h)=>`<style>.dataSaver:hover{opacity:0.7;}</style>${h}`
 )
