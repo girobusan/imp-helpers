@@ -67,8 +67,8 @@ function preview( params ){
 }
 
 function animate( el ){
-console.log(el.dataset.isstatic);
-  if(el.dataset.isstatic==='true'){ console.log("this is static version"); return }
+// console.log(el.dataset.isstatic);
+  if(el.dataset.isstatic==='true'){ return }
    const dataname = el.dataset.dataname;
    var databody = window.impData[dataname].data ;
    const filename = el.dataset.filename ;
