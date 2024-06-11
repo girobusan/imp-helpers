@@ -8,6 +8,8 @@
  * file- name of file to save (optional)
  * bgColor - background color
  * fgColor - foreground color
+ * 
+ * + url - downloads a file by url
  */
 var API;
 const NAME = "data-saver";
@@ -38,7 +40,8 @@ function render( params ){
    class="blockContent dataSaver"
    data-dataname="${params.name}"
    data-filename=${ params.file ? params.file: params.name }
-   data-isstatic=${ params.static || 'false' }
+   data-isstatic="${ ( params.static || params.url ) || 'false' }"
+   data-url="${params.url}"
    style="
    position: relative;
    padding:0;
@@ -52,7 +55,7 @@ function render( params ){
    padding:16px;
    text-decoration: none;
    color: inherit;
-   padding-left: 56px;" ${ params.static? `href="${data2url(params.name)}"` : "" } ${ params.static? `download="${ params.file|| params.name }"` : "" } >
+   padding-left: 56px;" ${ ( params.static || params.url)? `href="${params.url || data2url(params.name)}"` : "" } ${ ( params.static || params.url )? `download="${ params.file|| params.name }"` : "" } >
    <div style="position: absolute; left: 16px;top: 12px">
    ${ICON}
    </div>
