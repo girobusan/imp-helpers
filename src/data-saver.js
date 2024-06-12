@@ -32,10 +32,21 @@ function data2url(name){
 
 
 function render( params ){
-  if(!params.name){
-     return API.errorNotice("Error" , "No <strong>name</strong> specified")
+  if(!params.name && !params.url){
+     return API.errorNotice("Error" , "No <strong>name</strong> or <strong>url</strong> specified")
   }
-  let myTitle = params.title || params.filename || params.name
+  let myTitle = params.title || params.file|| params.name || "Download file"
+  let urlFile = params.url || "file.txt"
+  if(params.url){
+    try{
+     urlFile =  (new URL(params.url)).pathname.split("/").pop()
+    }catch{
+    console.error("Wrong url:" , params.url)
+    }
+  }
+
+  let myDownload = params.filename || params.name || urlFile 
+
    return `<div data-ihelper='${NAME}' 
    class="blockContent dataSaver"
    data-dataname="${params.name}"
@@ -55,7 +66,7 @@ function render( params ){
    padding:16px;
    text-decoration: none;
    color: inherit;
-   padding-left: 56px;" ${ ( params.static || params.url)? `href="${params.url || data2url(params.name)}"` : "" } ${ ( params.static || params.url )? `download="${ params.file|| params.name }"` : "" } >
+   padding-left: 56px;" ${ ( params.static || params.url)? `href="${params.url || data2url(params.name)}"` : "" } ${ ( params.static || params.url )? `download="${myDownload}"` : "" } >
    <div style="position: absolute; left: 16px;top: 12px">
    ${ICON}
    </div>

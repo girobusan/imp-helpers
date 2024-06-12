@@ -87,7 +87,8 @@
    class="blockContent dataSaver"
    data-dataname="data.csv"
    data-filename=data.csv
-   data-isstatic=false
+   data-isstatic="false"
+   data-url="undefined"
    style="
    position: relative;
    padding:0;
@@ -114,7 +115,8 @@
    class="blockContent dataSaver"
    data-dataname="data.csv"
    data-filename=data.csv
-   data-isstatic=true
+   data-isstatic="true"
+   data-url="undefined"
    style="
    position: relative;
    padding:0;
@@ -132,7 +134,35 @@
    <div style="position: absolute; left: 16px;top: 12px">
    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
    </div>
-   <h5 style="margin:0;padding:0;margin-bottom: 0.25em;color:inherit">Some example data to download</h5>
+   <h5 style="margin:0;padding:0;margin-bottom: 0.25em;color:inherit">Static version of the same widget</h5>
+   <p style="margin:0;padding:0;font-size:0.8em;line-height:110%">This data is here just for example.</p>
+   </a>
+   </div>
+<h3>Using &quot;url&quot; parameter</h3>
+<div data-ihelper='data-saver' 
+   class="blockContent dataSaver"
+   data-dataname="undefined"
+   data-filename=undefined
+   data-isstatic="test.txt"
+   data-url="test.txt"
+   style="
+   position: relative;
+   padding:0;
+   background-color: #444;
+   color: #ffffff;
+   border-radius:6px;
+   cursor: pointer
+   " >
+   <a style="
+   display: block;
+   padding:16px;
+   text-decoration: none;
+   color: inherit;
+   padding-left: 56px;" href="test.txt" download="file.txt" >
+   <div style="position: absolute; left: 16px;top: 12px">
+   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+   </div>
+   <h5 style="margin:0;padding:0;margin-bottom: 0.25em;color:inherit">This widget allows user to downlad file by url</h5>
    <p style="margin:0;padding:0;font-size:0.8em;line-height:110%">This data is here just for example.</p>
    </a>
    </div>
@@ -176,6 +206,12 @@
 <td>Create static version of widget. It will work without JS, but also increases file size</td>
 <td>boolean</td>
 <td>false</td>
+</tr>
+<tr>
+<td>url</td>
+<td>Download file by url, not data chunk</td>
+<td>string</td>
+<td>undefined</td>
 </tr>
 <tr>
 <td>bgColor</td>
@@ -223,10 +259,18 @@ name: data.csv
 ### Static version (see below for more info)
 
 ```h:data-saver
-title: Some example data to download
+title: Static version of the same widget
 description: This data is here just for example.
 name: data.csv
 static: true
+```
+
+### Using "url" parameter
+
+```h:data-saver
+title: This widget allows user to downlad file by url
+description: This data is here just for example.
+url: test.txt
 ```
 
 ## Parameters 
@@ -237,6 +281,7 @@ static: true
 | description | Description field for the widget | string | — |
 | file | Filename of the file | string | name param | 
 | static | Create static version of widget. It will work without JS, but also increases file size | boolean | false |
+| url | Download file by url, not data chunk | string | undefined |
 | bgColor | Background colour of the widget | string | "#444" |
 | fgColor | Foreground color | string | "#fff" |</script>
 </body>
