@@ -5,7 +5,6 @@ const hideRx = /^@hide\s*$/gm;
 const jsonRx = /\.json$/i;
 
 function row2html(r, tag) {
-  const
   if (!tag) {
     tag = "td"
   }
