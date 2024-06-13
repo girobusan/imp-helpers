@@ -6,11 +6,12 @@
  * title — widget title
  * description - widget description 
  * file- name of file to save (optional)
- * bgColor - background color
+ * bgColor - background color - #FA5910 #C1450C
  * fgColor - foreground color
  * 
  * + url - downloads a file by url
  */
+
 var API;
 const NAME = "data-saver";
 import ICON  from "./icons/download_24dp_FILL0_wght400_GRAD0_opsz24.svg?raw"
@@ -19,6 +20,7 @@ function dataURL(txt){
   
      return 'data:text/plain;charset=utf-8,' + encodeURIComponent(txt);
 }
+
 
 function data2txt(name){
   return window.impData[name].type=='string' ? 
