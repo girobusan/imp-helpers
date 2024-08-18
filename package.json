@@ -19,6 +19,7 @@
     "@babel/core": "^7.24.6",
     "mathjax": "^3.2.2",
     "papaparse": "^5.4.1",
+    "qrcode": "^1.5.4",
     "vega": "^5.29.0",
     "vega-embed": "^6.25.0",
     "vega-lite": "^5.18.1"
