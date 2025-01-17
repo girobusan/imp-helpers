@@ -28,8 +28,8 @@ function render(params) {
     params.fgColor,
     params.margin,
   )
-    .then((url) => `<div class='qr_code_container'>${url}</div>`)
-    .catch((e) => console.error(e));
+    .then((qrcode) => `<div class='qr_code_container'>${qrcode}</div>`)
+    .catch((e) => API.errorNotice("QR error", e));
 }
 
 function preview(params) {
