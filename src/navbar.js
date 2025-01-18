@@ -41,6 +41,7 @@ function animate(el, params) {
   if (el) {
     p = JSON.parse(el.innerText);
     el.remove();
+    return;
   }
 
   p.links && buildNav(p.links, p.style || null);

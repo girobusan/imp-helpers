@@ -11,7 +11,7 @@ function makeCode(str, size, bg, fg, margin) {
       light: bg || "#ffffff",
     },
   };
-  console.log(opts);
+  // console.log(opts);
   if (size) {
     opts.width = size;
   }
