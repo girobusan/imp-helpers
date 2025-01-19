@@ -2,14 +2,20 @@
 // for upcoming autoload feature
 //
 const API = globalThis.impHelpers;
+var viewMode = false;
 
-function buildNav(params) {
-  // console.log("render navbar", links, style);
+function buildNav(params, isLocal) {
+  // console.log("render navbar", params);
 
   const testNav = document.querySelector("#IMPnavbar");
   const testCSS = document.querySelector("#IMPnavbarCSS");
+  // if (testNav && isLocal == testNav.dataset.local) {
   testNav && testNav.remove();
   testCSS && testCSS.remove();
+  // }
+  if (Object.keys(params).length === 0) {
+    return;
+  }
 
   const B = document.body;
   const CH = B.firstChild;
@@ -21,6 +27,7 @@ function buildNav(params) {
     const H = document.head;
     const CSS = document.createElement("link");
     CSS.id = "IMPnavbarCSS";
+    CSS.dataset["local"] = isLocal;
     CSS.rel = "stylesheet";
     CSS.href = params.style;
     H.appendChild(CSS);
@@ -47,17 +54,22 @@ function buildNav(params) {
 }
 
 function animate(el, params) {
-  // console.log("animate navbar");
+  if (!viewMode) {
+    return;
+  }
+  console.log("Animate navbar", el);
   let p = params;
+  let isLocal = false;
 
   //animated usual way
   if (el) {
     p = JSON.parse(el.innerText);
     el.remove();
+    isLocal = true;
     // return;
   }
 
-  p.links && buildNav(p);
+  p.links && buildNav(p, isLocal);
 }
 
 function render(params, params_raw) {
@@ -65,8 +77,9 @@ function render(params, params_raw) {
   return `<script type='application/json' data-ihelper='navbar' >${params_raw}</script>`;
 }
 
-function init() {
-  console.info("Navbar initialized.");
+function init(_, viewModeIn) {
+  // console.info("Navbar initialized.", viewMode);
+  viewMode = viewModeIn;
 }
 
 API.register("navbar", { init, render, animate }, "json");
