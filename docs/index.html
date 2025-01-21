@@ -18,58 +18,41 @@
   "title": "IMP! Helpers",
   "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
   "image": "https://raw.githubusercontent.com/girobusan/imp-helpers/master/docs/screen.png",
-  "icon": "",
   "filename": "index.html",
   "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
   "css": "\n  #pageFooter{background-color: black}",
-  "headHTML": "",
-  "editor": "",
-  "viewCSS": "",
-  "author": "",
-  "keywords": "",
-  "enableHelpers": "true",
-  "disableInteractivity": "",
-  "pathToHelpersModule": ""
-}
-   window.savedWithImpVersion = "0.5.0"
+  "enableHelpers": "true"
+};
+   window.savedWithImpVersion = "0.6.0"
   </script>
-  <script>
-   function IMPEdit(){
-   console.info("Loading editor...")
-   const editor = document.createElement("script");
-   editor.id="editorScript";
-   editor.src="imp.js";
-   document.head.appendChild(editor);
-   }
-   window.addEventListener("DOMContentLoaded" , function(){
-  
-   if(window.location.search.indexOf("mode=view")!=-1)
-   {
-   return;
-   }
-   if(window.location.search.indexOf("mode=edit")!=-1)
-   {
-   IMPEdit();
-   return;
-   }
-   if(window.location.search.indexOf("mode=download")!=-1){
-   IMPEdit();
-   return;
-   }
-   if(window.location.protocol==="file:"){
-   IMPEdit();
-   }
-  
-})
-  </script>
+
+  <script defer>
+    function IMPEdit() {
+      console.info("Loading editor...")
+      const editor = document.createElement("script");
+      editor.id = "editorScript";
+      editor.src = "imp.js";
+      document.head.appendChild(editor);
+    }
+    if (window.location.search.indexOf("mode=edit") != -1) {
+      IMPEdit();
+    }
+    if (window.location.search.indexOf("mode=download") != -1) {
+      IMPEdit();
+    }
+    if (window.location.protocol === "file:" &&
+      window.location.search.indexOf("mode=view") == -1) {
+      IMPEdit();
+    }
+</script>
+
   <script defer src='helpers.js' id='helpersScript'></script>
   <link id = "viewCSS" rel="stylesheet" href="style.css">
-  <style id="customCSS">
-  #pageFooter{background-color: black}</style>
+  <style id="customCSS"></style>
   <!--custom html here-->
 </head>
 <body>
-<main class='container' id='pageMain'><h1>⚙️ IMP! Helpers</h1>
+<main class="container" id="pageMain"><h1>⚙️ IMP! Helpers</h1>
  <!--push content down-->
    <div style="height:50vh; 
    padding:0 ; 
@@ -113,6 +96,7 @@
 <h2>What is it all about</h2>
 <p>Helpers are the scripts, which use new <a href="https://girobusan.github.io/imp/index.html">IMP!</a> <a href="https://girobusan.github.io/imp/helpers.html">Helpers API</a>  for adding various types of content, not supported by regular markdown, to IMP! pages. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.</p>
 <p>This site contains collection of &quot;official&quot;, or <em>example</em> helpers, which you can use freely in your projects.</p>
+<p>You can download any of them <a href="https://github.com/girobusan/imp-helpers/tree/master/helpers">here</a>.</p>
 <table>
 <thead>
 <tr>
@@ -174,7 +158,8 @@
 <li><a href="https://girobusan.github.io/imp/helpers_api.html">Helpers API methods</a></li>
 </ul>
 </main>
-<footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+<footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+
 <script>window.impData={}</script>
 <script id="pageData" type="text/markdown"># :gear: IMP! Helpers
 
@@ -194,7 +179,9 @@ Helpers are the scripts, which use new [IMP!](https://girobusan.github.io/imp/in
 
 This site contains collection of "official", or _example_ helpers, which you can use freely in your projects.
 
-| Helper name | What it does | Requires JS to&amp;nbsp;view? | Demo &amp; doc |
+You can download any of them [here](https://github.com/girobusan/imp-helpers/tree/master/helpers).
+
+| Helper name | What it does | Requires JS to&amp;nbsp;view? | Demo &amp; doc | 
 |----|----|---|---|
 | **vega-embed** | Allows embedding of interactive Vega-lite visualizations in your page | yes |  [here](vega-embed.html) |
 | **cover** | Adds nice customizable cover block to your page | no, but JS may be used | [here](cover.html) |

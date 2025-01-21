@@ -33,6 +33,7 @@ module.exports = function(env, argv) {
       "data-saver": "./src/data-saver",
       "qr-code": "./src/qr-code.js",
       navbar: "./src/navbar.js",
+      metadata: "./src/metadata.js",
     },
     devtool: argv.mode != "production" ? "inline-source-map" : false,
     devServer:
