@@ -1,4 +1,4 @@
-body>nav {
+body>nav#IMPnavbar {
   box-sizing: border-box;
   width: 100%;
   background-color: silver;
@@ -12,11 +12,11 @@ body>nav {
   margin-top: -1px;
 }
 
-body>nav a,
-body>nav a:focus,
-body>nav a:hover,
-body>nav a:active,
-body>nav a:visited {
+body>nav#IMPnavbar a,
+body>nav#IMPnavbar a:focus,
+body>nav#IMPnavbar a:hover,
+body>nav#IMPnavbar a:active,
+body>nav#IMPnavbar a:visited {
   display: inline-block;
   margin-right: 2em;
   color: #ddd;
@@ -25,15 +25,15 @@ body>nav a:visited {
   box-shadow: none;
 }
 
-body>nav a:hover {
+body>nav#IMPnavbar a:hover {
   color: white;
 }
 
-body>nav .navlogo {
+body>nav#IMPnavbar .navlogo {
   display: inline-block;
   margin-right: 2em;
 }
 
-body>nav a:last-child {
+body>nav#IMPnavbar a:last-child {
   margin-right: 0;
 }
