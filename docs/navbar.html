@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMP! Helpers — navbar</title>
+  <meta name="description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="IMP! Helpers — navbar">
+  <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="og:image" content="undefined">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="undefined">
+  <link rel="icon" type="image/png" href="undefined">
+  <script>
+   window.settings = {
+  "title": "IMP! Helpers — navbar",
+  "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
+  "filename": "navbar.html",
+  "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
+  "css": "\n  #pageFooter{background-color: black}",
+  "enableHelpers": "true"
+};
+   window.savedWithImpVersion = "0.6.0"
+  </script>
+
+  <script defer>
+      (
+        function () {
+          function IMPEdit() {
+            console.info("Loading editor...")
+            const editor = document.createElement("script");
+            editor.id = "editorScript";
+            editor.src = "imp.js";
+            document.head.appendChild(editor);
+          }
+          if (window.location.search.indexOf("mode=edit") != -1) {
+            console.log("no edit");
+            IMPEdit();
+            return;
+          }
+          if (window.location.search.indexOf("mode=download") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (window.location.protocol === "file:" &&
+            window.location.search.indexOf("mode=view") == -1) {
+            console.log("file edit")
+            IMPEdit();
+          }
+        }
+      )();
+</script>
+
+  <script defer src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS"></style>
+  <!--custom html here-->
+</head>
+<body>
+<main class="container" id="pageMain"><h1>⚙️ navbar</h1>
+<h2>Displays navbar</h2>
+<p>This helper is intended to be used with autoload functionality, to add shared navbar to the set of IMP! pages. But it can be used as regular helper.</p>
+<p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
+<script type='application/json' data-ihelper='navbar' >
+ {
+        "logo": "<strong>🏠</strong>",
+        "link": "index.html",
+        "links": [
+          ["https://yandex.ru", "Yandex!"],
+          ["https://google.com", "Google!"]
+        ]
+
+  }
+</script>
+<h2>Example code for autoload.js</h2>
+<pre><code class="language-javascript"><span class="hljs-comment">// helpers/autoload.js</span>
+
+<span class="hljs-variable language_">window</span>.<span class="hljs-property">impHelpers</span>.<span class="hljs-property">autoload</span> = {
+  <span class="hljs-attr">helpers</span>: [
+    [
+      <span class="hljs-string">&quot;navbar&quot;</span>,
+      ,
+      {
+        <span class="hljs-attr">logo</span>: <span class="hljs-string">&quot;&lt;strong&gt;🏠&lt;/strong&gt;&quot;</span>,
+        <span class="hljs-attr">link</span>: <span class="hljs-string">&quot;index.html&quot;</span>,
+        <span class="hljs-attr">links</span>: [
+          [<span class="hljs-string">&quot;https://yandex.ru&quot;</span>, <span class="hljs-string">&quot;yandex&quot;</span>],
+          [<span class="hljs-string">&quot;https://google.com&quot;</span>, <span class="hljs-string">&quot;google&quot;</span>],
+        ],
+        <span class="hljs-attr">style</span>: <span class="hljs-string">&quot;./helpers/nav.css&quot;</span>,
+      },
+    ],
+   <span class="hljs-comment">//... your other autoloaded modules</span>
+  ],
+};
+</code></pre>
+<h2>Example within page</h2>
+<pre><code class="language-json"> ```h<span class="hljs-punctuation">:</span>navbar
+ <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;logo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;strong&gt;🏠&lt;/strong&gt;&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;link&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;index.html&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;links&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+          <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;https://yandex.ru&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;yandex&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;https://google.com&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;google&quot;</span><span class="hljs-punctuation">]</span>
+        <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./helpers/nav.css&quot;</span>
+      <span class="hljs-punctuation">}</span>
+ ```
+</code></pre>
+<h2>Parameters</h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>meaning</th>
+<th>type</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logo</td>
+<td>HTML at the start</td>
+<td>String</td>
+<td>empty</td>
+</tr>
+<tr>
+<td>link</td>
+<td>Link for logo</td>
+<td>String</td>
+<td>empty</td>
+</tr>
+<tr>
+<td>style</td>
+<td>Link to css to replace default style</td>
+<td>String</td>
+<td>empty</td>
+</tr>
+<tr>
+<td>addStyle</td>
+<td>Link to css to add to default style</td>
+<td>String</td>
+<td>empty</td>
+</tr>
+<tr>
+<td>exclude</td>
+<td>List of regexps (as strings), for page urls, at which navbar is disabled</td>
+<td>Array of strings</td>
+<td>empty</td>
+</tr>
+<tr>
+<td>links</td>
+<td>List of navbar links</td>
+<td>Array of arrays*</td>
+<td>empty</td>
+</tr>
+</tbody>
+</table>
+<p>* List of navbar links is an array of arrays, each of which contains 2 values:</p>
+<ol>
+<li>String, url.</li>
+<li>String, label.</li>
+</ol>
+</main>
+<footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+
+<script>window.impData={"page_meta":{"mdate":"2025-01-22T13:14:21.805Z"}}</script>
+<script id="pageData" type="text/markdown"># :gear: navbar
+
+## Displays navbar
+
+This helper is intended to be used with autoload functionality, to add shared navbar to the set of IMP! pages. But it can be used as regular helper.
+
+&amp;rarr; See [this page in edit mode](?mode=edit).
+
+```h:navbar
+ {
+        "logo": "&lt;strong&gt;🏠&lt;/strong&gt;",
+        "link": "index.html",
+        "links": [
+          ["https://yandex.ru", "Yandex!"],
+          ["https://google.com", "Google!"]
+        ]
+
+  }
+```
+
+## Example code for autoload.js
+```javascript
+// helpers/autoload.js
+
+window.impHelpers.autoload = {
+  helpers: [
+    [
+      "navbar",
+      ,
+      {
+        logo: "&lt;strong&gt;🏠&lt;/strong&gt;",
+        link: "index.html",
+        links: [
+          ["https://yandex.ru", "yandex"],
+          ["https://google.com", "google"],
+        ],
+        style: "./helpers/nav.css",
+      },
+    ],
+   //... your other autoloaded modules
+  ],
+};
+```
+
+
+## Example within page
+~~~json
+ ```h:navbar
+ {
+        "logo": "&lt;strong&gt;🏠&lt;/strong&gt;",
+        "link": "index.html",
+        "links": [
+          ["https://yandex.ru", "yandex"],
+          ["https://google.com", "google"]
+        ],
+        "style": "./helpers/nav.css"
+      }
+ ```
+~~~
+
+
+
+
+## Parameters 
+|name | meaning | type | default |
+|--|--|--|--|
+|logo | HTML at the start | String |  empty |
+|link | Link for logo | String  | empty |
+|style | Link to css to replace default style | String | empty |
+|addStyle | Link to css to add to default style | String | empty |
+| exclude | List of regexps (as strings), for page urls, at which navbar is disabled |  Array of strings | empty| 
+| links | List of navbar links |  Array of arrays\* | empty| 
+
+\* List of navbar links is an array of arrays, each of which contains 2 values:
+1. String, url.
+1. String, label.</script>
+</body>
+</html>

@@ -12,7 +12,7 @@
   <meta name="og:image" content="https://raw.githubusercontent.com/girobusan/imp-helpers/master/docs/screen.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/girobusan/imp-helpers/master/docs/screen.png">
-  <link rel="icon" type="image/png" href="">
+  <link rel="icon" type="image/png" href="undefined">
   <script>
    window.settings = {
   "title": "IMP! Helpers",
@@ -27,23 +27,31 @@
   </script>
 
   <script defer>
-    function IMPEdit() {
-      console.info("Loading editor...")
-      const editor = document.createElement("script");
-      editor.id = "editorScript";
-      editor.src = "imp.js";
-      document.head.appendChild(editor);
-    }
-    if (window.location.search.indexOf("mode=edit") != -1) {
-      IMPEdit();
-    }
-    if (window.location.search.indexOf("mode=download") != -1) {
-      IMPEdit();
-    }
-    if (window.location.protocol === "file:" &&
-      window.location.search.indexOf("mode=view") == -1) {
-      IMPEdit();
-    }
+      (
+        function () {
+          function IMPEdit() {
+            console.info("Loading editor...")
+            const editor = document.createElement("script");
+            editor.id = "editorScript";
+            editor.src = "imp.js";
+            document.head.appendChild(editor);
+          }
+          if (window.location.search.indexOf("mode=edit") != -1) {
+            console.log("no edit");
+            IMPEdit();
+            return;
+          }
+          if (window.location.search.indexOf("mode=download") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (window.location.protocol === "file:" &&
+            window.location.search.indexOf("mode=view") == -1) {
+            console.log("file edit")
+            IMPEdit();
+          }
+        }
+      )();
 </script>
 
   <script defer src='helpers.js' id='helpersScript'></script>
@@ -53,11 +61,14 @@
 </head>
 <body>
 <main class="container" id="pageMain"><h1>⚙️ IMP! Helpers</h1>
- <!--push content down-->
+ <!--push content down !-->
    <div style="height:50vh; 
-   padding:0 ; 
+   padding:0; 
+   width: 100%;
+   max-width: 100%;
    margin:0 ; 
    min-height: 300px;
+box-sizing: border-box;
    margin-bottom:0px"></div>
    <div 
    class="coverHelper"
@@ -67,6 +78,8 @@
    style="position:absolute;
    box-sizing: border-box;
    padding: 1rem;
+   width: 100%;
+   max-width: 100% !important;
    top: 0;
    left:0;
    right:0;
@@ -79,6 +92,7 @@
    background-attachment: fixed;
    background-position: 50% 50%;
    background-repeat: no-repeat;
+box-sizing: border-box;
    display: flex; 
    flex-direction: column;
    justify-content:center;
@@ -88,6 +102,9 @@
    ">
      <h1 class="coverHelperTitle" style="color: white;
      margin: 0;
+width: 100%;
+max-width: 100%;
+box-sizing: border-box;
      position: sticky;
      ">
      IMP! Helpers</h1>
@@ -108,22 +125,16 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>vega-embed</strong></td>
-<td>Allows embedding of interactive Vega-lite visualizations in your page</td>
-<td>yes</td>
-<td><a href="vega-embed.html">here</a></td>
-</tr>
-<tr>
 <td><strong>cover</strong></td>
 <td>Adds nice customizable cover block to your page</td>
 <td>no, but JS may be used</td>
 <td><a href="cover.html">here</a></td>
 </tr>
 <tr>
-<td><strong>headers-nav</strong></td>
-<td>Adds in-page navigation by headers</td>
-<td>yes</td>
-<td><a href="headers-nav.html">here</a></td>
+<td><strong>data-saver</strong></td>
+<td>Widget for downloading embedded data</td>
+<td>options for static or JS-enabled version</td>
+<td><a href="data-saver.html">here </a></td>
 </tr>
 <tr>
 <td><strong>dsv-render</strong></td>
@@ -132,10 +143,10 @@
 <td><a href="dsv-render.html">here</a></td>
 </tr>
 <tr>
-<td><strong>data-saver</strong></td>
-<td>Widget for downloading embedded data</td>
-<td>options for static or JS-enabled version</td>
-<td><a href="data-saver.html">here </a></td>
+<td><strong>headers-nav</strong></td>
+<td>Adds in-page navigation by headers</td>
+<td>yes</td>
+<td><a href="headers-nav.html">here</a></td>
 </tr>
 <tr>
 <td><strong>placeholders</strong></td>
@@ -149,6 +160,12 @@
 <td>no</td>
 <td><a href="qr-code.html">here</a></td>
 </tr>
+<tr>
+<td><strong>vega-embed</strong></td>
+<td>Allows embedding of interactive Vega-lite visualizations in your page</td>
+<td>yes</td>
+<td><a href="vega-embed.html">here</a></td>
+</tr>
 </tbody>
 </table>
 <h2>Helpers API docs:</h2>
@@ -160,7 +177,7 @@
 </main>
 <footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
 
-<script>window.impData={}</script>
+<script>window.impData={"page_meta":{"mdate":"2025-01-22T13:09:39.245Z"}}</script>
 <script id="pageData" type="text/markdown"># :gear: IMP! Helpers
 
 ```helper:cover
@@ -171,6 +188,7 @@ removeH1: true
 useH1: true
 noPreview: true
 marginBottom: 0px
+fix: true
 ```
 
 ## What is it all about
@@ -183,13 +201,14 @@ You can download any of them [here](https://github.com/girobusan/imp-helpers/tre
 
 | Helper name | What it does | Requires JS to&amp;nbsp;view? | Demo &amp; doc | 
 |----|----|---|---|
-| **vega-embed** | Allows embedding of interactive Vega-lite visualizations in your page | yes |  [here](vega-embed.html) |
 | **cover** | Adds nice customizable cover block to your page | no, but JS may be used | [here](cover.html) |
-| **headers-nav** | Adds in-page navigation by headers | yes |  [here](headers-nav.html) |
-| **dsv-render**  | Allows displaying of DSV (CSV, TSV) data in markdown | no | [here](dsv-render.html) |
 | **data-saver** | Widget for downloading embedded data | options for static or JS-enabled version | [here ](data-saver.html)|
+| **dsv-render**  | Allows displaying of DSV (CSV, TSV) data in markdown | no | [here](dsv-render.html) |
+| **headers-nav** | Adds in-page navigation by headers | yes |  [here](headers-nav.html) |
 | **placeholders** | Demo of system placeholders, for documentation | no | not required |
 | **qr-code** | Embed static QR code | no | [here](qr-code.html) |
+| **vega-embed** | Allows embedding of interactive Vega-lite visualizations in your page | yes |  [here](vega-embed.html) |
+
 
 ## Helpers API docs:
 - [Overview](https://girobusan.github.io/imp/helpers.html)

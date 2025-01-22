@@ -28,9 +28,24 @@ function buildNav(params, isLocal) {
   testCSS && testCSS.remove();
   testAddCSS && testAddCSS.remove();
 
+  if (params.exclude && params.exclude.length > 0) {
+    console.log("Exclude found");
+    const currentPage = window.location.pathname;
+    //regexps
+    const EX = params.exclude.reduce((a, r) => {
+      const rX = typeof r === "string" ? new RegExp(r, "i") : r;
+      return a ? a : currentPage.match(rX);
+    }, false);
+    if (EX) {
+      return;
+    }
+  }
+
   if (Object.keys(params).length === 0) {
     return; //empty params = no navbar
   }
+
+  console.log("adding bar");
 
   const B = document.body;
   const CH = B.firstChild;

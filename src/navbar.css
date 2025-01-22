@@ -1,9 +1,10 @@
 body>nav {
+  box-sizing: border-box;
   width: 100%;
   background-color: silver;
-  font-size: 0.8em;
+  font-size: 0.75em;
   padding: 0.5em;
-  margin-top: 0;
+  margin: 0;
   padding-left: 1em;
   padding-right: 1em;
   background-color: #444;
@@ -17,7 +18,7 @@ body>nav a:hover,
 body>nav a:active,
 body>nav a:visited {
   display: inline-block;
-  margin-right: 1em;
+  margin-right: 2em;
   color: #ddd;
   text-decoration: none !important;
   background: none !important;
@@ -30,7 +31,7 @@ body>nav a:hover {
 
 body>nav .navlogo {
   display: inline-block;
-  margin-right: 1em;
+  margin-right: 2em;
 }
 
 body>nav a:last-child {

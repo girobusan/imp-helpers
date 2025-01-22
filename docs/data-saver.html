@@ -17,60 +17,49 @@
    window.settings = {
   "title": "IMP! Helpers — data-saver",
   "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
-  "image": "",
-  "icon": "",
   "filename": "data-saver.html",
   "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
   "css": "\n  #pageFooter{background-color: black}",
-  "headHTML": "",
-  "editor": "",
-  "viewCSS": "",
-  "author": "",
-  "keywords": "",
-  "enableHelpers": "true",
-  "disableInteractivity": "",
-  "pathToHelpersModule": ""
-}
-   window.savedWithImpVersion = "0.5.0"
+  "enableHelpers": "true"
+};
+   window.savedWithImpVersion = "0.6.0"
   </script>
-  <script>
-   function IMPEdit(){
-   console.info("Loading editor...")
-   const editor = document.createElement("script");
-   editor.id="editorScript";
-   editor.src="imp.js";
-   document.head.appendChild(editor);
-   }
-   window.addEventListener("DOMContentLoaded" , function(){
-  
-   if(window.location.search.indexOf("mode=view")!=-1)
-   {
-   return;
-   }
-   if(window.location.search.indexOf("mode=edit")!=-1)
-   {
-   IMPEdit();
-   return;
-   }
-   if(window.location.search.indexOf("mode=download")!=-1){
-   IMPEdit();
-   return;
-   }
-   if(window.location.protocol==="file:"){
-   IMPEdit();
-   }
-  
-})
-  </script>
+
+  <script defer>
+      (
+        function () {
+          function IMPEdit() {
+            console.info("Loading editor...")
+            const editor = document.createElement("script");
+            editor.id = "editorScript";
+            editor.src = "imp.js";
+            document.head.appendChild(editor);
+          }
+          if (window.location.search.indexOf("mode=edit") != -1) {
+            console.log("no edit");
+            IMPEdit();
+            return;
+          }
+          if (window.location.search.indexOf("mode=download") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (window.location.protocol === "file:" &&
+            window.location.search.indexOf("mode=view") == -1) {
+            console.log("file edit")
+            IMPEdit();
+          }
+        }
+      )();
+</script>
+
   <script defer src='helpers.js' id='helpersScript'></script>
   <link id = "viewCSS" rel="stylesheet" href="style.css">
-  <style id="customCSS">
-  #pageFooter{background-color: black}</style>
+  <style id="customCSS"></style>
   <!--custom html here-->
 </head>
 <body>
-<main class='container' id='pageMain'><style>.dataSaver:hover{opacity:0.7;}</style><p>↑ <a href="index.html">Helpers</a></p>
-<h1>⚙️ data-saver</h1>
+<main class="container" id="pageMain"><style>.dataSaver:hover{opacity:0.7;}</style><h1>⚙️ data-saver</h1>
 <h2>Widget for downloading data</h2>
 <p>Allows reader to download embedded data.</p>
 <p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
@@ -158,7 +147,7 @@
    padding:16px;
    text-decoration: none;
    color: inherit;
-   padding-left: 56px;" href="test.txt" download="file.txt" >
+   padding-left: 56px;" href="test.txt" download="test.txt" >
    <div style="position: absolute; left: 16px;top: 12px">
    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
    </div>
@@ -228,10 +217,10 @@
 </tbody>
 </table>
 </main>
-<footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
-<script>window.impData={"data.csv":{"type":"string","data":"a,b\nA,28\nB,55\nC,43"}}</script>
-<script id="pageData" type="text/markdown">&amp;uarr; [Helpers](index.html)
-# :gear: data-saver
+<footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+
+<script>window.impData={"data.csv":{"type":"string","data":"a,b\nA,28\nB,55\nC,43"},"page_meta":{"mdate":"2025-01-22T12:45:49.759Z"}}</script>
+<script id="pageData" type="text/markdown"># :gear: data-saver
 
 ## Widget for downloading data
 Allows reader to download embedded data.

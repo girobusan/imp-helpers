@@ -17,72 +17,61 @@
    window.settings = {
   "title": "IMP! Helpers — headers-nav",
   "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
-  "image": "",
-  "icon": "",
   "filename": "headers-nav.html",
   "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
   "css": "\n  #pageFooter{background-color: black}\n.linkToTop{ text-decoration: none ; font-weight: bold}",
-  "headHTML": "",
-  "editor": "",
-  "viewCSS": "",
-  "author": "",
-  "keywords": "",
-  "enableHelpers": "true",
-  "pathToHelpersModule": ""
-}
-   window.savedWithImpVersion = "0.4.3"
+  "enableHelpers": "true"
+};
+   window.savedWithImpVersion = "0.6.0"
   </script>
-  <script>
-   function IMPEdit(){
-   console.info("Loading editor...")
-   const editor = document.createElement("script");
-   editor.id="editorScript";
-   editor.src="imp.js";
-   document.head.appendChild(editor);
-   }
-   window.addEventListener("DOMContentLoaded" , function(){
-  
-   if(window.location.search.indexOf("mode=view")!=-1)
-   {
-   return;
-   }
-   if(window.location.search.indexOf("mode=edit")!=-1)
-   {
-   IMPEdit();
-   return;
-   }
-   if(window.location.search.indexOf("mode=download")!=-1){
-   IMPEdit();
-   return;
-   }
-   if(window.location.protocol==="file:"){
-   IMPEdit();
-   }
-  
-})
-  </script>
-  <script src='helpers.js' id='helpersScript'></script>
+
+  <script defer>
+      (
+        function () {
+          function IMPEdit() {
+            console.info("Loading editor...")
+            const editor = document.createElement("script");
+            editor.id = "editorScript";
+            editor.src = "imp.js";
+            document.head.appendChild(editor);
+          }
+          if (window.location.search.indexOf("mode=edit") != -1) {
+            console.log("no edit");
+            IMPEdit();
+            return;
+          }
+          if (window.location.search.indexOf("mode=download") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (window.location.protocol === "file:" &&
+            window.location.search.indexOf("mode=view") == -1) {
+            console.log("file edit")
+            IMPEdit();
+          }
+        }
+      )();
+</script>
+
+  <script defer src='helpers.js' id='helpersScript'></script>
   <link id = "viewCSS" rel="stylesheet" href="style.css">
-  <style id="customCSS">
-  #pageFooter{background-color: black}
-.linkToTop{ text-decoration: none ; font-weight: bold}</style>
+  <style id="customCSS"></style>
   <!--custom html here-->
 </head>
 <body>
-<main class='container' id='pageMain'><p>↑ <a href="index.html">Helpers</a></p>
-<h1>⚙️ headers-nav</h1>
-<h2>In-page navigation by headers</h2>
+<main class="container" id="pageMain"><h1 id="ID_65039_headers-nav">⚙️ headers-nav</h1>
+<h2 id="In-page_navigation_by_headers">In-page navigation by headers</h2>
 <p>Renders headers navigation menu. Requires JavaScript to view, does not show in preview. Example:</p>
 <p><span data-ihelper='headers-nav' data-params="%0AskipH1:%20true%0AlinkBack:%20%3Csup%3E&uarr;%3C/sup%3E%0A"></span>
 <small>The example above uses almost no additional styling.</small></p>
-<h3>Code for this:</h3>
+<h3 id="Code_for_this:">Code for this:</h3>
 <pre><code class="language-yaml"> <span class="hljs-string">```h:headers-nav</span>
  <span class="hljs-attr">skipH1:</span> <span class="hljs-literal">true</span>
  <span class="hljs-attr">linkBack:</span> <span class="hljs-string">&lt;sup&gt;&amp;uarr;&lt;/sup&gt;</span>
  <span class="hljs-string">```</span>
 </code></pre>
 <p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
-<h2>Parameters</h2>
+<h2 id="Parameters">Parameters</h2>
 <p>Parameters are YAML-formatted.</p>
 <table>
 <thead>
@@ -135,18 +124,18 @@
 <p>* By default menu is rendered where you've inserted the helper code.</p>
 <h2><strong>The rest of the page is here just for example!</strong></h2>
 <p>When you load IMP! Locally, it opens up an editor, where you can enter or import your text, setup SEO tags and custom CSS. When the very same page is served over http, user gets a light, <strong>static</strong> HTML. Page does not require Java Script to be viewed, it's just plain HTML. <a href="https://girobusan.github.io/imp/">Demo and docs</a>.</p>
-<h2>Possible uses</h2>
+<h2 id="Possible_uses">Possible uses</h2>
 <ul>
 <li>Digital experiments</li>
 <li>Small-scale sites</li>
 <li>Anywhere, where you need &quot;just html file&quot;.</li>
 </ul>
-<h2>System requirements</h2>
-<h3>For authoring</h3>
+<h2 id="System_requirements">System requirements</h2>
+<h3 id="For_authoring">For authoring</h3>
 <p>Firefox or Chrome preferred (tested). If you've updated your browser within last 4 years, it should be fine.</p>
-<h3>For viewing</h3>
+<h3 id="For_viewing">For viewing</h3>
 <p>Any browser.</p>
-<h2>Features</h2>
+<h2 id="Features">Features</h2>
 <ul>
 <li>Fully local thing &amp;mdash; no server required, no setup. It's YOUR page!</li>
 <li>Pages can be fully static, even text-based browser friendly (You'll need modern browser for editing)</li>
@@ -157,30 +146,31 @@
 <li><a href="https://girobusan.github.io/imp/themes/"> Customizable </a></li>
 <li>Lo-fi 😃</li>
 </ul>
-<h2>How to start</h2>
-<h3>Two clicks setup, with CDN</h3>
+<h2 id="How_to_start">How to start</h2>
+<h3 id="Two_clicks_setup44_with_CDN">Two clicks setup, with CDN</h3>
 <ol>
 <li>Click <a href="https://girobusan.github.io/imp/impcdn.html#edit"> this link </a></li>
 <li>Scroll down, click &quot;Duplicate page&quot; button</li>
 <li>Enter any filename, ending with <code>.html</code>, save.</li>
 </ol>
 <p>This setup does not require downloading of any other files. Editor and main CSS will be loaded from CDN. You may load newly downloaded file in your browser, edit content and settings, save it (see below) and than upload to your server.</p>
-<h3>Local setup (everything local, no CDN)</h3>
+<h3 id="Local_setup_40everything_local44_no_CDN41">Local setup (everything local, no CDN)</h3>
 <ol>
 <li>Download and unpack. There are 3 files: <code>index.html</code>, <code>style.css</code> and <code>imp.js</code></li>
 <li>Open the <code>index.html</code> in your browser (Firefox or Chrome is recommended)</li>
 <li>Edit it, import or enter your text, preview it. Click the big &quot;Export HTML&quot; (&quot;Save&quot; in newer version) button and save file to the same directory. If you didn't change file name, overwrite old file.</li>
 </ol>
 <p>You may skip <code>imp.js</code> while uploading files to server, as it's not required for <em>viewing</em> file.</p>
-<h2>Other</h2>
-<h3>Customization</h3>
+<h2 id="Other">Other</h2>
+<h3 id="Customization">Customization</h3>
 <p>There is a field for custom CSS in each IMP! file for small adjustments. But you can replace the whole <code>style.css</code> with your own. There is nothing fancy about it.</p>
-<h3>More files</h3>
+<h3 id="More_files">More files</h3>
 <p>You can have as many imps as you want. If they would live in one directory, they will share single <code>imp.js</code> file.</p>
 </main>
-<footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
-<script id="pageData" type="text/markdown">&amp;uarr; [Helpers](index.html)
-# :gear: headers-nav
+<footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+
+<script>window.impData={}</script>
+<script id="pageData" type="text/markdown"># :gear: headers-nav
 
 ## In-page navigation by headers
 
