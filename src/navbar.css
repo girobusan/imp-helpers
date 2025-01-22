@@ -1,0 +1,38 @@
+body>nav {
+  width: 100%;
+  background-color: silver;
+  font-size: 0.8em;
+  padding: 0.5em;
+  margin-top: 0;
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color: #444;
+  color: #eee;
+  margin-top: -1px;
+}
+
+body>nav a,
+body>nav a:focus,
+body>nav a:hover,
+body>nav a:active,
+body>nav a:visited {
+  display: inline-block;
+  margin-right: 1em;
+  color: #ddd;
+  text-decoration: none !important;
+  background: none !important;
+  box-shadow: none;
+}
+
+body>nav a:hover {
+  color: white;
+}
+
+body>nav .navlogo {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+body>nav a:last-child {
+  margin-right: 0;
+}

@@ -52,6 +52,12 @@ module.exports = function(env, argv) {
         },
 
         {
+          test: /\.css$/,
+          resourceQuery: /raw/,
+          type: "asset/source",
+        },
+
+        {
           test: /\.svg$/,
           resourceQuery: { not: [/raw/] },
           type: "asset/inline",
@@ -59,6 +65,7 @@ module.exports = function(env, argv) {
 
         {
           test: /\.(less|css|scss)$/,
+          resourceQuery: { not: [/raw/] },
           use: ["style-loader", "css-loader", "sass-loader"],
         },
         {

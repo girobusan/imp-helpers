@@ -4,14 +4,21 @@
 // Displays logo (linked) and set of links.
 
 //
+const defaultCSS = require("./navbar.css?raw");
+// console.log(defaultCSS);
+
 const API = globalThis.impHelpers;
 var viewMode = false;
+
+// params.style = add custom style, skip default
+// params.addstyle = add both custom and default style
 
 function buildNav(params, isLocal) {
   // console.log("render navbar", params, isLocal);
 
   const testNav = document.querySelector("#IMPnavbar");
   const testCSS = document.querySelector("#IMPnavbarCSS");
+  const testAddCSS = document.querySelector("#IMPnavbarUserCSS");
   testNav && console.log(testNav.dataset.local);
   if (testNav && !isLocal && testNav.dataset.local === "true") {
     return; // autoloaded navbar dows not overwrites locally defined one
@@ -19,6 +26,7 @@ function buildNav(params, isLocal) {
 
   testNav && testNav.remove();
   testCSS && testCSS.remove();
+  testAddCSS && testAddCSS.remove();
 
   if (Object.keys(params).length === 0) {
     return; //empty params = no navbar
@@ -31,12 +39,24 @@ function buildNav(params, isLocal) {
   navEl.dataset["local"] = isLocal;
   CH ? B.insertBefore(navEl, CH) : B.appendChild(navEl);
 
-  if (params.style) {
+  //default style
+  if (!params.style) {
+    const H = document.head;
+    const CSS = document.createElement("style");
+    CSS.id = "IMPnavbarCSS";
+    CSS.innerText = defaultCSS;
+    // CSS.rel = "stylesheet";
+    // CSS.href = params.style;
+    H.appendChild(CSS);
+  }
+  //user style
+  let addstyle = params.style || params.addstyle || params.addStyle;
+  if (addstyle) {
     const H = document.head;
     const CSS = document.createElement("link");
-    CSS.id = "IMPnavbarCSS";
+    CSS.id = "IMPnavbarUserCSS";
     CSS.rel = "stylesheet";
-    CSS.href = params.style;
+    CSS.href = addstyle;
     H.appendChild(CSS);
   }
 
