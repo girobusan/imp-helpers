@@ -1,4 +1,4 @@
-import Papa from 'papaparse';
+import Papa from "papaparse";
 const API = globalThis.impHelpers;
 const nameRx = /^@name:\s*(.+)\s*$/gm;
 const hideRx = /^@hide\s*$/gm;
@@ -6,31 +6,32 @@ const jsonRx = /\.json$/i;
 
 function row2html(r, tag) {
   if (!tag) {
-    tag = "td"
+    tag = "td";
   }
   let result = "<tr>";
-  r.forEach(d => result += (`<${tag}> ${d} </${ tag }>`))
-  return result + "</tr>"
+  r.forEach((d) => (result += `<${tag}> ${d} </${tag}>`));
+  return result + "</tr>";
 }
 
 function doRender(str, noHeader) {
-  const parsed = Papa.parse(str.trim(),
+  const parsed = Papa.parse(
+    str.trim(),
     // escapeChar:"\\"
   );
   const data = parsed.data;
-  let html = "<table>\n"
+  let html = "<table>\n";
   if (data.errors) {
-    console.error(data.errors)
+    console.error(data.errors);
   }
   if (!noHeader) {
-    html += "<thead>\n"
-    html += `${ row2html(data.shift() , "th") }\n`
-    html += "</thead>\n<tbody>\n"
+    html += "<thead>\n";
+    html += `${row2html(data.shift(), "th")}\n`;
+    html += "</thead>\n<tbody>\n";
   } else {
-    html += "<tbody>"
+    html += "<tbody>";
   }
-  data.forEach(d => html += `${ row2html(d) }\n`);
-  return html + "</tbody></table>"
+  data.forEach((d) => (html += `${row2html(d)}\n`));
+  return html + "</tbody></table>";
 }
 
 function render(params, params_raw, subname) {
@@ -41,23 +42,19 @@ function render(params, params_raw, subname) {
     strData = strData.replace(hideRx, "");
   }
   if (save) {
-    let parse = save[1].toLowerCase().endsWith(".json")
+    let parse = save[1].toLowerCase().endsWith(".json");
 
     strData = strData.replace(nameRx, "");
     let saveData = strData.trim();
-    saveData = parse ?
-      Papa.parse(strData.trim(), {
-        header: !(subname && subname.toLowerCase() == 'no-header')
-      }).data :
-      saveData;
+    saveData = parse
+      ? Papa.parse(strData.trim(), {
+        header: !(subname && subname.toLowerCase() == "no-header"),
+      }).data
+      : saveData;
 
-
-    window.impData[save[1]] = {
-      type: parse ? "object" : "string",
-      data: saveData
-    }
+    window.impData[save[1]] = saveData;
   }
-  const noHead = subname && subname.toLowerCase().trim() === 'no-header';
+  const noHead = subname && subname.toLowerCase().trim() === "no-header";
   return hide ? "" : doRender(strData, noHead);
 }
 
@@ -65,7 +62,11 @@ function preview(params, params_raw, subname) {
   return render(params, params_raw, subname);
 }
 
-API.register("dsv-render", {
-  render,
-  preview
-}, "raw");
+API.register(
+  "dsv-render",
+  {
+    render,
+    preview,
+  },
+  "raw",
+);

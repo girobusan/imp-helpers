@@ -9,68 +9,57 @@
   <meta name="keywords" content="">
   <meta name="og:title" content="IMP! Helpers — dsv-render">
   <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
-  <meta name="og:image" content="">
+  <meta name="og:image" content="undefined">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="">
-  <link rel="icon" type="image/png" href="">
+  <meta name="twitter:image" content="undefined">
+  <link rel="icon" type="image/png" href="undefined">
   <script>
    window.settings = {
   "title": "IMP! Helpers — dsv-render",
   "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
-  "image": "",
-  "icon": "",
   "filename": "dsv-render-embed.html",
   "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
   "css": "\n  #pageFooter{background-color: black}",
-  "headHTML": "",
-  "editor": "",
-  "viewCSS": "",
-  "author": "",
-  "keywords": "",
-  "enableHelpers": "true",
-  "disableInteractivity": "",
-  "pathToHelpersModule": ""
-}
-   window.savedWithImpVersion = "0.5.0"
+  "enableHelpers": "true"
+};
+   window.savedWithImpVersion = "0.6.0"
   </script>
-  <script>
-   function IMPEdit(){
-   console.info("Loading editor...")
-   const editor = document.createElement("script");
-   editor.id="editorScript";
-   editor.src="imp.js";
-   document.head.appendChild(editor);
-   }
-   window.addEventListener("DOMContentLoaded" , function(){
-  
-   if(window.location.search.indexOf("mode=view")!=-1)
-   {
-   return;
-   }
-   if(window.location.search.indexOf("mode=edit")!=-1)
-   {
-   IMPEdit();
-   return;
-   }
-   if(window.location.search.indexOf("mode=download")!=-1){
-   IMPEdit();
-   return;
-   }
-   if(window.location.protocol==="file:"){
-   IMPEdit();
-   }
-  
-})
-  </script>
+
+  <script defer>
+      (
+        function () {
+          function IMPEdit() {
+            console.info("Loading editor...")
+            const editor = document.createElement("script");
+            editor.id = "editorScript";
+            editor.src = "imp.js";
+            document.head.appendChild(editor);
+          }
+          if (window.location.search.indexOf("mode=edit") != -1) {
+            console.log("no edit");
+            IMPEdit();
+            return;
+          }
+          if (window.location.search.indexOf("mode=download") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (window.location.protocol === "file:" &&
+            window.location.search.indexOf("mode=view") == -1) {
+            console.log("file edit")
+            IMPEdit();
+          }
+        }
+      )();
+</script>
+
   <script defer src='helpers.js' id='helpersScript'></script>
   <link id = "viewCSS" rel="stylesheet" href="style.css">
-  <style id="customCSS">
-  #pageFooter{background-color: black}</style>
+  <style id="customCSS"></style>
   <!--custom html here-->
 </head>
 <body>
-<main class='container' id='pageMain'><p>↑ <a href="index.html">Helpers</a></p>
-<h1>⚙️ dsv-render</h1>
+<main class="container" id="pageMain"><h1>⚙️ dsv-render</h1>
 <h2>DSV format renderer — data embedding</h2>
 <p>This example demonstrates usage of dsv-renderer ability to embed data and than use it from other helper</p>
 <p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
@@ -100,10 +89,10 @@ B%22labelAngle%22:%200%7D%7D,%0A%20%20%20%20%22y%22:%20%7B%22fie
 ld%22:%20%22b%22,%20%22type%22:%20%22quantitative%22%7D%0A%20%20
 %7D%0A%7D%0A</script>
   </div></main>
-<footer id="pageFooter"><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
-<script>window.impData={"data.csv":{"type":"string","data":"a,b\nA,28\nB,55\nC,43"}}</script>
-<script id="pageData" type="text/markdown">&amp;uarr; [Helpers](index.html)
-# :gear: dsv-render
+<footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+
+<script>window.impData={"data.csv":"a,b\nA,28\nB,55\nC,43","page_meta":{"mdate":"2025-01-22T13:23:53.559Z"}}</script>
+<script id="pageData" type="text/markdown"># :gear: dsv-render
 
 ## DSV format renderer — data embedding
 
