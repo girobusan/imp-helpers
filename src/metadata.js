@@ -6,12 +6,13 @@ const API = globalThis.impHelpers;
 let isOK = true;
 let META;
 let VIEWED;
+let myParams = null;
 
 function prepare() {
   let ID = window.impData;
   if (!ID) {
     isOK = false;
-    console.error("Metadata: Data module is not loaded.");
+    console.log("Metadata: Data module is not loaded.");
     return;
   }
   if (!ID.page_meta) {
@@ -22,8 +23,23 @@ function prepare() {
 }
 
 function postprocess(html) {
+  console.log("postprocess metadata");
   mdate();
+  //url
+  if (myParams && myParams.baseURL) {
+    const bu = myParams.baseURL.endsWith("/")
+      ? myParams.baseURL
+      : myParams.baseURL + "/";
+    console.log("set base url");
+    setVal("url", bu + window.location.pathname.split("/").pop());
+  }
   return html;
+}
+
+function autoload(params) {
+  console.log("metadata autoload ");
+  //maybe, we know the url?
+  myParams = params;
 }
 
 function getVal(name) {
@@ -47,4 +63,4 @@ function init(_, viewMode) {
   prepare();
 }
 
-API.register("metadata", { init }, "json", postprocess);
+API.register("metadata", { init, autoload }, "json", postprocess);
