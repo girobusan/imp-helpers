@@ -26,13 +26,6 @@ function postprocess(html) {
   console.log("postprocess metadata");
   mdate();
   //url
-  if (myParams && myParams.baseURL) {
-    const bu = myParams.baseURL.endsWith("/")
-      ? myParams.baseURL
-      : myParams.baseURL + "/";
-    console.log("set base url");
-    setVal("url", bu + window.location.pathname.split("/").pop());
-  }
   return html;
 }
 
@@ -56,6 +49,16 @@ function setVal(name, value) {
 
 function mdate() {
   setVal("mdate", new Date());
+}
+
+function url() {
+  if (myParams && myParams.baseURL) {
+    const bu = myParams.baseURL.endsWith("/")
+      ? myParams.baseURL
+      : myParams.baseURL + "/";
+    // console.log("set base url");
+    setVal("url", bu + window.location.pathname.split("/").pop());
+  }
 }
 
 function init(_, viewMode) {
