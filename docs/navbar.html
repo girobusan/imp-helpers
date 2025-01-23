@@ -61,15 +61,17 @@
 <body>
 <main class="container" id="pageMain"><h1>⚙️ navbar</h1>
 <h2>Displays navbar</h2>
-<p>This helper is intended to be used with autoload functionality, to add shared navbar to the set of IMP! pages. But it can be used as regular helper.</p>
+<p>This helper is intended to be used with autoload functionality, to add shared navbar to the set of IMP! pages. But it can be used as regular helper (Like on this page ↑, locally defined navbar overwrites the autoloaded one).</p>
 <p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
 <script type='application/json' data-ihelper='navbar' >
  {
         "logo": "<strong>🏠</strong>",
         "link": "index.html",
         "links": [
-          ["https://yandex.ru", "Yandex!"],
-          ["https://google.com", "Google!"]
+          ["navbar.html", "This"],
+          ["navbar.html", "navbar"],
+          ["navbar.html", "is"],
+          ["navbar.html", "local!"]
         ]
 
   }
@@ -166,12 +168,12 @@
 </main>
 <footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
 
-<script>window.impData={"page_meta":{"mdate":"2025-01-22T13:14:21.805Z"}}</script>
+<script>window.impData={"page_meta":{"mdate":"2025-01-23T10:58:43.385Z"}}</script>
 <script id="pageData" type="text/markdown"># :gear: navbar
 
 ## Displays navbar
 
-This helper is intended to be used with autoload functionality, to add shared navbar to the set of IMP! pages. But it can be used as regular helper.
+This helper is intended to be used with autoload functionality, to add shared navbar to the set of IMP! pages. But it can be used as regular helper (Like on this page ↑, locally defined navbar overwrites the autoloaded one).
 
 &amp;rarr; See [this page in edit mode](?mode=edit).
 
@@ -180,8 +182,10 @@ This helper is intended to be used with autoload functionality, to add shared na
         "logo": "&lt;strong&gt;🏠&lt;/strong&gt;",
         "link": "index.html",
         "links": [
-          ["https://yandex.ru", "Yandex!"],
-          ["https://google.com", "Google!"]
+          ["navbar.html", "This"],
+          ["navbar.html", "navbar"],
+          ["navbar.html", "is"],
+          ["navbar.html", "local!"]
         ]
 
   }

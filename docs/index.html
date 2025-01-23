@@ -76,7 +76,6 @@ box-sizing: border-box;
    data-cleanup="true"
    data-useh1=true
    style="position:absolute;
-   box-sizing: border-box;
    padding: 1rem;
    width: 100%;
    max-width: 100% !important;
@@ -92,12 +91,13 @@ box-sizing: border-box;
    background-attachment: fixed;
    background-position: 50% 50%;
    background-repeat: no-repeat;
-box-sizing: border-box;
+   box-sizing: border-box;
    display: flex; 
    flex-direction: column;
    justify-content:center;
    text-align: center;
    align-content: center;
+   margin-top:-1px;
    margin: 0;
    ">
      <h1 class="coverHelperTitle" style="color: white;
@@ -149,6 +149,12 @@ box-sizing: border-box;
 <td><a href="headers-nav.html">here</a></td>
 </tr>
 <tr>
+<td><strong>navbar</strong></td>
+<td>Adds simple navigation bar, can be used with upcoming autoload feature to add unified navbar to the set of pages.</td>
+<td>yes</td>
+<td><a href="navbar.html">here</a></td>
+</tr>
+<tr>
 <td><strong>placeholders</strong></td>
 <td>Demo of system placeholders, for documentation</td>
 <td>no</td>
@@ -177,7 +183,7 @@ box-sizing: border-box;
 </main>
 <footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
 
-<script>window.impData={"page_meta":{"mdate":"2025-01-22T13:09:39.245Z"}}</script>
+<script>window.impData={"page_meta":{"mdate":"2025-01-23T10:54:18.312Z"}}</script>
 <script id="pageData" type="text/markdown"># :gear: IMP! Helpers
 
 ```helper:cover
@@ -205,6 +211,7 @@ You can download any of them [here](https://github.com/girobusan/imp-helpers/tre
 | **data-saver** | Widget for downloading embedded data | options for static or JS-enabled version | [here ](data-saver.html)|
 | **dsv-render**  | Allows displaying of DSV (CSV, TSV) data in markdown | no | [here](dsv-render.html) |
 | **headers-nav** | Adds in-page navigation by headers | yes |  [here](headers-nav.html) |
+| **navbar** | Adds simple navigation bar, can be used with upcoming autoload feature to add unified navbar to the set of pages. | yes | [here](navbar.html) |
 | **placeholders** | Demo of system placeholders, for documentation | no | not required |
 | **qr-code** | Embed static QR code | no | [here](qr-code.html) |
 | **vega-embed** | Allows embedding of interactive Vega-lite visualizations in your page | yes |  [here](vega-embed.html) |

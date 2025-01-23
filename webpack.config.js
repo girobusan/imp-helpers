@@ -34,6 +34,8 @@ module.exports = function(env, argv) {
       "qr-code": "./src/qr-code.js",
       navbar: "./src/navbar.js",
       metadata: "./src/metadata.js",
+      "uni-footer": "./src/uni-footer.js",
+      timestamp: "./src/timestamp.js",
     },
     devtool: argv.mode != "production" ? "inline-source-map" : false,
     devServer:
