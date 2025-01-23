@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMP! Helpers — data-saver</title>
+  <meta name="description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="IMP! Helpers — data-saver">
+  <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="og:image" content="undefined">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="undefined">
+  <link rel="icon" type="image/png" href="undefined">
+  <script>
+   window.settings = {
+  "title": "IMP! Helpers — data-saver",
+  "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
+  "filename": "timestamp.html",
+  "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
+  "css": "\n  #pageFooter{background-color: black}",
+  "enableHelpers": "true"
+};
+   window.savedWithImpVersion = "0.6.0"
+  </script>
+
+  <script defer>
+      (
+        function () {
+          function IMPEdit() {
+            console.info("Loading editor...")
+            const editor = document.createElement("script");
+            editor.id = "editorScript";
+            editor.src = "imp.js";
+            document.head.appendChild(editor);
+          }
+          if (window.location.search.indexOf("mode=edit") != -1) {
+            console.log("no edit");
+            IMPEdit();
+            return;
+          }
+          if (window.location.search.indexOf("mode=download") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (window.location.protocol === "file:" &&
+            window.location.search.indexOf("mode=view") == -1) {
+            console.log("file edit")
+            IMPEdit();
+          }
+        }
+      )();
+</script>
+
+  <script defer src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS"></style>
+  <!--custom html here-->
+</head>
+<body>
+<main class="container" id="pageMain"><h1>⚙️ timestamp</h1>
+<h2>Add static timestamp</h2>
+<p>Simple static customizable timestamp, which shows the date and|or time of last save. This is static timestamp, it will update or added on save. The result will be wrapped in <code>p</code> tag.</p>
+<p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
+<h2>Example</h2>
+<h3>Code</h3>
+<p>Note the YAML syntax for nested options (&quot;options&quot; key)</p>
+<pre><code class="language-yaml"> <span class="hljs-string">```h:timestamp</span>
+ <span class="hljs-attr">locale:</span> <span class="hljs-string">&quot;en-US&quot;</span>
+ <span class="hljs-attr">template:</span> <span class="hljs-string">&quot;&lt;small&gt;Last saved: $time&lt;/small&gt;&quot;</span>
+ <span class="hljs-attr">options:</span> 
+   <span class="hljs-attr">timeStyle:</span> <span class="hljs-string">short</span>
+   <span class="hljs-attr">dateStyle:</span> <span class="hljs-string">long</span>
+   <span class="hljs-attr">hourCycle:</span> <span class="hljs-string">h24</span>
+ <span class="hljs-string">```</span>
+</code></pre>
+<h3>Result</h3>
+<p><small>Last saved: January 23, 2025 at 19:53</small></p>
+<h2>Using with autoload</h2>
+<p>This helper is adapted for autoload. You may pass the same options for autoloaded helper, plus <code>exclude</code> option, which works the same way, as the one in <a href="navbar.html">navbar helper</a>. Autoloaded helper will add timestamp at the bottom of each page (except excluded) on save.</p>
+<h3>Code</h3>
+<pre><code class="language-javascript">{
+	...
+  [<span class="hljs-string">&quot;timestamp&quot;</span> , 
+    {<span class="hljs-attr">locale</span>: <span class="hljs-string">&quot;en-AU&quot;</span> , 
+    <span class="hljs-attr">options</span>:{
+      <span class="hljs-attr">dateStyle</span>: <span class="hljs-string">&quot;long&quot;</span>
+	    }
+  }],
+	...
+}
+</code></pre>
+<h2>Parameters</h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>meaning</th>
+<th>type</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td>Locale code for Intl.DateTimeFormat</td>
+<td>String</td>
+<td>Nothing</td>
+</tr>
+<tr>
+<td>template</td>
+<td>Template for timestamp. <code>$time</code> will be replaced with formatted time</td>
+<td>String</td>
+<td>&quot;&lt;small style='color:silver'&gt;—$time&lt;/small&gt;&quot;</td>
+</tr>
+<tr>
+<td>options</td>
+<td>Options for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat">Intl.DateTimeFormat</a></td>
+<td>Dictionary</td>
+<td>Empty</td>
+</tr>
+</tbody>
+</table>
+<p><small style='color:silver'>Last saved: 1/23/25, 19:53</small></p></main>
+<footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+
+<script>window.impData={"data.csv":"a,b\nA,28\nB,55\nC,43","page_meta":{"mdate":"2025-01-23T16:53:14.318Z"}}</script>
+<script id="pageData" type="text/markdown"># :gear: timestamp
+
+## Add static timestamp
+Simple static customizable timestamp, which shows the date and|or time of last save. This is static timestamp, it will update or added on save. The result will be wrapped in `p` tag.
+
+&amp;rarr; See [this page in edit mode](?mode=edit).
+
+## Example
+
+### Code
+Note the YAML syntax for nested options ("options" key)
+~~~yaml
+ ```h:timestamp
+ locale: "en-US"
+ template: "&lt;small&gt;Last saved: $time&lt;/small&gt;"
+ options: 
+   timeStyle: short
+   dateStyle: long
+   hourCycle: h24
+ ```
+~~~
+### Result
+
+```h:timestamp
+ locale: "en-US"
+ template: "&lt;small&gt;Last saved: $time&lt;/small&gt;"
+ options: 
+   timeStyle: short
+   dateStyle: long
+   hourCycle: h24
+
+```
+
+## Using with autoload
+
+This helper is adapted for autoload. You may pass the same options for autoloaded helper, plus `exclude` option, which works the same way, as the one in [navbar helper](navbar.html). Autoloaded helper will add timestamp at the bottom of each page (except excluded) on save.
+
+### Code
+
+~~~javascript
+{
+	...
+  ["timestamp" , 
+    {locale: "en-AU" , 
+    options:{
+      dateStyle: "long"
+	    }
+  }],
+	...
+}
+~~~
+
+## Parameters 
+|name | meaning | type | default |
+|--|--|--|--|
+| locale | Locale code for Intl.DateTimeFormat | String | Nothing |
+|template | Template for timestamp. `$time` will be replaced with formatted time | String | "\&lt;small style='color:silver'&gt;—$time\&lt;/small&gt;" |
+|options | Options for [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) | Dictionary | Empty |</script>
+</body>
+</html>

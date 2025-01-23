@@ -15,5 +15,17 @@ window.impHelpers.autoload = {
       },
     ],
     ["metadata"],
+    [
+      "timestamp",
+      {
+        template: "<small style='color:silver'>Last saved: $time</small>",
+        locale: "en-US",
+        options: {
+          hourCycle: "h24",
+          timeStyle: "short",
+          dateStyle: "short",
+        },
+      },
+    ],
   ],
 };

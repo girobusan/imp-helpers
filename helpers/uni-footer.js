@@ -1,0 +1,1 @@
+(()=>{const e=globalThis.impHelpers;var n,o=!1;e.register("uni-footer",{init:function(e,n){o=n},animate:function(e,t){if(t.html&&(n=t.html),o&&n){let e=document.getElementById("pageFooter");if(!e)return void console.log("footer not found in view mode");if(e.innerHTML==n)return;e.innerHTML=n}}},"json")})();

@@ -42,23 +42,28 @@ function createTimestamp(params) {
 }
 
 function animate(_, params_in) {
+  console.log("animating timestamp");
   if (viewMode) {
     return;
   } //do nothing in view mode
   myParams = params_in || {};
-  if (viewMode) {
-    return;
-  }
+}
+
+function autoload(params_in, viewMode) {
+  console.log("autoload");
 }
 
 function postprocess(html) {
+  console.log("adding timestamp?");
   if (!myParams) {
+    console.log("no params for timestamp");
     // that means, no autoload was performed
     return html;
   }
   if (isExcluded(myParams)) {
     return html;
   }
+  console.log("timestamping...");
   return html + `<p>${createTimestamp(myParams)}</p>`;
 }
 
@@ -71,13 +76,13 @@ function preview(params) {
 }
 
 function init(_, v) {
-  myParams = {};
+  // myParams = {};
   viewMode = v;
 }
 
 API.register(
   "timestamp",
   { init, animate, render, preview },
-  "json",
+  "yaml",
   postprocess,
 );
