@@ -1,6 +1,28 @@
 const QRCode = require("qrcode");
 const API = globalThis.impHelpers;
 
+function prepText(t) {
+  if (t.startsWith("\\@")) {
+    return t.substring(1);
+  }
+  if (!t.startsWith("@")) {
+    return t;
+  }
+  // yep, this is call for data.
+  if (!window.impData) {
+    return "No data";
+  }
+  const dataPath = t.substring(1).split("/");
+  const R = dataPath.reduce((a, e) => {
+    if (!a) {
+      return a;
+    }
+    return a[e];
+  }, window.impData);
+
+  return R.toString(); // just because
+}
+
 function makeCode(str, size, bg, fg, margin) {
   // size = size || 256;
   const opts = {
@@ -21,14 +43,20 @@ function render(params) {
   if (!params.text) {
     return "";
   }
+  const theText = prepText(params.text);
   return makeCode(
-    params.text,
+    theText,
     params.size,
     params.bgColor,
     params.fgColor,
     params.margin,
   )
-    .then((qrcode) => `<div class='qr_code_container'>${qrcode}</div>`)
+    .then(
+      (qrcode) =>
+        `<div class='qr_code_container' 
+         role='complementary' aria-label='${theText}'  
+         title='${theText}'>${qrcode}</div>`,
+    )
     .catch((e) => API.errorNotice("QR error", e));
 }
 

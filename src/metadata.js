@@ -25,14 +25,13 @@ function prepare() {
 function postprocess(html) {
   console.log("postprocess metadata");
   mdate();
-  //url
+  url();
   return html;
 }
 
 function autoload(params) {
-  console.log("metadata autoload ");
-  //maybe, we know the url?
   myParams = params;
+  url();
 }
 
 function getVal(name) {
@@ -52,17 +51,32 @@ function mdate() {
 }
 
 function url() {
-  if (myParams && myParams.baseURL) {
-    const bu = myParams.baseURL.endsWith("/")
-      ? myParams.baseURL
-      : myParams.baseURL + "/";
-    // console.log("set base url");
-    setVal("url", bu + window.location.pathname.split("/").pop());
+  if (!myParams || !myParams.baseURL) {
+    return;
   }
+  let filepath = window.location.pathname.split("/").pop(); // last item
+  //
+  if (myParams.localPathLength) {
+    // much better!
+    filepath = (window.location.origin + window.location.pathname).substring(
+      myParams.localPathLength,
+    );
+  }
+  const bu = myParams.baseURL.endsWith("/")
+    ? myParams.baseURL
+    : myParams.baseURL + "/";
+  console.log("Metadata: Set url to", bu + filepath);
+  setVal("url", bu + filepath);
 }
 
 function init(_, viewMode) {
   VIEWED = viewMode;
+  const cleanURL = window.location.origin + window.location.pathname;
+  !viewMode &&
+    console.info(
+      "Metadata: This page localPathLength is",
+      cleanURL.lastIndexOf("/") + 1,
+    );
   prepare();
 }
 
