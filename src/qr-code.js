@@ -1,26 +1,27 @@
 const QRCode = require("qrcode");
 const API = globalThis.impHelpers;
+import { getDataByDataURL } from "./utility_fns";
 
 function prepText(t) {
   if (t.startsWith("\\@")) {
     return t.substring(1);
   }
-  if (!t.startsWith("@")) {
-    return t;
+  if (t.startsWith("@")) {
+    return getDataByDataURL(t);
   }
   // yep, this is call for data.
-  if (!window.impData) {
-    return "No data";
-  }
-  const dataPath = t.substring(1).split("/");
-  const R = dataPath.reduce((a, e) => {
-    if (!a) {
-      return a;
-    }
-    return a[e];
-  }, window.impData);
-
-  return R.toString(); // just because
+  // if (!window.impData) {
+  //   return "No data";
+  // }
+  // const dataPath = t.substring(1).split("/");
+  // const R = dataPath.reduce((a, e) => {
+  //   if (!a) {
+  //     return a;
+  //   }
+  //   return a[e];
+  // }, window.impData);
+  //
+  return t; // just because
 }
 
 function makeCode(str, size, bg, fg, margin) {

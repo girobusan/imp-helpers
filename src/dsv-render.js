@@ -4,6 +4,19 @@ const nameRx = /^@name:\s*(.+)\s*$/gm;
 const hideRx = /^@hide\s*$/gm;
 const jsonRx = /\.json$/i;
 
+function save2url(u, data) {
+  const parts = u
+    .substring(1)
+    .split("/")
+    .reduce((a, e) => {
+      if (!a[e]) {
+        a[e] = {};
+      }
+      return a[e];
+    }, window.impData);
+  parts = data;
+}
+
 function row2html(r, tag) {
   if (!tag) {
     tag = "td";
@@ -52,7 +65,9 @@ function render(params, params_raw, subname) {
       }).data
       : saveData;
 
-    window.impData[save[1]] = saveData;
+    save.startsWith("@")
+      ? save2url(save[1], saveData)
+      : (window.impData[save[1]] = saveData);
   }
   const noHead = subname && subname.toLowerCase().trim() === "no-header";
   return hide ? "" : doRender(strData, noHead);
