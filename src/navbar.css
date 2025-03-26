@@ -42,8 +42,9 @@ body>nav#IMPnavbar a:hover {
 }
 
 body>nav#IMPnavbar .navlogo {
-  display: inline-block;
+  display: block;
   margin-right: 2em;
+  align-self: center;
 }
 
 body>nav#IMPnavbar a:last-child {
@@ -52,8 +53,8 @@ body>nav#IMPnavbar a:last-child {
 
 @media (width<700px) {
   body>nav#IMPnavbar {
-    /* flex-direction: column; */
     font-size: 1em;
+    position: fixed;
   }
 
   body>nav#IMPnavbar button {
