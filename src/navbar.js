@@ -5,6 +5,7 @@
 
 //
 const defaultCSS = require("./navbar.css?raw");
+const menuIcon = require("./icons/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?raw");
 // console.log(defaultCSS);
 
 const API = globalThis.impHelpers;
@@ -86,12 +87,20 @@ function buildNav(params, isLocal) {
   }
 
   if (params.links) {
+    const linkCont = document.createElement("div");
+    linkCont.classList.add("navbar_links");
     params.links.forEach((l) => {
       const myLi = document.createElement("a");
       myLi.href = l[0];
       myLi.innerHTML = l[1] || "*";
-      navEl.append(myLi);
+      linkCont.appendChild(myLi);
     });
+    navEl.appendChild(linkCont);
+    //icon
+    const menuB = document.createElement("button");
+    menuB.innerHTML = menuIcon;
+    menuB.addEventListener("click", () => linkCont.classList.toggle("shown"));
+    navEl.appendChild(menuB);
   }
 }
 

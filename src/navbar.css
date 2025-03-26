@@ -3,6 +3,8 @@ body>nav#IMPnavbar {
   width: 100%;
   background-color: silver;
   font-size: 0.75em;
+  position: relative;
+  z-index: 1000;
   padding: 0.5em;
   margin: 0;
   padding-left: 1em;
@@ -10,6 +12,16 @@ body>nav#IMPnavbar {
   background-color: #444;
   color: #eee;
   margin-top: -1px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#IMPnavbar .navbar_links {
+  align-self: flex-end;
+}
+
+body>nav#IMPnavbar button {
+  display: none;
 }
 
 body>nav#IMPnavbar a,
@@ -36,4 +48,34 @@ body>nav#IMPnavbar .navlogo {
 
 body>nav#IMPnavbar a:last-child {
   margin-right: 0;
+}
+
+@media (width<700px) {
+  body>nav#IMPnavbar {
+    /* flex-direction: column; */
+    font-size: 1em;
+  }
+
+  body>nav#IMPnavbar button {
+    display: block;
+    appearance: none;
+    border: none;
+    background: none;
+    color: white;
+  }
+
+  #IMPnavbar .navbar_links {
+    position: absolute;
+    display: none;
+    background-color: inherit;
+    flex-direction: column;
+    padding: 1rem;
+    left: 0;
+    right: 0;
+    top: 100%;
+  }
+
+  #IMPnavbar .navbar_links.shown {
+    display: flex;
+  }
 }

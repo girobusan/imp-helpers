@@ -7,7 +7,7 @@ function prepText(t) {
     return t.substring(1);
   }
   if (t.startsWith("@")) {
-    return getDataByDataURL(t);
+    return getDataByDataURL(t) || "Data can not be fetched or null";
   }
   // yep, this is call for data.
   // if (!window.impData) {
