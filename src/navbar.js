@@ -51,6 +51,12 @@ function buildNav(params, isLocal) {
   const B = document.body;
   const CH = B.firstChild;
   const navEl = document.createElement("nav");
+  if (!document.querySelector("#nav_mobile_spacer")) {
+    const mobSpacer = document.createElement("div");
+    mobSpacer.id = "nav_mobile_spacer";
+    CH ? B.insertBefore(mobSpacer, CH) : B.appendChild(mobSpacer);
+  }
+
   navEl.id = "IMPnavbar";
   navEl.dataset["local"] = isLocal;
   CH ? B.insertBefore(navEl, CH) : B.appendChild(navEl);
@@ -93,6 +99,7 @@ function buildNav(params, isLocal) {
       const myLi = document.createElement("a");
       myLi.href = l[0];
       myLi.innerHTML = l[1] || "*";
+      myLi.title = l[1] || "";
       linkCont.appendChild(myLi);
     });
     navEl.appendChild(linkCont);
