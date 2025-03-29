@@ -57,6 +57,9 @@ body>nav#IMPnavbar a:last-child {
     position: fixed;
     height: 3rem;
     top: 0;
+    left: 0;
+    /* right: 0; */
+    width: 100vw;
   }
 
   #nav_mobile_spacer {
