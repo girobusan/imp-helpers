@@ -36,6 +36,7 @@ module.exports = function(env, argv) {
       metadata: "./src/metadata.js",
       "uni-footer": "./src/uni-footer.js",
       timestamp: "./src/timestamp.js",
+      "download-md": "./src/download-md.js",
     },
     devtool: argv.mode != "production" ? "inline-source-map" : false,
     devServer:

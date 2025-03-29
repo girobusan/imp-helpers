@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMP! Helpers — download-md</title>
+  <meta name="description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="IMP! Helpers — download-md">
+  <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="og:image" content="undefined">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="undefined">
+  <link rel="icon" type="image/png" href="undefined">
+  <script>
+   window.settings = {
+  "title": "IMP! Helpers — download-md",
+  "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
+  "filename": "download-md.html",
+  "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
+  "css": "\n  #pageFooter{background-color: black}",
+  "enableHelpers": "true"
+};
+   window.savedWithImpVersion = "0.6.0"
+  </script>
+
+  <script defer>
+      (
+        function () {
+          function IMPEdit() {
+            console.info("Loading editor...")
+            const editor = document.createElement("script");
+            editor.id = "editorScript";
+            editor.src = "imp.js";
+            document.head.appendChild(editor);
+          }
+          if (window.location.search.indexOf("mode=edit") != -1) {
+            console.log("no edit");
+            IMPEdit();
+            return;
+          }
+          if (window.location.search.indexOf("mode=download") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (window.location.protocol === "file:" &&
+            window.location.search.indexOf("mode=view") == -1) {
+            console.log("file edit")
+            IMPEdit();
+          }
+        }
+      )();
+</script>
+
+  <script defer src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS"></style>
+  <!--custom html here-->
+</head>
+<body>
+<main class="container" id="pageMain"><h1>⚙️ download-md</h1>
+<h2>Button to download markdown source of the page</h2>
+<p>Allow your visitors to download page as markdown file.</p>
+<p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
+<h2>Example</h2>
+<p><button data-ihelper="download-md" 
+data-filename=download-md.md>Markdown download</button></p>
+<h2>Code</h2>
+<pre><code class="language-json"> ```h<span class="hljs-punctuation">:</span>download-md
+ text<span class="hljs-punctuation">:</span> Markdown download
+ ```
+</code></pre>
+<h2>Parameters</h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>meaning</th>
+<th>type</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td>Text for the button</td>
+<td>String</td>
+<td>&quot;Download markdown&quot;</td>
+</tr>
+<tr>
+<td>filename</td>
+<td>Name for the downloaded file</td>
+<td>String</td>
+<td>Name of the page, with <strong>html</strong> replaced with <strong>md</strong></td>
+</tr>
+</tbody>
+</table>
+<p><small style='color:silver'>Last saved: 3/29/25, 13:48</small></p></main>
+<footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+
+<script>window.impData={"page_meta":{"mdate":"2025-03-29T10:48:56.275Z","url":"http://imphelpers.org/pages/download-markdown.html"}}</script>
+<script id="pageData" type="text/markdown"># :gear: download-md
+
+## Button to download markdown source of the page
+
+Allow your visitors to download page as markdown file.
+
+&amp;rarr; See [this page in edit mode](?mode=edit).
+
+## Example
+
+```h:download-md
+text: Markdown download
+```
+
+
+## Code
+~~~json
+ ```h:download-md
+ text: Markdown download
+ ```
+~~~
+
+
+
+
+## Parameters 
+|name | meaning | type | default |
+|--|--|--|--|
+|text | Text for the button | String |  "Download markdown" |
+| filename | Name for the downloaded file | String | Name of the page, with **html** replaced with **md**|</script>
+</body>
+</html>
