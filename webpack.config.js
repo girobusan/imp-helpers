@@ -37,6 +37,7 @@ module.exports = function(env, argv) {
       "uni-footer": "./src/uni-footer.js",
       timestamp: "./src/timestamp.js",
       "download-md": "./src/download-md.js",
+      spoiler: "./src/spoiler.js",
     },
     devtool: argv.mode != "production" ? "inline-source-map" : false,
     devServer:
