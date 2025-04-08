@@ -22,7 +22,7 @@ function buildNav(params, isLocal) {
   const testAddCSS = document.querySelector("#IMPnavbarUserCSS");
   testNav && console.log(testNav.dataset.local);
   if (testNav && !isLocal && testNav.dataset.local === "true") {
-    return; // autoloaded navbar dows not overwrites locally defined one
+    return; // autoloaded navbar does not overwrite locally defined one
   }
 
   testNav && testNav.remove();
@@ -31,7 +31,10 @@ function buildNav(params, isLocal) {
 
   if (params.exclude && params.exclude.length > 0) {
     console.log("Exclude found");
-    const currentPage = window.location.pathname;
+    const currentPage =
+      window.settings && window.settings.filename
+        ? window.settings.filename
+        : window.location.pathname;
     //regexps
     const EX = params.exclude.reduce((a, r) => {
       const rX = typeof r === "string" ? new RegExp(r, "i") : r;
