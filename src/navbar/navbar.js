@@ -5,7 +5,7 @@
 
 //
 const defaultCSS = require("./navbar.css?raw");
-const menuIcon = require("./icons/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?raw");
+const menuIcon = require("../icons/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg?raw");
 // console.log(defaultCSS);
 
 const API = globalThis.impHelpers;

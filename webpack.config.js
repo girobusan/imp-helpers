@@ -5,7 +5,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 // const env = process.env.NODE_ENV;
 
-module.exports = function(env, argv) {
+module.exports = function (env, argv) {
   let builddir = argv.mode == "production" ? "helpers" : "test/helpers";
 
   let baseConf = {
@@ -32,12 +32,13 @@ module.exports = function(env, argv) {
       placeholders: "./src/placeholders.js",
       "data-saver": "./src/data-saver",
       "qr-code": "./src/qr-code.js",
-      navbar: "./src/navbar.js",
+      navbar: "./src/navbar/navbar.js",
       metadata: "./src/metadata.js",
       "uni-footer": "./src/uni-footer.js",
       timestamp: "./src/timestamp.js",
       "download-md": "./src/download-md.js",
       spoiler: "./src/spoiler.js",
+      sidebar: "./src/sidebar/sidebar.js",
     },
     devtool: argv.mode != "production" ? "inline-source-map" : false,
     devServer:
