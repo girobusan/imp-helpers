@@ -42,17 +42,22 @@ function addSideBar(url) {
 
   // main.style.float = "left";
   // main.style.maxWidth = "calc(100vw - 350px)";
-  footer.style.clear = "both";
   if (resizer) {
     window.removeEventListener("resize", resizer);
   }
   resizer = () =>
-    (container.style.minHeight = main.getBoundingClientRect().height + "px");
+    (container.style.minHeight =
+      main.getBoundingClientRect().height +
+      // footer.getBoundingClientRect().height +
+      "px");
   window.addEventListener("resize", resizer);
 
   old && old.remove();
   // container.style.float = "left";
-  container.style.minHeight = main.getBoundingClientRect().height + "px";
+  container.style.minHeight =
+    main.getBoundingClientRect().height +
+    // footer.getBoundingClientRect().height +
+    "px";
   container.style.marginRight = "1rem";
 
   const fc = document.body.firstChild;

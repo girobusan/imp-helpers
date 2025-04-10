@@ -11,7 +11,7 @@
   height: 32px;
   appearance: none;
   border: none;
-  border-radius: 0;
+  border-radius: 0 6px 6px 0;
   background-color: #888;
   color: white;
   position: absolute;
@@ -29,6 +29,10 @@ main#pageMain {
   max-width: 65%;
 }
 
+footer#pageFooter {
+  clear: both;
+}
+
 @media (max-width: 700px) {
   #IMPsidebar {
     position: absolute;
@@ -44,6 +48,7 @@ main#pageMain {
 
   #IMPsidebar.expanded button {
     right: 0;
+    border-radius: 0 0 0 6px;
   }
 
   #IMPsidebar.expanded button svg {
