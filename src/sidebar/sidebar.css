@@ -46,6 +46,7 @@ footer#pageFooter {
     height: 100%;
     margin-top: 0;
     border-radius: 0;
+    overflow: visible;
   }
 
   #IMPsidebar {
