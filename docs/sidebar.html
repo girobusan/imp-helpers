@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMP! Helpers — sidebar</title>
+  <meta name="description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="IMP! Helpers — sidebar">
+  <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="og:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="">
+  <link rel="icon" type="image/png" href="">
+  <base target='_self'>
+  <script>
+   window.settings = {
+  "title": "IMP! Helpers — sidebar",
+  "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
+  "filename": "sidebar.html",
+  "footer": "&lt;small&gt;Powered by &lt;a href='https://github.com/girobusan/imp'&gt;IMP!&lt;/a&gt; &lt;/small&gt;",
+  "css": "\n  #pageFooter{background-color: black}",
+  "customCSS": "footer#pageFooter{\n\nmargin:0;\npadding-top: 2rem;\n}\nmain#pageMain{\npadding-bottom: 4rem;\n}",
+  "enableHelpers": "true"
+};
+   window.savedWithImpVersion = "0.6.2"
+  </script>
+
+  <script>
+      (
+        function () {
+          function IMPEdit() {
+            console.info("Loading editor...")
+            const editor = document.createElement("script");
+            editor.id = "editorScript";
+            editor.setAttribute("defer", "defer");
+            editor.src = window.settings.editor || "imp.js";
+            document.head.appendChild(editor);
+          }
+         var S = window.location.search.toLowerCase();
+          if (S.indexOf("mode=edit") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (S.indexOf("mode=download") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (window.location.protocol === "file:" &&
+            S.indexOf("mode=view") == -1) {
+            IMPEdit();
+          }
+        }
+      )();
+</script>
+
+  <script defer src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS">footer#pageFooter{
+
+margin:0;
+padding-top: 2rem;
+}
+main#pageMain{
+padding-bottom: 4rem;
+}</style>
+  <!--custom html here-->
+</head>
+<body>
+<main class="container" id="pageMain"><!--sidebar-->
+<style>
+#IMPsidebar {
+  position: absolute;
+  width: 30vw;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#IMPsidebar button {
+  display: none;
+  width: 32px;
+  height: 32px;
+  appearance: none;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #888;
+  color: white;
+  position: absolute;
+  top: 0px;
+  right: -32px;
+  padding: 4px;
+}
+
+#IMPsidebar button svg {
+  display: block;
+}
+
+main#pageMain {
+  padding-left: calc(30vw + 2rem);
+}
+
+footer#pageFooter {
+  clear: both;
+}
+
+@media (max-width: 700px) {
+  #IMPsidebar.js-enabled {
+    position: absolute;
+    width: 100%;
+    left: -100%;
+    transition: all 0.2s;
+    height: 100%;
+    margin-top: 0;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  #IMPsidebar {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    margin-top: 1rem;
+    border-radius: 4px;
+  }
+
+  #IMPsidebar.expanded {
+    left: 0;
+  }
+
+  #IMPsidebar.expanded button {
+    right: 0;
+    border-radius: 0 0 0 6px;
+  }
+
+  #IMPsidebar.expanded button svg {
+    transform: scale(-1, 1);
+  }
+
+  main#pageMain {
+    float: none !important;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #IMPsidebar.js-enabled button {
+    display: block;
+  }
+}
+
+</style>
+<div id="IMPsidebar"  data-ihelper="sidebar">
+ <iframe src="custom_menu.html?mode=view" 
+style="position:absolute; top:0; left:0; width:100%;height:100%;border:none">
+  </iframe>
+<button><svg xmlns="http://www.w3.org/2000/svg" 
+  height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M360-120v-720h80v720h-80Zm160-160v-400l200 200-200 200Z"/></svg>
+</button>
+</div>
+<h1>⚙️ sidebar</h1>
+<p>Displays page in the sidebar. Sidebar is <em>static-</em> and <em>mobile-</em> friendly. You may need to add some custom styles to your pages. As it generates static code, you'll need to resave page in order to add or remove sidebar.</p>
+<p>This helper is work-in-process.</p>
+<p>→ See <a href="?mode=edit">this page in edit mode</a>.</p>
+<h2>Example code</h2>
+<p>Minimal code for attaching sidebar. Default page name is <code>menu.html</code>.</p>
+<pre><code class="language-json"> ```h<span class="hljs-punctuation">:</span>sidebar
+ ```
+</code></pre>
+<p>Minimal code for page, which will serve as sidebar:</p>
+<pre><code class="language-json">```h<span class="hljs-punctuation">:</span>sidebar/this 
+``` 
+</code></pre>
+<h2>Parameters</h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>meaning</th>
+<th>type</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td>URL of page to display in sidebar</td>
+<td>String</td>
+<td>&quot;menu.html&quot;</td>
+</tr>
+<tr>
+<td>target</td>
+<td>For page, which will be used as sidebar. Target for links.</td>
+<td>String</td>
+<td>&quot;_top&quot;</td>
+</tr>
+</tbody>
+</table>
+</main>
+<footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
+
+<script>window.impData={"page_meta":{"mdate":"2025-04-12T11:37:58.443Z","url":"http://imphelpers.org/pages/sidebar.html"}}</script>
+<script id="pageData" type="text/markdown"># :gear: sidebar
+
+Displays page in the sidebar. Sidebar is _static-_ and _mobile-_ friendly. You may need to add some custom styles to your pages. As it generates static code, you'll need to resave page in order to add or remove sidebar.
+
+This helper is work-in-process.
+
+&amp;rarr; See [this page in edit mode](?mode=edit).
+
+```h:sidebar
+url: custom_menu.html
+```
+
+
+## Example code
+Minimal code for attaching sidebar. Default page name is `menu.html`.
+~~~json
+ ```h:sidebar
+ ```
+~~~
+
+Minimal code for page, which will serve as sidebar:
+
+~~~json 
+```h:sidebar/this 
+``` 
+~~~
+
+
+
+
+## Parameters 
+|name | meaning | type | default |
+|--|--|--|--|
+|url | URL of page to display in sidebar | String |  "menu.html" |
+|target | For page, which will be used as sidebar. Target for links. | String  | "_top" |</script>
+</body>
+</html>

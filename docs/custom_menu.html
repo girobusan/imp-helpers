@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom menu</title>
+  <meta name="description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="og:title" content="Custom menu">
+  <meta name="og:description" content="Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.">
+  <meta name="og:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="">
+  <link rel="icon" type="image/png" href="">
+  <base target='_blank'>
+  <script>
+   window.settings = {
+  "title": "Custom menu",
+  "description": "Helpers are the scripts, which use new Helpers API for adding various types of content, not supported by regular markdown. Helpers may add static and/or interactive content in asynchronous way and enrich viewer experience.",
+  "filename": "custom_menu.html",
+  "footer": "&amp;nbsp;",
+  "css": "\n  #pageFooter{background-color: black}",
+  "customCSS": "body , html{\nbackground-color: gray;\ncolor: silver;\n}\na, a:hover, a:active, a:visited{\ncolor: white;\ntext-decoration: none;\n}",
+  "linksInNewWindow": true,
+  "enableHelpers": true,
+  "disableInteractivity": false
+};
+   window.savedWithImpVersion = "0.6.2"
+  </script>
+
+  <script>
+      (
+        function () {
+          function IMPEdit() {
+            console.info("Loading editor...")
+            const editor = document.createElement("script");
+            editor.id = "editorScript";
+            editor.setAttribute("defer", "defer");
+            editor.src = window.settings.editor || "imp.js";
+            document.head.appendChild(editor);
+          }
+         var S = window.location.search.toLowerCase();
+          if (S.indexOf("mode=edit") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (S.indexOf("mode=download") != -1) {
+            IMPEdit();
+            return;
+          }
+          if (window.location.protocol === "file:" &&
+            S.indexOf("mode=view") == -1) {
+            IMPEdit();
+          }
+        }
+      )();
+</script>
+
+  <script defer src='helpers.js' id='helpersScript'></script>
+  <link id = "viewCSS" rel="stylesheet" href="style.css">
+  <style id="customCSS">body , html{
+background-color: gray;
+color: silver;
+}
+a, a:hover, a:active, a:visited{
+color: white;
+text-decoration: none;
+}</style>
+  <!--custom html here-->
+</head>
+<body>
+<main class="container" id="pageMain"><h2><a href="index.html">🏠</a></h2>
+<p>This is the custom sidebar.</p>
+<ul>
+<li><a href="index.html">IMP! helpers</a></li>
+<li><a href="https://girobusan.github.io/imp/index.html">IMP! docs</a></li>
+</ul>
+<!--sidebar--><span data-ihelper="sidebar" data-subname="this" data-target="" data-url="menu.html" hidden></span></main>
+<footer id='pageFooter'>&nbsp;</footer>
+
+<script>window.impData={"page_meta":{"mdate":"2025-04-12T11:17:16.183Z","url":"http://imphelpers.org/pages/custom_menu.html"}}</script>
+<script id="pageData" type="text/markdown">## [:house:](index.html)
+
+This is the custom sidebar.
+
+- [IMP! helpers](index.html)
+- [IMP! docs](https://girobusan.github.io/imp/index.html)
+
+```h:sidebar/this
+```</script>
+</body>
+</html>

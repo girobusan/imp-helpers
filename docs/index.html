@@ -12,7 +12,8 @@
   <meta name="og:image" content="https://raw.githubusercontent.com/girobusan/imp-helpers/master/docs/screen.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/girobusan/imp-helpers/master/docs/screen.png">
-  <link rel="icon" type="image/png" href="undefined">
+  <link rel="icon" type="image/png" href="">
+  <base target='_self'>
   <script>
    window.settings = {
   "title": "IMP! Helpers",
@@ -23,31 +24,31 @@
   "css": "\n  #pageFooter{background-color: black}",
   "enableHelpers": "true"
 };
-   window.savedWithImpVersion = "0.6.0"
+   window.savedWithImpVersion = "0.6.2"
   </script>
 
-  <script defer>
+  <script>
       (
         function () {
           function IMPEdit() {
             console.info("Loading editor...")
             const editor = document.createElement("script");
             editor.id = "editorScript";
-            editor.src = "imp.js";
+            editor.setAttribute("defer", "defer");
+            editor.src = window.settings.editor || "imp.js";
             document.head.appendChild(editor);
           }
-          if (window.location.search.indexOf("mode=edit") != -1) {
-            console.log("no edit");
+         var S = window.location.search.toLowerCase();
+          if (S.indexOf("mode=edit") != -1) {
             IMPEdit();
             return;
           }
-          if (window.location.search.indexOf("mode=download") != -1) {
+          if (S.indexOf("mode=download") != -1) {
             IMPEdit();
             return;
           }
           if (window.location.protocol === "file:" &&
-            window.location.search.indexOf("mode=view") == -1) {
-            console.log("file edit")
+            S.indexOf("mode=view") == -1) {
             IMPEdit();
           }
         }
@@ -119,7 +120,7 @@ box-sizing: border-box;
 <tr>
 <th>Helper name</th>
 <th>What it does</th>
-<th>JS to view?</th>
+<th>Requires JS to view?</th>
 <th>Demo &amp; doc</th>
 </tr>
 </thead>
@@ -133,13 +134,13 @@ box-sizing: border-box;
 <tr>
 <td><strong>data-saver</strong></td>
 <td>Widget for downloading embedded data</td>
-<td>Has both static and JS-enabled versions</td>
+<td>Optional</td>
 <td><a href="data-saver.html">here </a></td>
 </tr>
 <tr>
 <td><strong>download-md</strong></td>
 <td>Button to download page content as markdown</td>
-<td>yes</td>
+<td>Yes</td>
 <td><a href="download-md.html">here</a></td>
 </tr>
 <tr>
@@ -167,6 +168,12 @@ box-sizing: border-box;
 <td>not required</td>
 </tr>
 <tr>
+<td><strong>sidebar</strong></td>
+<td>Displays page in the sidebar</td>
+<td>Optional</td>
+<td><a href="sidebar.html">here</a></td>
+</tr>
+<tr>
 <td><strong>qr-code</strong></td>
 <td>Embed static QR code</td>
 <td>No</td>
@@ -192,10 +199,10 @@ box-sizing: border-box;
 <li><a href="https://girobusan.github.io/imp/helpers_dev.html">Make Your Own Helper</a></li>
 <li><a href="https://girobusan.github.io/imp/helpers_api.html">Helpers API methods</a></li>
 </ul>
-<p><small style='color:silver'>Last saved: 3/29/25, 13:45</small></p></main>
+<p><small style='color:silver'>Last saved: 4/12/25, 14:56</small></p></main>
 <footer id='pageFooter'><small>Powered by <a href='https://github.com/girobusan/imp'>IMP!</a> </small></footer>
 
-<script>window.impData={"page_meta":{"mdate":"2025-03-29T10:45:57.242Z"}}</script>
+<script>window.impData={"page_meta":{"mdate":"2025-04-12T11:56:35.714Z"}}</script>
 <script id="pageData" type="text/markdown"># :gear: IMP! Helpers
 
 ```helper:cover
@@ -217,15 +224,16 @@ This site contains collection of "official", or _example_ helpers, which you can
 
 You can download any of them [here](https://github.com/girobusan/imp-helpers/tree/master/helpers). Please, note, that all helpers are tested with development version of IMP!. For now some of them are not compatible with latest release, but I'll fix it soon.
 
-| Helper name | What it does | JS to&amp;nbsp;view? | Demo&amp;nbsp;&amp;&amp;nbsp;doc | 
+| Helper name | What it does | Requires JS&amp;nbsp;to&amp;nbsp;view? | Demo&amp;nbsp;&amp;&amp;nbsp;doc | 
 |----|----|---|---|
 | **cover** | Adds nice customizable cover block to your page | Optional | [here](cover.html) |
-| **data-saver** | Widget for downloading embedded data | Has both static and JS-enabled versions | [here ](data-saver.html)|
-| **download-md** | Button to download page content as markdown | yes | [here](download-md.html)|
+| **data-saver** | Widget for downloading embedded data | Optional | [here ](data-saver.html)|
+| **download-md** | Button to download page content as markdown | Yes | [here](download-md.html)|
 | **dsv-render**  | Allows displaying of DSV (CSV, TSV) data in markdown | No | [here](dsv-render.html) |
 | **headers-nav** | Adds in-page navigation by headers | Yes |  [here](headers-nav.html) |
 | **navbar** | Adds simple navigation bar, can be used with upcoming autoload feature to add unified navbar to the set of pages. | Yes | [here](navbar.html) and on all pages of this site |
 | **placeholders** | Demo of system placeholders, for documentation | No | not required |
+| **sidebar**| Displays page in the sidebar | Optional | [here](sidebar.html)|
 | **qr-code** | Embed static QR code | No | [here](qr-code.html) |
 | **timestamp** | Adds static customizable timestamp to your page (or every saved page via autoload functionality) | No | [here](timestamp.html) |
 | **vega-embed** | Allows embedding of interactive Vega-lite visualizations in your page | Yes |  [here](vega-embed.html) |

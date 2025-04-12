@@ -75,14 +75,12 @@ function autoload(params_in, viewMode, subname) {
 }
 
 function animate(el) {
-  console.log("Animate sidebar", el);
   if (el && el.dataset.subname) {
     // the page is shown in sidebar
     // set base target for all links to something appropriate
     // console.log("fixing base...");
     let b = document.querySelector("base") || document.createElement("base");
     b.setAttribute("target", el.dataset.target || "_top");
-    // console.log(b);
     document.head.appendChild(b);
     return;
   }
